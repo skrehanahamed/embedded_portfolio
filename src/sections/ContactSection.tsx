@@ -31,16 +31,16 @@ export const ContactSection: React.FC = () => {
     {
       icon: <Mail className="w-4 h-4 text-sky-400" />,
       label: 'Email',
-      value: 'skrehanahamed97@gmail.com',
+      value: 'skrehanahamed5@gmail.com',
       subtext: 'Drop me an email anytime',
-      href: 'mailto:skrehanahamed97@gmail.com'
+      href: 'mailto:skrehanahamed5@gmail.com'
     },
     {
       icon: <Phone className="w-4 h-4 text-sky-400" />,
       label: 'Phone',
-      value: '+91 70442 73357',
+      value: '+91 84205 73869',
       subtext: 'Available for calls (India)',
-      href: 'tel:+917044273357'
+      href: 'tel:+918420573869'
     },
     {
       icon: <MapPin className="w-4 h-4 text-sky-400" />,
@@ -52,9 +52,9 @@ export const ContactSection: React.FC = () => {
     {
       icon: <LinkedinLogo className="w-4 h-4 text-sky-400" />,
       label: 'LinkedIn',
-      value: 'linkedin.com/in/skrehanahamed',
+      value: 'linkedin.com/in/sk-rehan-ahamed',
       subtext: "Let's connect professionally",
-      href: 'https://linkedin.com/in/skrehanahamed'
+      href: 'https://linkedin.com/in/sk-rehan-ahamed-23a4a922b'
     },
     {
       icon: <GithubLogo className="w-4 h-4 text-sky-400" />,
@@ -65,17 +65,44 @@ export const ContactSection: React.FC = () => {
     }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/skrehanahamed5@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _subject: formData.subject ? `[Portfolio] ${formData.subject}` : `[Portfolio] New message from ${formData.name}`,
+          message: formData.message,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        // Fallback: trigger email client with filled content
+        window.location.href = `mailto:skrehanahamed5@gmail.com?subject=${encodeURIComponent(formData.subject || 'Portfolio Contact')}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+        setIsSuccess(true);
+      }
+    } catch {
+      // Fallback if network/adblocker blocks endpoint
+      window.location.href = `mailto:skrehanahamed5@gmail.com?subject=${encodeURIComponent(formData.subject || 'Portfolio Contact')}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
       setIsSuccess(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 1000);
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setIsSuccess(false), 6000);
+    }
   };
 
 
@@ -202,6 +229,7 @@ export const ContactSection: React.FC = () => {
                     <User className="w-3.5 h-3.5 text-gray-400 absolute left-2.5 top-2.5 pointer-events-none" />
                     <input
                       type="text"
+                      name="name"
                       required
                       placeholder="Your Name"
                       value={formData.name}
@@ -213,6 +241,7 @@ export const ContactSection: React.FC = () => {
                     <Mail className="w-3.5 h-3.5 text-gray-400 absolute left-2.5 top-2.5 pointer-events-none" />
                     <input
                       type="email"
+                      name="email"
                       required
                       placeholder="Your Email"
                       value={formData.email}
@@ -227,6 +256,7 @@ export const ContactSection: React.FC = () => {
                   <MessageSquare className="w-3.5 h-3.5 text-gray-400 absolute left-2.5 top-2.5 pointer-events-none" />
                   <input
                     type="text"
+                    name="subject"
                     placeholder="Subject"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -238,6 +268,7 @@ export const ContactSection: React.FC = () => {
                 <div className="relative flex-1 min-h-[70px]">
                   <FileEdit className="w-3.5 h-3.5 text-gray-400 absolute left-2.5 top-2.5 pointer-events-none" />
                   <textarea
+                    name="message"
                     required
                     rows={3}
                     placeholder="Tell me about your idea, opportunity, or just say hello..."
