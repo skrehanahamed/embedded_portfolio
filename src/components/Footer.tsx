@@ -14,12 +14,12 @@ export const Footer: React.FC = () => {
         
         {/* Left: Brand Identity */}
         <div className="text-center md:text-left space-y-1">
-          <div className="flex items-center justify-center md:justify-start space-x-2">
-            <span className="text-xl font-black font-heading text-white tracking-wider">
-              SK
-            </span>
-            <span className="text-sm font-bold font-heading text-white tracking-wider">
-              REHAN AHAMED
+          <div className="flex items-center justify-center md:justify-start space-x-3">
+            <div className="w-8 h-8 rounded-lg overflow-hidden border border-blue-500/40 bg-[#050B12] flex items-center justify-center flex-shrink-0">
+              <img src="/favicon.svg" alt="SK Logo" className="w-full h-full object-contain p-1" />
+            </div>
+            <span className="text-sm md:text-base font-bold font-heading text-white tracking-wider">
+              SK REHAN AHAMED
             </span>
           </div>
           <p className="text-xs text-gray-400 font-mono-tech">
