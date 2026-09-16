@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Menu, X, FileDown } from 'lucide-react';
+import { Mail, Menu, X } from 'lucide-react';
 import { GithubLogo, LinkedinLogo } from './Logos';
 
 interface NavbarProps {
@@ -81,9 +81,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
           })}
         </div>
 
-        {/* Right: Clean Social Icons + Resume + Compact Connect Link */}
-        <div className="hidden md:flex items-center space-x-3">
-          <div className="flex items-center space-x-2.5">
+        {/* Right: Clean Social Icons + Compact Connect Link */}
+        <div className="hidden md:flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             <a
               href="https://github.com/skrehanahamed"
               target="_blank"
@@ -111,40 +111,19 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
             </a>
           </div>
 
-          <a
-            href="/SK_Rehan_Ahamed_Resume.pdf"
-            download="SK_Rehan_Ahamed_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-3 py-1.5 rounded-lg border border-white/15 hover:border-[#159FFF]/50 bg-white/[0.04] hover:bg-white/[0.08] text-xs font-medium text-[#F4F7FA] tracking-wide transition-all duration-200 flex items-center gap-1.5 cursor-pointer ml-1"
-          >
-            <FileDown className="w-3.5 h-3.5 text-sky-400" />
-            <span>Resume</span>
-          </a>
-
           <button
             onClick={() => handleNavClick('contact')}
-            className="px-4 py-1.5 rounded-lg border border-[#159FFF]/40 hover:border-[#159FFF] bg-[#159FFF]/10 hover:bg-[#159FFF]/20 text-xs font-semibold text-[#F4F7FA] tracking-wide transition-all duration-200 shadow-[0_0_12px_rgba(21,159,255,0.15)] ml-1 cursor-pointer"
+            className="px-4 py-1.5 rounded-lg border border-[#159FFF]/40 hover:border-[#159FFF] bg-[#159FFF]/10 hover:bg-[#159FFF]/20 text-xs font-semibold text-[#F4F7FA] tracking-wide transition-all duration-200 shadow-[0_0_12px_rgba(21,159,255,0.15)] ml-2 cursor-pointer"
           >
             Let's Connect →
           </button>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="lg:hidden flex items-center space-x-2">
-          <a
-            href="/SK_Rehan_Ahamed_Resume.pdf"
-            download="SK_Rehan_Ahamed_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-semibold text-sky-400 px-2 py-1 flex items-center gap-1 border border-sky-500/30 rounded-lg bg-sky-500/10"
-          >
-            <FileDown className="w-3 h-3" />
-            <span>CV</span>
-          </a>
+        <div className="lg:hidden flex items-center space-x-3">
           <button
             onClick={() => handleNavClick('contact')}
-            className="text-xs font-semibold text-gray-300 px-2 py-1"
+            className="text-xs font-semibold text-sky-400 px-2 py-1"
           >
             Connect →
           </button>
