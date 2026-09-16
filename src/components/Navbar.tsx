@@ -46,18 +46,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
         <button
           onClick={() => handleNavClick('home')}
           className="flex items-center space-x-3 text-left group focus:outline-none cursor-pointer"
-          aria-label="SK Rehan Ahamed Home"
         >
-          <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-xl overflow-hidden border border-blue-500/40 group-hover:border-blue-400 shadow-md shadow-blue-500/10 group-hover:shadow-blue-500/30 transition-all duration-300 flex-shrink-0 bg-[#050B12] flex items-center justify-center">
-            <img
-              src="/favicon.svg"
-              alt="SK Logo"
-              className="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-200"
-            />
+          <div className="text-2xl md:text-3xl font-black font-heading tracking-tight text-[#F4F7FA] group-hover:text-[#159FFF] transition-colors">
+            SK
           </div>
           <div className="flex flex-col">
-            <span className="text-xs md:text-sm font-bold tracking-wider text-[#F4F7FA] font-heading leading-tight group-hover:text-sky-300 transition-colors">
-              SK REHAN AHAMED
+            <span className="text-xs md:text-sm font-bold tracking-wider text-[#F4F7FA] font-heading leading-tight">
+              REHAN AHAMED
             </span>
             <span className="text-[8px] md:text-[9px] tracking-widest text-[#9BA8B5] font-medium uppercase font-mono-tech">
               EMBEDDED | AUTOMOTIVE | C++
