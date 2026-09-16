@@ -280,8 +280,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
               and continue to explore new tools and technologies to grow every day.
             </p>
             <a
-              href="/assets/about/resume.pdf"
-              download
+              href="/SK_Rehan_Ahamed_Resume.pdf"
+              download="SK_Rehan_Ahamed_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-[12px] font-semibold text-[#F4F7FA] transition-all w-fit cursor-pointer group hover:scale-[1.03] active:scale-[0.97]"
               style={{
                 background: 'rgba(21,159,255,0.08)',

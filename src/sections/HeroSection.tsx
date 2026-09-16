@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Shield, Layers, Building2, Cpu, ArrowRight, Globe, Compass, Mail } from "lucide-react";
+import { Shield, Layers, Building2, Cpu, ArrowRight, Globe, Compass, FileDown } from "lucide-react";
 
 /* ─────────────────────────────────────────────────────────────
    COUNT-UP HOOK  (easeOutExpo, staggered delay)
@@ -301,13 +301,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 <span className="relative">Explore My Work</span>
                 <ArrowRight className="relative w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
-              <button
-                onClick={() => onNavigate("contact")}
+              <a
+                href="/SK_Rehan_Ahamed_Resume.pdf"
+                download="SK_Rehan_Ahamed_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-5 py-2.5 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/20 hover:border-[#159FFF]/55 text-white font-medium text-[13px] tracking-wide transition-all flex items-center gap-2 shadow-lg cursor-pointer group hover:scale-[1.02] active:scale-[0.98]"
               >
-                <Mail className="w-3.5 h-3.5 text-sky-400 group-hover:text-white transition-colors" />
-                <span>Get In Touch</span>
-              </button>
+                <FileDown className="w-3.5 h-3.5 text-sky-400 group-hover:text-white transition-colors" />
+                <span>Download Resume</span>
+              </a>
             </div>
 
             {/* Cluster image */}
