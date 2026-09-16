@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Shield, Layers, Building2, Cpu, Play, ArrowRight, Globe, X, Compass } from "lucide-react";
+import { Shield, Layers, Building2, Cpu, ArrowRight, Globe, Compass, Mail } from "lucide-react";
 
 /* ─────────────────────────────────────────────────────────────
    COUNT-UP HOOK  (easeOutExpo, staggered delay)
@@ -152,7 +152,6 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
-  const [showreelOpen, setShowreelOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
 
@@ -303,11 +302,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 <ArrowRight className="relative w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
               <button
-                onClick={() => setShowreelOpen(true)}
-                className="px-5 py-2.5 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/20 hover:border-[#159FFF]/55 text-white font-medium text-[13px] tracking-wide transition-all flex items-center gap-2 shadow-lg cursor-pointer group"
+                onClick={() => onNavigate("contact")}
+                className="px-5 py-2.5 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/20 hover:border-[#159FFF]/55 text-white font-medium text-[13px] tracking-wide transition-all flex items-center gap-2 shadow-lg cursor-pointer group hover:scale-[1.02] active:scale-[0.98]"
               >
-                <Play className="w-3.5 h-3.5 fill-white group-hover:fill-[#159FFF] transition-colors" />
-                <span>Watch Showreel</span>
+                <Mail className="w-3.5 h-3.5 text-sky-400 group-hover:text-white transition-colors" />
+                <span>Get In Touch</span>
               </button>
             </div>
 
@@ -490,44 +489,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
 
 
-      {/* ── SHOWREEL MODAL ── */}
-      {showreelOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-xl p-4">
-          <div
-            className="relative w-full max-w-3xl rounded-2xl p-6"
-            style={{
-              background: "rgba(5,11,19,0.92)",
-              border: "1px solid rgba(21,159,255,0.35)",
-              boxShadow: "0 0 60px rgba(21,159,255,0.18)",
-            }}
-          >
-            <button onClick={() => setShowreelOpen(false)} className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
-              <X className="w-5 h-5" />
-            </button>
-            <div className="flex items-center gap-2 text-[#159FFF] font-mono-tech text-[10.5px] tracking-wider uppercase mb-3">
-              <span>// AUTOMOTIVE SOFTWARE SHOWREEL</span>
-            </div>
-            <h3 className="text-xl font-bold font-heading text-white mb-4">Next-Gen Vehicle Systems & AUTOSAR Integration</h3>
-            <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black/80 border border-white/10 flex items-center justify-center">
-              <img src="/assets/skills/car_rear.jpg" alt="Automotive" className="w-full h-full object-cover opacity-55" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
-              <div className="absolute flex flex-col items-center text-center p-6">
-                <div className="w-16 h-16 rounded-full bg-cyan-500/20 border border-[#159FFF] flex items-center justify-center text-[#159FFF] mb-3 shadow-[0_0_24px_rgba(21,159,255,0.5)] animate-pulse">
-                  <Play className="w-6 h-6 fill-[#159FFF] ml-1" />
-                </div>
-                <p className="text-white font-heading font-semibold text-lg">Automotive Systems Showcase</p>
-                <p className="text-slate-400 text-xs mt-1 max-w-sm font-mono-tech">Demonstrating Instrument Cluster rendering, CANoe bus simulation, and AUTOSAR Classic stack execution.</p>
-              </div>
-            </div>
-            <div className="mt-4 flex items-center justify-between">
-              <span className="text-xs font-mono-tech text-slate-400">Resolution: 4K UHD • QNX / AUTOSAR</span>
-              <button onClick={() => setShowreelOpen(false)} className="px-4 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition-colors cursor-pointer">
-                Close Preview
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
