@@ -115,7 +115,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
         >
           {/* ── Portrait (left 3 cols) ── */}
           <div
-            className={`lg:col-span-3 w-full max-w-[210px] sm:max-w-[250px] lg:max-w-none mx-auto lg:mx-0 relative rounded-2xl overflow-hidden group flex items-center justify-center h-[185px] sm:h-[220px] lg:h-auto min-h-[185px] sm:min-h-[220px] lg:min-h-[270px] 2xl:min-h-[295px] lg:max-h-[310px] ${
+            className={`lg:col-span-3 relative rounded-2xl overflow-hidden group flex items-center justify-center min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] lg:max-h-[310px] ${
               isLight ? 'bg-white' : 'bg-[#050B13]'
             }`}
             style={{
@@ -130,7 +130,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
             <img
               src="/assets/hero/image.png"
               alt="SK Rehan Ahamed"
-              className="w-full h-full object-cover object-[center_14%] group-hover:scale-102 transition-transform duration-700 h-[185px] sm:h-[220px] lg:h-full min-h-[185px] sm:min-h-[220px] lg:min-h-[270px] 2xl:min-h-[295px] lg:max-h-[310px]"
+              className="w-full h-full object-cover object-[center_12%] group-hover:scale-102 transition-transform duration-700 min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] lg:max-h-[310px]"
               draggable={false}
             />
             {/* gradient overlay at bottom for quote readability */}
@@ -143,9 +143,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
             />
 
             {/* Italic quote overlay bottom-left */}
-            <div className="absolute bottom-2.5 left-3 sm:bottom-3 sm:left-3.5 2xl:bottom-4 2xl:left-4 z-10 pointer-events-none">
+            <div className="absolute bottom-3 left-3.5 2xl:bottom-4 2xl:left-4 z-10 pointer-events-none">
               <p
-                className="font-heading italic text-white/95 text-[11.5px] sm:text-[12.5px] lg:text-[13px] 2xl:text-[14px] leading-tight font-semibold"
+                className="font-heading italic text-white/95 text-[13px] 2xl:text-[14px] leading-tight font-semibold"
                 style={{ textShadow: '0 2px 14px rgba(0,0,0,0.9)' }}
               >
                 Same Passion,<br />New Roads.
