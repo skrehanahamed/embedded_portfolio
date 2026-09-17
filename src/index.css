@@ -59,9 +59,17 @@
 
 /* ══════════════════════════════════════════════════════
    PROPORTIONAL SCALING FOR ALL SCREEN SIZES
-   - MacBook & 2K / 1080p: Baseline 1.0x (optimal natural rendering & 1-page fit)
+   - MacBook (Air M5 ~1440-1512px): Baseline 1.0x (1-page fit untouched)
+   - 1920x1200 displays: 80% zoom calibration
    - 4K UHD (3500px+): 1.75x proportional zoom (matches user's 175% browser zoom)
  ══════════════════════════════════════════════════════ */
+@media (min-width: 1800px) and (max-width: 2050px) {
+  /* 1920x1200 displays — 80% zoom */
+  #root {
+    zoom: 0.8;
+  }
+}
+
 @media (min-width: 3500px) {
   /* 4K UHD displays (3840x2160) — scales up cleanly from MacBook baseline */
   #root {
