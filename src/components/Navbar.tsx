@@ -35,6 +35,35 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
     };
   }, [mobileMenuOpen]);
 
+  const navContainerRef = React.useRef<HTMLDivElement>(null);
+  const navItemRefs = React.useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number; opacity: number }>({
+    left: 0,
+    width: 0,
+    opacity: 0,
+  });
+
+  // Smoothly reposition the sliding active indicator whenever activeSection changes or viewport resizes
+  useEffect(() => {
+    const updateIndicator = () => {
+      const activeBtn = navItemRefs.current[activeSection];
+      const container = navContainerRef.current;
+      if (activeBtn && container) {
+        const containerRect = container.getBoundingClientRect();
+        const btnRect = activeBtn.getBoundingClientRect();
+        setIndicatorStyle({
+          left: btnRect.left - containerRect.left,
+          width: btnRect.width,
+          opacity: 1,
+        });
+      }
+    };
+
+    updateIndicator();
+    window.addEventListener('resize', updateIndicator);
+    return () => window.removeEventListener('resize', updateIndicator);
+  }, [activeSection]);
+
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
@@ -52,14 +81,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3.5 sm:py-4 ${
           isScrolled
             ? (isLight
-                ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200/80 shadow-md shadow-slate-900/5 py-3.5'
-                : 'bg-[#02070D]/85 backdrop-blur-xl border-b border-white/[0.06] shadow-xl shadow-black/50 py-3.5')
+                ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200/80 shadow-md shadow-slate-900/5'
+                : 'bg-[#02070D]/85 backdrop-blur-xl border-b border-white/[0.06] shadow-xl shadow-black/50')
             : (isLight
-                ? 'bg-white/75 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border-b border-slate-200/50 lg:border-none py-3.5 lg:py-5'
-                : 'bg-transparent py-5')
+                ? 'bg-white/75 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border-b border-slate-200/50 lg:border-none'
+                : 'bg-transparent')
         }`}
       >
         <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between">
@@ -87,27 +116,40 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
             </div>
           </button>
 
-          {/* Center: Desktop Navigation Links (Responsive spacing for 1024px / mobile desktop mode) */}
-          <div className="hidden lg:flex items-center space-x-3.5 xl:space-x-8">
+          {/* Center: Desktop Navigation Links with Smooth Gliding Indicator */}
+          <div
+            ref={navContainerRef}
+            className="relative hidden lg:flex items-center space-x-3.5 xl:space-x-8"
+          >
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
                 <button
                   key={item.id}
+                  ref={(el) => {
+                    navItemRefs.current[item.id] = el;
+                  }}
                   onClick={() => handleNavClick(item.id)}
-                  className={`relative py-1 text-xs xl:text-sm font-medium tracking-wide transition-all duration-200 focus:outline-none cursor-pointer whitespace-nowrap ${
+                  className={`relative py-1 text-xs xl:text-sm font-medium tracking-wide transition-colors duration-200 focus:outline-none cursor-pointer whitespace-nowrap ${
                     isActive
-                      ? (isLight ? 'text-sky-600 font-bold' : 'text-[#F4F7FA]')
+                      ? (isLight ? 'text-sky-600 font-bold' : 'text-[#F4F7FA] font-bold')
                       : (isLight ? 'text-slate-700 hover:text-slate-950 font-semibold' : 'text-[#9BA8B5] hover:text-[#F4F7FA]')
                   }`}
                 >
                   {item.label}
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#159FFF] shadow-[0_0_8px_#159FFF] rounded-full"></span>
-                  )}
                 </button>
               );
             })}
+
+            {/* Smooth Gliding Active Indicator Bar */}
+            <span
+              className="absolute -bottom-1 h-[2.5px] bg-[#159FFF] shadow-[0_0_10px_#159FFF] rounded-full pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]"
+              style={{
+                transform: `translateX(${indicatorStyle.left}px)`,
+                width: `${indicatorStyle.width}px`,
+                opacity: indicatorStyle.opacity,
+              }}
+            />
           </div>
 
           {/* Right: Clean Social Icons + Compact Connect Link */}
