@@ -248,7 +248,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
     <section
       ref={heroRef}
       id="home"
-      className={`relative w-full h-screen min-h-[580px] flex flex-col overflow-hidden select-none transition-colors duration-300 ${
+      className={`relative w-full h-screen min-h-[700px] flex flex-col overflow-hidden select-none transition-colors duration-300 ${
         isLight ? "bg-[#F8FAFC]" : "bg-[#02070D]"
       }`}
       style={{ "--mx": "0", "--my": "0" } as React.CSSProperties}
