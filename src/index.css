@@ -59,34 +59,43 @@
 
 /* ══════════════════════════════════════════════════════
    PROPORTIONAL SCALING FOR ALL SCREEN SIZES
-   Automatically scales all elements, typography, widgets,
-   and cards proportionally as screen size increases or decreases.
+   - 720p / Laptops: 1.0 (natural 100% height, zero section overlap)
+   - 1080p FHD: 1.15x scale (larger typography, cards, and buttons)
+   - 2K / 1440p: 1.33x scale (user verified optimal balance)
+   - 4K UHD: 1.60x scale (grand, prominent scale without clipping)
 ══════════════════════════════════════════════════════ */
 @media (min-width: 1024px) and (max-width: 1399px) {
-  /* 720p & Compact Laptops (1280x720, 1366x768) — gentle scale down for breathing room */
+  /* 720p & Compact Laptops (1280x720) — natural 1.0 scale to eliminate overlapping frames */
   #root {
-    zoom: 0.88;
+    zoom: 1.0;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1999px) {
+  /* 1080p displays (1920x1080) — scaled up so elements feel rich and prominent */
+  #root {
+    zoom: 1.15;
   }
 }
 
 @media (min-width: 2000px) and (max-width: 2799px) {
-  /* 2K / 1440p displays (2560x1440) — scales up by ~1.33x */
+  /* 2K / 1440p displays (2560x1440) — approved 1.33x scale */
   #root {
     zoom: 1.33;
   }
 }
 
 @media (min-width: 2800px) and (max-width: 3499px) {
-  /* 3K / Ultra-wide displays — scales up by ~1.55x */
+  /* 3K / Ultra-wide displays */
   #root {
-    zoom: 1.55;
+    zoom: 1.45;
   }
 }
 
 @media (min-width: 3500px) {
-  /* 4K UHD displays (3840x2160) — scales up by ~1.95x to fill display */
+  /* 4K UHD displays (3840x2160) — balanced 1.6x scale */
   #root {
-    zoom: 1.95;
+    zoom: 1.6;
   }
 }
 
