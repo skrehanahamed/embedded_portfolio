@@ -69,12 +69,30 @@
   #root {
     zoom: 1.75;
   }
+  /* Zoom compensation for viewport units: ensures 1-screen sections fit perfectly within viewport height */
+  #home {
+    height: calc(100vh / 1.75) !important;
+    min-height: calc(100vh / 1.75) !important;
+  }
+  #about, #projects, #experience, #skills, #contact {
+    min-height: calc(100vh / 1.75 - 4rem) !important;
+    height: calc(100vh / 1.75 - 4rem) !important;
+  }
 }
 
 @media (min-width: 2400px) and (max-width: 3199px) {
   /* 2K / QHD displays (2560x1440) — 1.33x proportional scale */
   #root {
     zoom: 1.33;
+  }
+  /* Zoom compensation for viewport units */
+  #home {
+    height: calc(100vh / 1.33) !important;
+    min-height: calc(100vh / 1.33) !important;
+  }
+  #about, #projects, #experience, #skills, #contact {
+    min-height: calc(100vh / 1.33 - 4rem) !important;
+    height: calc(100vh / 1.33 - 4rem) !important;
   }
 }
 
