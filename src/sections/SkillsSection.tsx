@@ -200,7 +200,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
       return (
         <div
           key={activeFilter}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3 flex-1 min-h-0 items-stretch ${
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 lg:gap-4 flex-1 min-h-fit items-stretch ${
             slideDir === 'right' ? 'animate-slide-right' : 'animate-slide-left'
           }`}
         >
@@ -356,7 +356,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
       return (
         <div
           key={activeFilter}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3 flex-1 min-h-0 items-stretch ${
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 lg:gap-4 flex-1 min-h-fit items-stretch ${
             slideDir === 'right' ? 'animate-slide-right' : 'animate-slide-left'
           }`}
         >
@@ -551,7 +551,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
     return (
       <div
         key={activeFilter}
-        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-2.5 flex-1 min-h-0 items-stretch ${
+        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 lg:gap-4 flex-1 min-h-fit items-stretch ${
           slideDir === 'right' ? 'animate-slide-right' : 'animate-slide-left'
         }`}
       >
@@ -617,7 +617,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
     <section
       ref={sectionRef}
       id="skills"
-      className={`relative w-full min-h-[calc(100vh-4rem)] md:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 px-3 sm:px-6 lg:px-10 2xl:px-14 ${isLight ? 'bg-[#F8FAFC]' : 'bg-[#020509]'} flex flex-col justify-between select-none scroll-mt-16 overflow-hidden`}
+      className={`relative w-full min-h-[calc(100vh-4rem)] h-auto py-4 sm:py-6 lg:py-6 2xl:py-8 px-3 sm:px-6 lg:px-10 2xl:px-14 ${isLight ? 'bg-[#F8FAFC]' : 'bg-[#020509]'} flex flex-col justify-between select-none scroll-mt-16 transition-colors duration-300 border-t ${isLight ? 'border-slate-200/80' : 'border-white/[0.04]'}`}
     >
       {/* Ambient background glow */}
       <div
@@ -625,7 +625,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
         style={{ background: isLight ? 'radial-gradient(ellipse, rgba(14,165,233,0.08) 0%, transparent 70%)' : 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full h-full flex flex-col justify-between gap-2 lg:gap-2.5">
+      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full flex-1 flex flex-col justify-between gap-3 sm:gap-4 lg:gap-5">
         
         {/* ══════════════════════════════════════════════════════
             TOP HEADER (Single Tab, Borderless, Full-Span Car Background Like Experience)
@@ -772,7 +772,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
             DOWN PART: MOUNTAIN HIGHWAY FOOTER CARD
         ══════════════════════════════════════════════════════ */}
         <div
-          className={`relative rounded-2xl overflow-hidden px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-4 shrink-0 shadow-lg ${
+          className={`relative rounded-2xl overflow-hidden px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-4 shrink-0 shadow-lg mt-2 sm:mt-3 ${
             isLight ? 'border border-slate-200/90' : 'border border-sky-500/30'
           }`}
           style={{
