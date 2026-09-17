@@ -73,8 +73,8 @@ export function App() {
       } else if (sectionId === 'about') {
         element.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
-        const navHeight = 70;
-        const targetTop = element.getBoundingClientRect().top + window.scrollY - navHeight;
+        const navHeight = 64;
+        const targetTop = Math.max(0, element.getBoundingClientRect().top + window.scrollY - navHeight);
         window.scrollTo({ top: targetTop, behavior: 'smooth' });
       }
     }

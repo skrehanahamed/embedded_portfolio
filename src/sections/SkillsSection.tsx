@@ -528,7 +528,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative w-full min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 px-3 sm:px-6 lg:px-10 2xl:px-14 bg-[#020509] flex flex-col justify-between select-none scroll-mt-16"
+      className="relative w-full min-h-[calc(100vh-4rem)] md:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 px-3 sm:px-6 lg:px-10 2xl:px-14 bg-[#020509] flex flex-col justify-between select-none scroll-mt-16 overflow-hidden"
     >
       {/* Ambient background glow */}
       <div

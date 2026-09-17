@@ -109,7 +109,7 @@ export const ContactSection: React.FC = () => {
   return (
     <section
       id="contact"
-      className="relative w-full flex-1 flex flex-col justify-center lg:justify-between min-h-0 lg:h-[calc(100vh-4rem)] pt-2 lg:pt-1 pb-2 sm:pb-3 px-4 sm:px-6 lg:px-10 2xl:px-14 bg-[#020509] select-none scroll-mt-16"
+      className="relative w-full flex-1 flex flex-col justify-between min-h-[calc(100vh-4rem)] md:h-[calc(100vh-4rem)] pt-3 lg:pt-2.5 pb-2 sm:pb-3 px-4 sm:px-6 lg:px-10 2xl:px-14 bg-[#020509] select-none scroll-mt-16 border-t border-white/[0.04] overflow-hidden"
     >
       {/* ── BACKGROUND: Experience Image (Car on alpine road with signboard already in photo) ── */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
