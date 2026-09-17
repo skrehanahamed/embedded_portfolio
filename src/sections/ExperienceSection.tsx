@@ -53,12 +53,13 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
             TOP HEADER (Single Tab, Borderless, Like Projects Part)
         ══════════════════════════════════════════════════════ */}
         <div
-          className="relative rounded-b-2xl overflow-hidden p-3.5 sm:p-4 lg:py-2.5 2xl:py-3.5 lg:px-6 shrink-0 -mt-px shadow-lg"
+          className="relative rounded-b-2xl overflow-hidden p-3 sm:p-3.5 lg:py-2.5 2xl:py-3.5 lg:px-6 shrink-0 -mt-px shadow-lg"
           style={{
             background: isLight
-              ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.98) 100%)'
-              : 'linear-gradient(135deg, rgba(8, 16, 26, 0.95) 0%, rgba(4, 9, 16, 0.98) 100%)',
-            borderBottom: isLight ? '1px solid rgba(226, 232, 240, 0.95)' : '1px solid rgba(255, 255, 255, 0.06)',
+              ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(248, 250, 252, 0.75) 100%)'
+              : 'linear-gradient(135deg, rgba(8, 16, 26, 0.82) 0%, rgba(4, 9, 16, 0.88) 100%)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
           }}
         >
           {/* Vehicle visual background - FULL SPAN with no visible seam or cut-off edge */}
@@ -86,83 +87,123 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
             />
           </div>
 
-          <div className="relative z-10 flex flex-col justify-between gap-2 max-w-2xl">
-            {/* Upper: Title & Subtitle */}
-            <div className="space-y-0.5">
-              <div className="flex items-center space-x-2 text-[9px] font-mono-tech text-sky-400 font-semibold uppercase tracking-[0.22em]">
-                <span>/ 04</span>
-                <span className="w-6 h-[1px] bg-sky-400/60" />
-                <span>EXPERIENCE</span>
-              </div>
-              <div className="flex items-baseline gap-2.5">
-                <h2
-                  className={`text-lg sm:text-xl lg:text-2xl font-black font-heading leading-tight ${
-                    isLight ? 'text-slate-900' : 'text-white'
-                  }`}
+          <div className="relative z-10 flex flex-col gap-1.5 lg:gap-2">
+            {/* Top row: Clean, focused Section Header with Title on Left, Brand Tagline on Right */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="flex flex-col justify-start space-y-0.5 max-w-2xl lg:max-w-3xl">
+                <div
+                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-mono-tech font-bold uppercase tracking-[0.22em] shadow-xs mb-0.5 w-fit"
                   style={{
-                    textShadow: isLight
-                      ? '0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.9)'
-                      : '0 2px 8px rgba(0, 0, 0, 0.7)',
+                    background: isLight ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.06)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
                   }}
                 >
-                  My Professional{' '}
                   <span
                     style={{
-                      background: 'linear-gradient(90deg,#4FC3FF 0%,#159FFF 55%,#0077CC 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
+                      color: isLight ? '#0284C7' : '#38BDF8',
+                      textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.5)' : 'none',
                     }}
                   >
-                    Journey.
+                    EXPERIENCE
                   </span>
-                </h2>
-                <span
-                  className={`inline-block text-[11px] sm:text-[12px] font-heading italic font-extrabold ${
-                    isLight ? 'text-slate-950' : 'text-white drop-shadow-sm'
-                  }`}
+                </div>
+
+                <div className="flex flex-wrap items-baseline gap-x-2.5">
+                  <h2
+                    className={`text-lg sm:text-xl lg:text-2xl font-black font-heading leading-tight ${
+                      isLight ? 'text-slate-950' : 'text-white'
+                    }`}
+                    style={{
+                      textShadow: isLight
+                        ? '0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.9)'
+                        : '0 2px 8px rgba(0, 0, 0, 0.7)',
+                    }}
+                  >
+                    My Professional{' '}
+                    <span className={isLight ? 'text-sky-600' : 'text-sky-400'}>
+                      Journey.
+                    </span>
+                  </h2>
+                </div>
+
+                <p
+                  className={`hidden sm:block text-xs sm:text-[13px] ${
+                    isLight ? 'text-slate-900 font-medium' : 'text-[#CAD5E2] font-normal'
+                  } leading-snug line-clamp-1`}
+                  style={{
+                    textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none',
+                  }}
+                >
+                  A journey of continuous learning, real-world impact, and building smarter automotive & semiconductor experiences.
+                </p>
+              </div>
+
+              {/* Right Tagline Block */}
+              <div className="hidden md:flex flex-col items-end justify-center text-right space-y-0.5 relative z-10 pr-1 flex-shrink-0">
+                <div
+                  className={`flex items-center gap-1.5 text-[9.5px] sm:text-[10.5px] font-mono-tech tracking-widest ${isLight ? 'text-slate-900' : 'text-gray-200'} uppercase font-bold`}
+                  style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  <span>DRIVE</span>
+                  <span>•</span>
+                  <span>DELIVER</span>
+                  <span>•</span>
+                  <span
+                    className="font-black"
+                    style={{
+                      color: isLight ? '#0284C7' : '#38BDF8',
+                      textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.6)' : 'none',
+                    }}
+                  >
+                    INNOVATE
+                  </span>
+                  <span>•</span>
+                  <span className={isLight ? 'text-slate-950 font-black' : 'text-white font-black'}>LEAD</span>
+                </div>
+                <div
+                  className={`text-xs sm:text-[13.5px] font-heading italic font-black leading-tight ${isLight ? 'text-slate-950' : 'text-white drop-shadow-md'}`}
                   style={{
                     textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
                   }}
                 >
                   &ldquo;Different Roads. Same Passion.&rdquo;
+                </div>
+                <span
+                  className="text-[9.5px] font-mono-tech font-black tracking-widest uppercase"
+                  style={{
+                    color: isLight ? '#0284C7' : '#38BDF8',
+                    textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.6)' : 'none',
+                  }}
+                >
+                  SK REHAN AHAMED
                 </span>
               </div>
-              <p
-                className={`text-[10.5px] lg:text-[11px] leading-snug line-clamp-1 ${
-                  isLight ? 'text-slate-800 font-medium' : 'text-[#9BA8B5]'
-                }`}
-                style={{
-                  textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none',
-                }}
-              >
-                A journey of continuous learning, real-world impact, and building smarter automotive & semiconductor experiences.
-              </p>
             </div>
 
-            {/* Lower: The 4 Experience Stats (Placed a little down on the left, leaving the car on the right 100% visible) */}
-            <div className="flex items-center flex-wrap gap-2 pt-0.5">
+            {/* Bottom Row: The 4 Experience Stats (Clean, borderless pills matching filter tabs) */}
+            <div className="flex items-center overflow-x-auto gap-2 pt-1 pb-0.5 no-scrollbar w-full">
               {topStats.map((stat, idx) => (
                 <div
                   key={idx}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl transition-colors shadow-sm ${
+                  className={`px-3 py-1.5 rounded-xl text-xs sm:text-[12.5px] 2xl:text-[13px] font-mono-tech transition-all duration-200 whitespace-nowrap shrink-0 border-0 flex items-center gap-2 ${
                     isLight
-                      ? 'bg-white/95 border border-slate-200/90 hover:border-sky-500/50'
-                      : 'bg-black/50 backdrop-blur-md border border-white/10 hover:border-sky-500/40'
+                      ? 'bg-white/90 text-slate-800 font-bold shadow-sm'
+                      : 'bg-white/[0.06] text-gray-200 font-semibold'
                   }`}
                 >
-                  <div className={`w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0 ${
-                    isLight ? 'bg-sky-50 border border-sky-200' : 'bg-sky-950/80 border border-sky-500/30'
+                  <div className={`w-4 h-4 rounded flex items-center justify-center flex-shrink-0 ${
+                    isLight ? 'text-sky-600' : 'text-sky-400'
                   }`}>
                     {stat.icon}
                   </div>
-                  <div className="flex items-baseline gap-1.5 min-w-0">
-                    <span className={`text-xs font-black font-heading leading-none ${
+                  <div className="flex items-baseline gap-1.5">
+                    <span className={`font-black font-heading leading-none ${
                       isLight ? 'text-slate-900' : 'text-white'
                     }`}>
                       {stat.value}
                     </span>
-                    <span className={`text-[9px] font-medium leading-none whitespace-nowrap ${
+                    <span className={`text-[10px] sm:text-[11px] font-medium leading-none ${
                       isLight ? 'text-slate-600' : 'text-[#9BA8B5]'
                     }`}>
                       {stat.label}
@@ -273,11 +314,6 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                           }`}>
                             {item.company}
                           </h3>
-                          <span className={`text-[10px] font-heading font-bold px-2 py-0.5 rounded-md ${
-                            isLight ? 'bg-sky-50 text-sky-800 border border-sky-200 shadow-xs' : 'bg-sky-950/70 text-sky-300 border border-sky-500/30'
-                          }`}>
-                            {item.clientText}
-                          </span>
                         </div>
                         <div className="flex items-center gap-2 text-[10.5px]">
                           <span className={`font-bold leading-tight ${
@@ -301,8 +337,14 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                         {item.period.split(' ')[0]}
                       </span>
                       {item.current && (
-                        <span className="flex items-center space-x-1 px-2 py-0.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-400 text-[9.5px] font-mono-tech font-bold flex-shrink-0">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span
+                          className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono-tech font-bold flex-shrink-0 shadow-2xs"
+                          style={{
+                            backgroundColor: isLight ? '#DCFCE7' : 'rgba(6, 78, 59, 0.55)',
+                            color: isLight ? '#15803D' : '#34D399',
+                          }}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                           <span>Current</span>
                         </span>
                       )}
@@ -448,92 +490,99 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
           ))}
         </div>
 
-        {/* ── BOTTOM FOOTER BANNER ── */}
-        <div className={`relative rounded-xl overflow-hidden px-4 py-1.5 sm:px-5 sm:py-2 flex-shrink-0 border ${
-          isLight ? 'border-slate-200/90 shadow-sm' : 'border-white/[0.08]'
-        }`}>
-          <img
-            src={isLight ? "/assets/projects/footer_mountain_road_light.jpg" : "/assets/projects/footer_mountain_road.jpg"}
-            alt="Mountain Road Panorama"
-            className={`absolute inset-0 w-full h-full object-cover ${isLight ? 'opacity-65 brightness-105 contrast-105' : 'opacity-40'}`}
-          />
-          <div className={`absolute inset-0 ${
-            isLight
-              ? 'bg-gradient-to-r from-white/90 via-white/60 to-white/90'
-              : 'bg-gradient-to-r from-[#02060A]/90 via-[#02060A]/60 to-[#02060A]/90'
-          }`} />
+        {/* ══════════════════════════════════════════════════════
+            DOWN PART: MOUNTAIN HIGHWAY FOOTER CARD
+        ══════════════════════════════════════════════════════ */}
+        <div
+          className={`relative rounded-2xl overflow-hidden px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-4 shrink-0 shadow-lg ${
+            isLight ? 'border border-slate-200/90' : 'border border-sky-500/30'
+          }`}
+          style={{
+            background: isLight
+              ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(248, 250, 252, 0.98) 100%)'
+              : 'linear-gradient(135deg, rgba(5, 12, 20, 0.85) 0%, rgba(3, 7, 13, 0.95) 100%)',
+          }}
+        >
+          {/* Mountain Highway Road Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <img
+              src={isLight ? "/assets/projects/footer_mountain_road_light.jpg" : "/assets/projects/footer_mountain_road.jpg"}
+              alt="Mountain Highway Road"
+              className={`w-full h-full object-cover object-[center_50%] ${
+                isLight ? 'brightness-105 contrast-110 opacity-95' : 'brightness-100 contrast-110 opacity-70'
+              }`}
+              draggable={false}
+              loading="lazy"
+              decoding="async"
+            />
+            {/* Vignette so road & mountains shine while stats & action button stay crisp */}
+            <div
+              className={`absolute inset-0 ${
+                isLight
+                  ? 'bg-gradient-to-r from-white/95 via-white/85 to-white/95'
+                  : 'bg-gradient-to-r from-black/95 via-black/85 to-[#03080F]/95'
+              }`}
+            />
+          </div>
 
-          <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
-            {/* Left Quote */}
-            <div className="flex items-center gap-3">
-              <span
-                className={`text-xs sm:text-[13px] italic font-black leading-tight ${
-                  isLight ? 'text-slate-950' : 'text-white'
-                }`}
-                style={{
-                  textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95), 0 0 8px rgba(255, 255, 255, 0.85)' : 'none',
-                }}
-              >
-                &ldquo;Every Experience Adds a New Mile to the Journey.&rdquo;
+          {/* Left: Quote with Cyan Dash Underneath */}
+          <div className="relative z-10 text-left">
+            <p className={`font-heading italic text-xs sm:text-[14px] 2xl:text-[15px] font-black leading-snug drop-shadow-sm ${
+              isLight ? 'text-slate-950' : 'text-white'
+            }`}>
+              &ldquo;Different roads.<br className="hidden sm:inline" /> Same passion.&rdquo;
+            </p>
+            <div className="w-8 h-[2px] bg-[#159FFF] mt-1 rounded-full shadow-[0_0_8px_#159FFF]" />
+          </div>
+
+          {/* Center: Clean Prominent Stats */}
+          <div className="relative z-10 flex items-center space-x-5 sm:space-x-8 text-center">
+            <div>
+              <span className={`block text-sm sm:text-base 2xl:text-lg font-black font-heading leading-tight ${
+                isLight ? 'text-slate-900' : 'text-white'
+              }`}>
+                4+
               </span>
-              <div className="hidden md:block w-8 h-[1px] bg-sky-400/60" />
+              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+                isLight ? 'text-slate-700 font-semibold' : 'text-gray-300'
+              }`}>
+                Years Experience
+              </span>
             </div>
-
-            {/* Center Stats */}
-            <div className="hidden lg:flex items-center gap-5 text-center">
-              <div>
-                <span
-                  className={`text-xs font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}
-                  style={{ textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none' }}
-                >
-                  6+
-                </span>{' '}
-                <span
-                  className={`text-[9.5px] font-mono-tech ${isLight ? 'text-slate-800 font-bold' : 'text-gray-400'}`}
-                  style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
-                >
-                  Features
-                </span>
-              </div>
-              <div className={`w-1 h-1 rounded-full ${isLight ? 'bg-slate-300' : 'bg-slate-700'}`} />
-              <div>
-                <span
-                  className={`text-xs font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}
-                  style={{ textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none' }}
-                >
-                  10+
-                </span>{' '}
-                <span
-                  className={`text-[9.5px] font-mono-tech ${isLight ? 'text-slate-800 font-bold' : 'text-gray-400'}`}
-                  style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
-                >
-                  Global Stakeholders
-                </span>
-              </div>
-              <div className={`w-1 h-1 rounded-full ${isLight ? 'bg-slate-300' : 'bg-slate-700'}`} />
-              <div>
-                <span
-                  className={`text-xs font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}
-                  style={{ textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none' }}
-                >
-                  3
-                </span>{' '}
-                <span
-                  className={`text-[9.5px] font-mono-tech ${isLight ? 'text-slate-800 font-bold' : 'text-gray-400'}`}
-                  style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
-                >
-                  Automotive Platforms
-                </span>
-              </div>
+            <div className={`w-[1px] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
+            <div>
+              <span className={`block text-sm sm:text-base 2xl:text-lg font-black font-heading leading-tight ${
+                isLight ? 'text-slate-900' : 'text-white'
+              }`}>
+                10+
+              </span>
+              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+                isLight ? 'text-slate-700 font-semibold' : 'text-gray-300'
+              }`}>
+                Global Stakeholders
+              </span>
             </div>
+            <div className={`w-[1px] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
+            <div>
+              <span className="block text-sm sm:text-base 2xl:text-lg font-black font-heading text-sky-500 leading-tight">
+                3
+              </span>
+              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+                isLight ? 'text-slate-700 font-semibold' : 'text-gray-300'
+              }`}>
+                Automotive Platforms
+              </span>
+            </div>
+          </div>
 
-            {/* Right CTA */}
+          {/* Right: Action Button */}
+          <div className="relative z-10 flex-shrink-0">
             <button
               onClick={() => onNavigate('contact')}
-              className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold tracking-wide shadow-md shadow-sky-600/30 transition-all cursor-pointer flex-shrink-0"
+              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[12.5px] font-mono-tech font-bold transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-md text-white bg-sky-600 hover:bg-sky-500 shadow-sky-600/30 whitespace-nowrap"
             >
               <span>Let's Build What's Next</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 text-white" />
             </button>
           </div>
         </div>

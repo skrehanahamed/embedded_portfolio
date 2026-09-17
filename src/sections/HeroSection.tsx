@@ -321,12 +321,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 <br />
                 TO{" "}
                 <span
+                  className={isLight ? 'text-sky-600' : 'text-sky-400'}
                   style={{
-                    background: "linear-gradient(90deg,#6DD5FF 0%,#159FFF 45%,#0066BB 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    filter: "drop-shadow(0 0 22px rgba(21,159,255,0.55))",
+                    textShadow: isLight ? 'none' : '0 0 24px rgba(56, 189, 248, 0.45)',
                   }}
                 >
                   REAL ROADS

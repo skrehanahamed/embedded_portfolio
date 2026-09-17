@@ -89,8 +89,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
   return (
     <section
       id="about"
-      className={`relative w-full min-h-[calc(100vh-64px)] flex flex-col justify-center py-4 lg:py-5 2xl:py-6 px-6 md:px-10 lg:px-12 2xl:px-14 overflow-hidden border-t scroll-mt-20 transition-colors duration-300 ${
-        isLight ? 'bg-[#F8FAFC] border-slate-200/80' : 'bg-[#02060A] border-white/[0.03]'
+      className={`relative w-full min-h-[calc(100vh-64px)] flex flex-col justify-center py-4 lg:py-5 2xl:py-6 px-6 md:px-10 lg:px-12 2xl:px-14 overflow-hidden scroll-mt-20 transition-colors duration-300 ${
+        isLight ? 'bg-[#F8FAFC]' : 'bg-[#02060A]'
       }`}
     >
       {/* Subtle ambient background glow */}
@@ -115,7 +115,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
         >
           {/* ── Portrait (left 3 cols) ── */}
           <div
-            className={`lg:col-span-3 relative rounded-2xl overflow-hidden group flex items-center justify-center min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] max-h-[310px] ${
+            className={`lg:col-span-3 relative rounded-2xl overflow-hidden group flex items-center justify-center min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] lg:max-h-[310px] ${
               isLight ? 'bg-white' : 'bg-[#050B13]'
             }`}
             style={{
@@ -123,14 +123,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                 ? 'rgba(255, 255, 255, 0.92)'
                 : 'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%)',
               backdropFilter: 'blur(20px)',
-              border: isLight ? '1px solid rgba(203, 213, 225, 0.85)' : '1px solid rgba(255, 255, 255, 0.08)',
+              border: 'none',
               boxShadow: isLight ? '0 8px 32px 0 rgba(15, 23, 42, 0.06)' : '0 8px 32px 0 rgba(0, 0, 0, 0.4)',
             }}
           >
             <img
               src="/assets/hero/image.png"
               alt="SK Rehan Ahamed"
-              className="w-full h-full object-cover object-[center_12%] group-hover:scale-102 transition-transform duration-700 min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] max-h-[310px]"
+              className="w-full h-full object-cover object-[center_12%] group-hover:scale-102 transition-transform duration-700 min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] lg:max-h-[310px]"
               draggable={false}
             />
             {/* gradient overlay at bottom for quote readability */}
@@ -151,100 +151,93 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                 Same Passion,<br />New Roads.
               </p>
             </div>
-
-            {/* Corner tech reticle */}
-            <div
-              className="absolute top-2.5 right-2.5 w-3.5 h-3.5 opacity-60 pointer-events-none"
-              style={{ borderTop: '2px solid #159FFF', borderRight: '2px solid #159FFF' }}
-            />
           </div>
 
           {/* ── Same Portion: Bio (left) + Mountain Highway with Quote (right) (9 cols) ── */}
           <div
-            className="lg:col-span-9 rounded-2xl relative overflow-hidden flex flex-col lg:flex-row items-stretch min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] max-h-[310px]"
+            className="lg:col-span-9 rounded-2xl relative overflow-hidden flex flex-col lg:flex-row items-stretch min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] lg:max-h-[310px]"
             style={{
               background: isLight
                 ? 'rgba(255, 255, 255, 0.94)'
                 : 'linear-gradient(135deg, rgba(8, 16, 26, 0.75) 0%, rgba(4, 9, 16, 0.85) 100%)',
               backdropFilter: 'blur(20px)',
-              border: isLight ? '1px solid rgba(203, 213, 225, 0.85)' : '1px solid rgba(255, 255, 255, 0.08)',
+              border: 'none',
               boxShadow: isLight ? '0 8px 32px 0 rgba(15, 23, 42, 0.06)' : '0 8px 32px 0 rgba(0, 0, 0, 0.45)',
             }}
           >
-            {/* Mountain highway scenic road background on the right side */}
+            {/* Mountain highway scenic road background (100% opacity preserved, natural framing) */}
             <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[50%] pointer-events-none overflow-hidden">
               <img
                 src={isLight ? "/assets/about/mountain_highway_light.jpg" : "/assets/about/mountain_highway.jpg"}
                 alt="Mountain Highway Road"
-                className={`w-full h-full object-cover object-right-bottom ${isLight ? 'opacity-100 contrast-110 saturate-110' : 'opacity-85'}`}
+                className={`w-full h-full object-cover object-right-bottom ${isLight ? 'opacity-100 contrast-105 saturate-110' : 'opacity-95'}`}
                 draggable={false}
               />
-              {/* Soft fade masks so image dissolves naturally into background on the left and protects quote text */}
+              {/* Desktop fade mask to seamlessly dissolve image into card left side */}
               <div
-                className={`absolute inset-0 pointer-events-none ${
+                className={`hidden lg:block absolute inset-0 pointer-events-none ${
                   isLight
                     ? 'bg-gradient-to-r from-white via-white/40 via-30% to-transparent'
                     : 'bg-gradient-to-r from-[#050C16] via-[#050C16]/50 via-30% to-[#050C16]/15'
                 }`}
               />
-              <div
-                className={`absolute inset-0 pointer-events-none ${
-                  isLight
-                    ? 'bg-gradient-to-t from-white/60 via-transparent to-transparent'
-                    : 'bg-gradient-to-t from-[#02060A]/85 via-transparent to-[#02060A]/30'
-                }`}
-              />
             </div>
 
-            {/* Bio portion (left ~60%) */}
-            <div className="relative z-10 lg:w-[60%] p-5 sm:p-5.5 2xl:p-6 flex flex-col justify-center">
-              <div className="flex items-center gap-2 mb-1.5">
-                <div className="w-4 h-[2px] bg-[#159FFF] rounded-full" />
-                <span className={`font-mono-tech text-[9.5px] 2xl:text-[10px] tracking-[0.25em] uppercase font-semibold ${
-                  isLight ? 'text-slate-500' : 'text-[#9BA8B5]'
-                }`}>
-                  ABOUT ME
-                </span>
-              </div>
-
-              <h2 className={`font-heading font-black text-[22px] sm:text-[25px] 2xl:text-[28px] leading-[1.14] mb-2 ${
-                isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
-              }`}>
-                Turning Ideas<br />
-                Into{' '}
-                <span
+            {/* Bio portion (left ~60%) directly above image with white background on text for readability */}
+            <div className="relative z-10 lg:w-[60%] p-4 sm:p-5 2xl:p-6 flex flex-col justify-center">
+              <div className={`p-4 sm:p-5 rounded-2xl ${
+                isLight
+                  ? 'bg-white/90 shadow-sm backdrop-blur-md'
+                  : 'bg-[#040A14]/85 shadow-lg backdrop-blur-md'
+              } lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none transition-colors`}>
+                <div
+                  className="inline-flex items-center px-2.5 py-0.5 rounded-full mb-2 w-fit shadow-2xs"
                   style={{
-                    background: 'linear-gradient(90deg,#4FC3FF 0%,#159FFF 55%,#0077CC 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
+                    background: isLight ? '#FFFFFF' : 'rgba(255, 255, 255, 0.08)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
                   }}
                 >
-                  Smarter Experiences
-                </span>
-              </h2>
+                  <span
+                    className="font-mono-tech text-[9px] 2xl:text-[9.5px] tracking-[0.22em] uppercase font-bold"
+                    style={{ color: isLight ? '#0284C7' : '#38BDF8' }}
+                  >
+                    ABOUT
+                  </span>
+                </div>
 
-              <p className={`text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] leading-[1.55] 2xl:leading-[1.6] mb-1.5 ${
-                isLight ? 'text-slate-700 font-medium' : 'text-[#9BA8B5]'
-              }`}>
-                I'm SK Rehan Ahamed, an Embedded C/C++ Developer with a strong focus on
-                Automotive Software, Infotainment Systems, and Cluster Applications. I build
-                production-grade, reliable embedded software that makes connected mobility smarter and
-                safer for the future.
-              </p>
-              <p className={`text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] leading-[1.55] 2xl:leading-[1.6] mb-2.5 ${
-                isLight ? 'text-slate-700 font-medium' : 'text-[#9BA8B5]'
-              }`}>
-                From writing low-level code to creating intuitive HMI experiences, I enjoy solving
-                complex problems and learning new technologies that make vehicles smarter and
-                safer for the future.
-              </p>
+                <h2 className={`font-heading font-black text-[22px] sm:text-[25px] 2xl:text-[28px] leading-[1.14] mb-2 ${
+                  isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
+                }`}>
+                  Turning Ideas<br />
+                  Into{' '}
+                  <span className={isLight ? 'text-sky-600' : 'text-sky-400'}>
+                    Smarter Experiences
+                  </span>
+                </h2>
 
-              <div className={`flex items-center gap-1.5 text-[11px] 2xl:text-[12px] ${
-                isLight ? 'text-slate-700 font-medium' : 'text-[#9BA8B5]'
-              }`}>
-                <MapPin className="w-3.5 h-3.5 text-[#159FFF]" />
-                <span>Bangalore, India</span>
+                <p className={`text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] leading-[1.55] 2xl:leading-[1.6] mb-1.5 font-medium ${
+                  isLight ? 'text-slate-800' : 'text-slate-200 lg:text-[#9BA8B5]'
+                }`}>
+                  I'm SK Rehan Ahamed, an Embedded C/C++ Developer with a strong focus on
+                  Automotive Software, Infotainment Systems, and Cluster Applications. I build
+                  production-grade, reliable embedded software that makes connected mobility smarter and
+                  safer for the future.
+                </p>
+                <p className={`text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] leading-[1.55] 2xl:leading-[1.6] mb-2.5 font-medium ${
+                  isLight ? 'text-slate-800' : 'text-slate-200 lg:text-[#9BA8B5]'
+                }`}>
+                  From writing low-level code to creating intuitive HMI experiences, I enjoy solving
+                  complex problems and learning new technologies that make vehicles smarter and
+                  safer for the future.
+                </p>
+
+                <div className={`flex items-center gap-1.5 text-[11px] 2xl:text-[12px] font-medium ${
+                  isLight ? 'text-slate-800' : 'text-slate-300 lg:text-[#9BA8B5]'
+                }`}>
+                  <MapPin className="w-3.5 h-3.5 text-[#159FFF]" />
+                  <span>Bangalore, India</span>
+                </div>
               </div>
             </div>
 
@@ -253,38 +246,41 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
               isLight ? 'bg-slate-200' : 'bg-white/[0.08]'
             }`} />
 
-            {/* Quote portion over the highway image (right ~40%) */}
-            <div className="relative z-10 lg:w-[40%] p-5 sm:p-5.5 2xl:p-6 flex flex-col justify-between">
-              <div>
-                <span className="font-serif text-[#159FFF] text-3xl 2xl:text-4xl leading-none font-bold block mb-1.5 opacity-95 select-none">
-                  “
-                </span>
-                <p
-                  className={`font-heading italic text-[16px] sm:text-[17.5px] 2xl:text-[19px] font-black leading-[1.28] ${
-                    isLight ? 'text-slate-950' : 'text-[#F4F7FA] drop-shadow-lg'
-                  }`}
-                  style={{
-                    textShadow: isLight
-                      ? '0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.9)'
-                      : '0 2px 14px rgba(0, 0, 0, 0.85)',
-                  }}
-                >
-                  Better Vehicles.<br />Brighter Journeys.”
-                </p>
-              </div>
+            {/* Quote portion over the highway image (right ~40%) with white background on text in light mode */}
+            <div className="relative z-10 lg:w-[40%] p-4 sm:p-5 2xl:p-6 flex flex-col justify-between">
+              <div className={`p-4 sm:p-5 rounded-2xl ${
+                isLight
+                  ? 'bg-white/90 shadow-sm backdrop-blur-md'
+                  : 'bg-[#02060A]/80 shadow-lg backdrop-blur-md'
+              } lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none h-full flex flex-col justify-between`}>
+                <div>
+                  <span className="font-serif text-[#159FFF] text-3xl 2xl:text-4xl leading-none font-bold block mb-1.5 opacity-95 select-none">
+                    “
+                  </span>
+                  <p
+                    className={`font-heading italic text-[16px] sm:text-[17.5px] 2xl:text-[19px] font-black leading-[1.28] ${
+                      isLight ? 'text-slate-950' : 'text-[#F4F7FA] drop-shadow-lg'
+                    }`}
+                    style={{
+                      textShadow: isLight
+                        ? '0 1px 2px rgba(255, 255, 255, 0.95)'
+                        : '0 2px 14px rgba(0, 0, 0, 0.85)',
+                    }}
+                  >
+                    Better Vehicles.<br />Brighter Journeys.”
+                  </p>
+                </div>
 
-              <div className="pt-3">
-                <div className="w-7 h-[2px] bg-[#159FFF] rounded-full mb-1.5 shadow-[0_0_8px_#159FFF]" />
-                <p
-                  className={`font-mono-tech text-[9px] 2xl:text-[10px] tracking-[0.2em] uppercase font-bold ${
-                    isLight ? 'text-slate-900' : 'text-[#CAD5E2]'
-                  }`}
-                  style={{
-                    textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none',
-                  }}
-                >
-                  SK REHAN AHAMED
-                </p>
+                <div className="pt-3">
+                  <div className="w-7 h-[2px] bg-[#159FFF] rounded-full mb-1.5 shadow-[0_0_8px_#159FFF]" />
+                  <p
+                    className={`font-mono-tech text-[9px] 2xl:text-[10px] tracking-[0.2em] uppercase font-bold ${
+                      isLight ? 'text-slate-900' : 'text-[#CAD5E2]'
+                    }`}
+                  >
+                    SK REHAN AHAMED
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -310,16 +306,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                 MY JOURNEY
               </span>
             </div>
-            <h3 className="font-heading font-black text-[20px] sm:text-[23px] 2xl:text-[25px] leading-[1.15] text-[#F4F7FA] mb-1.5 2xl:mb-2">
+            <h3 className={`font-heading font-black text-[20px] sm:text-[23px] 2xl:text-[25px] leading-[1.15] mb-1.5 2xl:mb-2 ${
+              isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
+            }`}>
               Driven by<br />
-              <span
-                style={{
-                  background: 'linear-gradient(90deg,#4FC3FF,#159FFF)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
+              <span className={isLight ? 'text-sky-600' : 'text-sky-400'}>
                 Curiosity
               </span>
             </h3>
@@ -342,7 +333,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
               style={{
                 background: isLight ? 'rgba(2,132,199,0.08)' : 'rgba(21,159,255,0.08)',
                 backdropFilter: 'blur(12px)',
-                border: isLight ? '1px solid rgba(2,132,199,0.3)' : '1px solid rgba(21,159,255,0.3)',
+                border: 'none',
                 boxShadow: isLight ? '0 4px 16px rgba(2,132,199,0.08)' : '0 4px 16px rgba(21,159,255,0.1)',
               }}
               onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 4px 24px rgba(21,159,255,0.25)')}
@@ -364,16 +355,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                     ? 'rgba(255, 255, 255, 0.94)'
                     : 'linear-gradient(135deg, rgba(8, 16, 26, 0.7) 0%, rgba(4, 9, 16, 0.8) 100%)',
                   backdropFilter: 'blur(16px)',
-                  border: isLight ? '1px solid rgba(203, 213, 225, 0.85)' : '1px solid rgba(255, 255, 255, 0.08)',
+                  border: 'none',
                   boxShadow: isLight ? '0 8px 30px 0 rgba(15, 23, 42, 0.06)' : '0 8px 32px 0 rgba(0, 0, 0, 0.35)',
                   transitionDelay: `${i * 60}ms`,
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = 'rgba(21, 159, 255, 0.35)';
-                  e.currentTarget.style.boxShadow = '0 12px 36px 0 rgba(21, 159, 255, 0.14)';
+                  e.currentTarget.style.boxShadow = isLight ? '0 12px 36px 0 rgba(15, 23, 42, 0.1)' : '0 12px 36px 0 rgba(21, 159, 255, 0.18)';
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = isLight ? 'rgba(203, 213, 225, 0.85)' : 'rgba(255, 255, 255, 0.08)';
                   e.currentTarget.style.boxShadow = isLight ? '0 8px 30px 0 rgba(15, 23, 42, 0.06)' : '0 8px 32px 0 rgba(0, 0, 0, 0.35)';
                 }}
               >
@@ -397,8 +386,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                   {/* Floating glass icon badge */}
                   <div className={`absolute top-2 left-2 w-6 h-6 2xl:w-6.5 2xl:h-6.5 rounded-lg backdrop-blur-md flex items-center justify-center shadow-md ${
                     isLight
-                      ? 'bg-white/95 border border-sky-400/40 text-sky-600'
-                      : 'bg-[#02060A]/80 border border-[#159FFF]/30'
+                      ? 'bg-white/95 text-sky-600'
+                      : 'bg-[#02060A]/80 text-[#159FFF]'
                   }`}>
                     {c.icon}
                   </div>
@@ -433,7 +422,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
               ? 'rgba(255, 255, 255, 0.94)'
               : 'linear-gradient(135deg, rgba(8, 16, 26, 0.65) 0%, rgba(4, 9, 16, 0.75) 100%)',
             backdropFilter: 'blur(20px)',
-            border: isLight ? '1px solid rgba(203, 213, 225, 0.85)' : '1px solid rgba(255, 255, 255, 0.08)',
+            border: 'none',
             boxShadow: isLight ? '0 8px 32px 0 rgba(15, 23, 42, 0.06)' : '0 8px 32px 0 rgba(0, 0, 0, 0.35)',
             opacity: tech.visible ? 1 : 0,
             transform: tech.visible ? 'translateY(0)' : 'translateY(16px)',
@@ -490,7 +479,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                     draggable={false}
                   />
                   {/* Hover tooltip */}
-                  <span className="absolute -top-6 left-1/2 -translate-x-1/2 pointer-events-none px-2 py-0.5 rounded bg-[#081421] border border-[#159FFF]/30 text-[9px] font-mono-tech text-[#159FFF] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-30 shadow-lg">
+                  <span className="absolute -top-6 left-1/2 -translate-x-1/2 pointer-events-none px-2 py-0.5 rounded bg-[#081421] text-[9px] font-mono-tech text-[#159FFF] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-30 shadow-lg">
                     {t.name}
                   </span>
                 </div>

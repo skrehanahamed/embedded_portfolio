@@ -54,10 +54,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const toggleTheme = (coords?: ThemeCoords) => {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    const root = typeof document !== 'undefined' ? document.documentElement : null;
 
     // 1. Chrome / Safari / Edge: View Transitions API for high-end circular ripple expansion
     if (
-      typeof document !== 'undefined' &&
+      root &&
       'startViewTransition' in document &&
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches
     ) {
@@ -68,48 +69,76 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         Math.max(y, window.innerHeight - y)
       );
 
+      // Temporarily silence per-element CSS transitions so GPU compositor animates at 60/120fps with zero lag
+      root.classList.add('theme-transitioning');
+
       const transition = (
         document as unknown as {
-          startViewTransition: (cb: () => void) => { ready: Promise<void> };
+          startViewTransition: (cb: () => void) => {
+            ready: Promise<void>;
+            finished: Promise<void>;
+          };
         }
       ).startViewTransition(() => {
         setThemeState(nextTheme);
       });
 
-      transition.ready.then(() => {
-        document.documentElement.animate(
-          {
-            clipPath: [
-              `circle(0px at ${x}px ${y}px)`,
-              `circle(${endRadius}px at ${x}px ${y}px)`,
-            ],
-          },
-          {
-            duration: 520,
-            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-            pseudoElement: '::view-transition-new(root)',
-          }
-        );
-      });
+      const isMobileDevice = window.innerWidth < 768;
+      const animDuration = isMobileDevice ? 340 : 380;
+
+      transition.ready
+        .then(() => {
+          const anim = document.documentElement.animate(
+            {
+              clipPath: [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${endRadius}px at ${x}px ${y}px)`,
+              ],
+            },
+            {
+              duration: animDuration,
+              easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+              pseudoElement: '::view-transition-new(root)',
+            }
+          );
+
+          anim.onfinish = () => {
+            root.classList.remove('theme-transitioning');
+          };
+        })
+        .catch(() => {
+          root.classList.remove('theme-transitioning');
+        });
+
+      transition.finished
+        .catch(() => {})
+        .finally(() => {
+          root.classList.remove('theme-transitioning');
+        });
+
       return;
     }
 
-    // 2. Universal Fallback: smooth expanding radial ripple overlay
-    if (typeof document !== 'undefined') {
+    // 2. Mobile / Fallback: GPU-accelerated lightweight expanding radial overlay
+    if (root && typeof document !== 'undefined') {
       const x = coords?.x ?? window.innerWidth / 2;
       const y = coords?.y ?? 36;
+
+      root.classList.add('theme-transitioning');
+
       const ripple = document.createElement('div');
       ripple.className = 'theme-transition-ripple';
       ripple.style.left = `${x}px`;
       ripple.style.top = `${y}px`;
-      ripple.style.backgroundColor = nextTheme === 'light' ? '#FFFFFF' : '#02060A';
+      ripple.style.backgroundColor = nextTheme === 'light' ? '#F8FAFC' : '#02050A';
       document.body.appendChild(ripple);
 
       setThemeState(nextTheme);
 
       setTimeout(() => {
         ripple.remove();
-      }, 550);
+        root.classList.remove('theme-transitioning');
+      }, 420);
       return;
     }
 

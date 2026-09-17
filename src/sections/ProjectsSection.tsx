@@ -112,12 +112,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
         ══════════════════════════════════════════════════════ */}
         <div
           ref={headerRef}
-          className="relative rounded-b-2xl overflow-hidden p-2.5 sm:p-4 lg:py-2.5 2xl:py-3.5 lg:px-6 shrink-0 -mt-px shadow-lg"
+          className="relative rounded-b-2xl overflow-hidden p-3 sm:p-3.5 lg:py-2.5 2xl:py-3.5 lg:px-6 shrink-0 -mt-px shadow-lg"
           style={{
             background: isLight
-              ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.98) 100%)'
-              : 'linear-gradient(135deg, rgba(8, 16, 26, 0.95) 0%, rgba(4, 9, 16, 0.98) 100%)',
-            borderBottom: isLight ? '1px solid rgba(226, 232, 240, 0.95)' : '1px solid rgba(255, 255, 255, 0.06)',
+              ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(248, 250, 252, 0.75) 100%)'
+              : 'linear-gradient(135deg, rgba(8, 16, 26, 0.82) 0%, rgba(4, 9, 16, 0.88) 100%)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
           }}
         >
           {/* Vehicle visual background - FULL SPAN with no visible seam or cut-off edge */}
@@ -148,49 +149,97 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
           </div>
 
           <div className="relative z-10 flex flex-col gap-1.5 lg:gap-2">
-            {/* Top row: Clean, focused Section Header */}
-            <div className="flex flex-col justify-start space-y-0.5 max-w-3xl">
-              <div className="flex items-center space-x-2 text-[9px] font-mono-tech text-sky-500 font-bold uppercase tracking-[0.22em]">
-                <span>/ 03</span>
-                <span className="w-6 h-[1px] bg-sky-500/60"></span>
-                <span>PROJECTS</span>
-              </div>
-
-              <div className="flex flex-wrap items-baseline gap-x-2.5">
-                <h2
-                  className={`text-lg sm:text-xl lg:text-2xl 2xl:text-3xl font-black font-heading leading-tight ${
-                    isLight ? 'text-slate-950' : 'text-white'
-                  }`}
+            {/* Top row: Clean, focused Section Header with Title on Left, Brand Tagline on Right */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="flex flex-col justify-start space-y-0.5 max-w-2xl lg:max-w-3xl">
+                <div
+                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-mono-tech font-bold uppercase tracking-[0.22em] shadow-xs mb-0.5 w-fit"
                   style={{
-                    textShadow: isLight
-                      ? '0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.9)'
-                      : '0 2px 8px rgba(0, 0, 0, 0.7)',
+                    background: isLight ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.06)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
                   }}
                 >
-                  Real Projects.{' '}
                   <span
                     style={{
-                      background: 'linear-gradient(90deg,#4FC3FF 0%,#159FFF 55%,#0077CC 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
+                      color: isLight ? '#0284C7' : '#38BDF8',
+                      textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.5)' : 'none',
                     }}
                   >
-                    Real Impact.
+                    PROJECTS
                   </span>
-                </h2>
+                </div>
+
+                <div className="flex flex-wrap items-baseline gap-x-2.5">
+                  <h2
+                    className={`text-lg sm:text-xl lg:text-2xl font-black font-heading leading-tight ${
+                      isLight ? 'text-slate-950' : 'text-white'
+                    }`}
+                    style={{
+                      textShadow: isLight
+                        ? '0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.9)'
+                        : '0 2px 8px rgba(0, 0, 0, 0.7)',
+                    }}
+                  >
+                    Real Projects.{' '}
+                    <span className={isLight ? 'text-sky-600' : 'text-sky-400'}>
+                      Real Impact.
+                    </span>
+                  </h2>
+                </div>
+
+                <p
+                  className={`hidden sm:block text-xs sm:text-[13px] ${
+                    isLight ? 'text-slate-900 font-medium' : 'text-[#CAD5E2] font-normal'
+                  } leading-snug line-clamp-1`}
+                  style={{
+                    textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none',
+                  }}
+                >
+                  A showcase of my work in automotive infotainment, instrument cluster systems, and embedded software.
+                </p>
               </div>
 
-              <p
-                className={`hidden sm:block text-[11px] lg:text-[11.5px] 2xl:text-[13px] leading-relaxed line-clamp-1 sm:line-clamp-2 ${
-                  isLight ? 'text-slate-900 font-medium' : 'text-[#CAD5E2]'
-                }`}
-                style={{
-                  textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none',
-                }}
-              >
-                A showcase of my work in automotive infotainment, instrument cluster systems, and embedded software. From low-level drivers to high-level HMI, these projects reflect my passion for building smarter, safer, and better driving experiences.
-              </p>
+              {/* Right Tagline Block */}
+              <div className="hidden md:flex flex-col items-end justify-center text-right space-y-0.5 relative z-10 pr-1 flex-shrink-0">
+                <div
+                  className={`flex items-center gap-1.5 text-[9.5px] sm:text-[10.5px] font-mono-tech tracking-widest ${isLight ? 'text-slate-900' : 'text-gray-200'} uppercase font-bold`}
+                  style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  <span>DESIGN</span>
+                  <span>•</span>
+                  <span>CODE</span>
+                  <span>•</span>
+                  <span
+                    className="font-black"
+                    style={{
+                      color: isLight ? '#0284C7' : '#38BDF8',
+                      textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.6)' : 'none',
+                    }}
+                  >
+                    DEPLOY
+                  </span>
+                  <span>•</span>
+                  <span className={isLight ? 'text-slate-950 font-black' : 'text-white font-black'}>SCALE</span>
+                </div>
+                <div
+                  className={`text-xs sm:text-[13.5px] font-heading italic font-black leading-tight ${isLight ? 'text-slate-950' : 'text-white drop-shadow-md'}`}
+                  style={{
+                    textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
+                  }}
+                >
+                  &ldquo;Small Features. Big Journeys.&rdquo;
+                </div>
+                <span
+                  className="text-[9.5px] font-mono-tech font-black tracking-widest uppercase"
+                  style={{
+                    color: isLight ? '#0284C7' : '#38BDF8',
+                    textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.6)' : 'none',
+                  }}
+                >
+                  SK REHAN AHAMED
+                </span>
+              </div>
             </div>
 
             {/* Bottom Row: Filter Tabs (Clean, borderless pills) */}
@@ -432,7 +481,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
             DOWN PART: MOUNTAIN HIGHWAY FOOTER CARD
         ══════════════════════════════════════════════════════ */}
         <div
-          className={`relative rounded-2xl overflow-hidden px-5 sm:px-8 py-3 sm:py-3.5 2xl:py-4.5 flex items-center justify-between gap-4 shrink-0 shadow-lg ${
+          className={`relative rounded-2xl overflow-hidden px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-4 shrink-0 shadow-lg ${
             isLight ? 'border border-slate-200/90' : 'border border-sky-500/30'
           }`}
           style={{
@@ -465,7 +514,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
 
           {/* Left: Quote with Cyan Dash Underneath */}
           <div className="relative z-10 text-left">
-            <p className={`font-heading italic text-xs sm:text-[14px] 2xl:text-[16px] font-black leading-snug drop-shadow-sm ${
+            <p className={`font-heading italic text-xs sm:text-[14px] 2xl:text-[15px] font-black leading-snug drop-shadow-sm ${
               isLight ? 'text-slate-950' : 'text-white'
             }`}>
               &ldquo;Small features.<br className="hidden sm:inline" /> Big journeys.&rdquo;
@@ -474,38 +523,38 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
           </div>
 
           {/* Center: Clean Prominent Stats */}
-          <div className="relative z-10 flex items-center space-x-6 sm:space-x-10 text-center">
+          <div className="relative z-10 flex items-center space-x-5 sm:space-x-8 text-center">
             <div>
-              <span className={`block text-sm sm:text-base 2xl:text-xl font-black font-heading leading-tight ${
+              <span className={`block text-sm sm:text-base 2xl:text-lg font-black font-heading leading-tight ${
                 isLight ? 'text-slate-900' : 'text-white'
               }`}>
                 11+
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] 2xl:text-xs font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-gray-300'
               }`}>
                 Projects Delivered
               </span>
             </div>
-            <div className={`w-[1px] h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
+            <div className={`w-[1px] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
             <div>
-              <span className={`block text-sm sm:text-base 2xl:text-xl font-black font-heading leading-tight ${
+              <span className={`block text-sm sm:text-base 2xl:text-lg font-black font-heading leading-tight ${
                 isLight ? 'text-slate-900' : 'text-white'
               }`}>
                 100%
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] 2xl:text-xs font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-gray-300'
               }`}>
                 Passion Driven
               </span>
             </div>
-            <div className={`w-[1px] h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
+            <div className={`w-[1px] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
             <div>
-              <span className="block text-sm sm:text-base 2xl:text-xl font-black font-heading text-sky-500 leading-tight">
+              <span className="block text-sm sm:text-base 2xl:text-lg font-black font-heading text-sky-500 leading-tight">
                 ∞
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] 2xl:text-xs font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-gray-300'
               }`}>
                 Still Building
@@ -513,21 +562,17 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
             </div>
           </div>
 
-          {/* Right: GitHub Action Link (Matching Reference Image) */}
-          <div className="relative z-10">
+          {/* Right: Action Button */}
+          <div className="relative z-10 flex-shrink-0">
             <a
               href="https://github.com/skrehanahamed?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-[13px] 2xl:text-sm font-mono-tech font-bold transition-all hover:scale-[1.03] active:scale-[0.97] cursor-pointer shadow-lg ${
-                isLight
-                  ? 'text-sky-700 bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/50 hover:border-sky-400'
-                  : 'text-white bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/50 hover:border-sky-400/80 hover:shadow-[0_0_24px_rgba(21,159,255,0.4)]'
-              }`}
+              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[12.5px] font-mono-tech font-bold transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-md text-white bg-sky-600 hover:bg-sky-500 shadow-sky-600/30 whitespace-nowrap"
             >
-              <GithubLogo className="w-4 h-4 text-sky-400" />
+              <GithubLogo className="w-4 h-4 text-white" />
               <span>View More on GitHub</span>
-              <ArrowRight className="w-3.5 h-3.5 text-sky-400" />
+              <ArrowRight className="w-3.5 h-3.5 text-white" />
             </a>
           </div>
         </div>

@@ -9,7 +9,6 @@ import {
   MessageSquare,
   FileEdit,
   ArrowUp,
-  Heart,
 } from 'lucide-react';
 import { GithubLogo, LinkedinLogo } from '../components/Logos';
 import { useReveal } from '../hooks/useReveal';
@@ -132,14 +131,26 @@ export const ContactSection: React.FC = () => {
       <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full flex-1 flex flex-col justify-center my-auto gap-3 lg:gap-2.5 relative z-10">
         
         {/* ══════════════════════════════════════════════════════
-            1. TOP HEADER (Title, Philosophy, Highway Sign)
+            1. TOP HEADER (Open, Clean, Borderless Layout)
         ══════════════════════════════════════════════════════ */}
         <div ref={headerRef} className="reveal flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 pt-1 flex-shrink-0">
           <div className="space-y-0.5 max-w-xl">
-            <div className="flex items-center space-x-2 text-[8.5px] font-mono-tech text-sky-500 font-bold uppercase tracking-[0.22em]">
-              <span>/ 06</span>
-              <span className="w-5 h-[1px] bg-sky-500/60" />
-              <span>CONTACT</span>
+            <div
+              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-mono-tech font-bold uppercase tracking-[0.22em] shadow-xs mb-0.5 w-fit"
+              style={{
+                background: isLight ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.06)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+              }}
+            >
+              <span
+                style={{
+                  color: isLight ? '#0284C7' : '#38BDF8',
+                  textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.5)' : 'none',
+                }}
+              >
+                CONTACT
+              </span>
             </div>
             <h2
               className={`text-lg sm:text-xl lg:text-2xl font-black font-heading ${isLight ? 'text-slate-950' : 'text-white'} leading-tight`}
@@ -150,19 +161,12 @@ export const ContactSection: React.FC = () => {
               }}
             >
               Let's Build{' '}
-              <span
-                style={{
-                  background: 'linear-gradient(90deg,#4FC3FF 0%,#159FFF 55%,#0077CC 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
+              <span className={isLight ? 'text-sky-600' : 'text-sky-400'}>
                 Something Great.
               </span>
             </h2>
             <p
-              className={`hidden sm:block text-[10px] lg:text-[10.5px] ${isLight ? 'text-slate-900 font-medium' : 'text-[#CAD5E2]'} leading-snug line-clamp-2`}
+              className={`hidden sm:block text-xs sm:text-[13px] ${isLight ? 'text-slate-900 font-medium' : 'text-[#CAD5E2] font-normal'} leading-snug line-clamp-1`}
               style={{
                 textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none',
               }}
@@ -171,27 +175,25 @@ export const ContactSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Right Tagline from screenshot — visible on both mobile and desktop without borders */}
+          {/* Right Tagline from screenshot */}
           <div className="flex flex-col items-start sm:items-end text-left sm:text-right space-y-0.5 pr-1 flex-shrink-0">
             <div
-              className={`text-[11px] sm:text-xs font-heading italic font-black ${isLight ? 'text-slate-950' : 'text-white drop-shadow-md'} leading-tight`}
+              className={`text-xs sm:text-[13.5px] font-heading italic font-black ${isLight ? 'text-slate-950' : 'text-white drop-shadow-md'} leading-tight`}
               style={{
                 textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
               }}
             >
               &ldquo;Better Vehicles. Brighter Journeys.&rdquo;
             </div>
-            <div className="flex items-center gap-1.5">
-              <span
-                className={`text-[8.5px] font-mono-tech ${isLight ? 'text-sky-700 font-black' : 'text-sky-400 font-bold'} tracking-widest uppercase`}
-                style={{
-                  textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.9)' : 'none',
-                }}
-              >
-                SK REHAN AHAMED
-              </span>
-              <div className="w-5 h-[1px] bg-sky-500/60" />
-            </div>
+            <span
+              className="text-[9.5px] font-mono-tech font-black tracking-widest uppercase"
+              style={{
+                color: isLight ? '#0284C7' : '#38BDF8',
+                textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.6)' : 'none',
+              }}
+            >
+              SK REHAN AHAMED
+            </span>
           </div>
         </div>
 
@@ -340,42 +342,40 @@ export const ContactSection: React.FC = () => {
 
         </div>
 
-        {/* ══ FOOTER BAR (Desktop only — on mobile MobilePageNav provides navigation) ══ */}
-        <div className={`hidden lg:flex flex-shrink-0 border-t ${isLight ? 'border-slate-200' : 'border-white/[0.07]'} pt-1.5 pb-0.5 items-center justify-between gap-3`}>
+        {/* ══ FOOTER BAR (Clean, Consistent Across Light & Dark) ══ */}
+        <div className={`flex flex-shrink-0 border-t ${isLight ? 'border-slate-200/80' : 'border-white/[0.07]'} pt-2 pb-1 flex-col sm:flex-row items-center justify-between gap-2.5`}>
           {/* Brand */}
-          <div className="flex items-center space-x-1.5">
-            <span className={`text-sm font-black ${isLight ? 'text-slate-900' : 'text-white'} tracking-wider font-heading`}>SK</span>
-            <span className={`text-xs font-bold ${isLight ? 'text-slate-900' : 'text-white'} tracking-wider font-heading`}>REHAN AHAMED</span>
-            <span className={`${isLight ? 'text-slate-400' : 'text-gray-600'} text-xs`}>·</span>
-            <span className={`text-[10px] ${isLight ? 'text-slate-500' : 'text-gray-400'} font-mono-tech`}>Embedded Developer · Automotive Enthusiast</span>
+          <div className="flex items-center space-x-2">
+            <span className={`text-xs sm:text-[13px] font-black ${isLight ? 'text-slate-900' : 'text-white'} tracking-wider font-heading`}>SK REHAN AHAMED</span>
+            <span className={`${isLight ? 'text-slate-300' : 'text-gray-700'} text-xs`}>·</span>
+            <span className={`text-[10.5px] sm:text-xs ${isLight ? 'text-slate-600 font-medium' : 'text-gray-400'} font-mono-tech`}>Embedded Developer · Automotive Enthusiast</span>
           </div>
 
           {/* Center social icons */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2.5">
             <a href="https://github.com/skrehanahamed" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-              className={`w-6 h-6 rounded-lg ${isLight ? 'bg-white border-slate-200 text-slate-600 hover:border-sky-500 hover:bg-sky-50 hover:text-sky-600 shadow-xs' : 'bg-white/[0.04] border-white/10 text-gray-400 hover:text-white hover:border-sky-500/50 hover:bg-sky-500/10'} border flex items-center justify-center transition-all`}>
-              <GithubLogo className="w-3 h-3" />
+              className={`w-6 h-6 rounded-lg ${isLight ? 'bg-white border border-slate-200/90 text-slate-700 hover:border-sky-500 hover:bg-sky-50 hover:text-sky-600 shadow-xs' : 'bg-white/[0.04] border border-white/10 text-gray-400 hover:text-white hover:border-sky-500/50 hover:bg-sky-500/10'} flex items-center justify-center transition-all`}>
+              <GithubLogo className="w-3.5 h-3.5" />
             </a>
             <a href="https://linkedin.com/in/skrehanahamed" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-              className={`w-6 h-6 rounded-lg ${isLight ? 'bg-white border-slate-200 text-slate-600 hover:border-sky-500 hover:bg-sky-50 hover:text-sky-600 shadow-xs' : 'bg-white/[0.04] border-white/10 text-gray-400 hover:text-white hover:border-sky-500/50 hover:bg-sky-500/10'} border flex items-center justify-center transition-all`}>
-              <LinkedinLogo className="w-3 h-3" />
+              className={`w-6 h-6 rounded-lg ${isLight ? 'bg-white border border-slate-200/90 text-slate-700 hover:border-sky-500 hover:bg-sky-50 hover:text-sky-600 shadow-xs' : 'bg-white/[0.04] border border-white/10 text-gray-400 hover:text-white hover:border-sky-500/50 hover:bg-sky-500/10'} flex items-center justify-center transition-all`}>
+              <LinkedinLogo className="w-3.5 h-3.5" />
             </a>
             <a href="mailto:skrehanahamed97@gmail.com" aria-label="Email"
-              className={`w-6 h-6 rounded-lg ${isLight ? 'bg-white border-slate-200 text-slate-600 hover:border-sky-500 hover:bg-sky-50 hover:text-sky-600 shadow-xs' : 'bg-white/[0.04] border-white/10 text-gray-400 hover:text-white hover:border-sky-500/50 hover:bg-sky-500/10'} border flex items-center justify-center transition-all`}>
-              <Mail className="w-3 h-3" />
+              className={`w-6 h-6 rounded-lg ${isLight ? 'bg-white border border-slate-200/90 text-slate-700 hover:border-sky-500 hover:bg-sky-50 hover:text-sky-600 shadow-xs' : 'bg-white/[0.04] border border-white/10 text-gray-400 hover:text-white hover:border-sky-500/50 hover:bg-sky-500/10'} flex items-center justify-center transition-all`}>
+              <Mail className="w-3.5 h-3.5" />
             </a>
           </div>
 
           {/* Right: copyright + back to top */}
           <div className="flex items-center space-x-3">
-            <div className={`hidden sm:flex items-center space-x-1 text-[9.5px] ${isLight ? 'text-slate-500' : 'text-gray-400'}`}>
-              <Heart className="w-2.5 h-2.5 text-sky-400 fill-sky-400" />
-              <span>&copy; 2026 SK Rehan Ahamed. All rights reserved.</span>
-            </div>
+            <span className={`text-[10px] sm:text-[11px] ${isLight ? 'text-slate-600 font-medium' : 'text-gray-400'} font-mono-tech`}>
+              &copy; 2026 SK Rehan Ahamed. All rights reserved.
+            </span>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               aria-label="Back to top"
-              className={`w-6 h-6 rounded-full ${isLight ? 'bg-sky-50 border border-sky-300 text-sky-600 hover:bg-sky-500 hover:text-white' : 'bg-sky-950/60 border border-sky-500/30 text-sky-400 hover:text-white hover:bg-sky-600 hover:border-sky-400'} flex items-center justify-center transition-all cursor-pointer`}
+              className={`w-6 h-6 rounded-full ${isLight ? 'bg-sky-50 text-sky-600 hover:bg-sky-500 hover:text-white border border-sky-200' : 'bg-sky-950/70 text-sky-400 hover:bg-sky-600 hover:text-white border border-sky-500/30'} flex items-center justify-center transition-all cursor-pointer shadow-xs`}
             >
               <ArrowUp className="w-3 h-3" />
             </button>

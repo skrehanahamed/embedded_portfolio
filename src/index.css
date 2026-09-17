@@ -622,21 +622,40 @@ html.light .bg-black\/85 {
   background-color: rgba(15, 23, 42, 0.5) !important;
 }
 
-/* Smooth global color transitions */
-*, *::before, *::after {
-  transition-property: background-color, border-color, text-decoration-color, fill, stroke;
+/* Targeted, hardware-accelerated color transitions on primary surfaces */
+body,
+.glass-panel,
+nav,
+button,
+input,
+textarea {
+  transition-property: background-color, border-color, color, box-shadow;
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  transition-duration: 250ms;
+  transition-duration: 200ms;
+}
+
+/* While theme transition is active, silence individual transitions to allow GPU 60/120fps compositor execution */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: none !important;
 }
 
 /* ══════════════════════════════════════════════════════════════
    HIGH-END CIRCULAR THEME TRANSITION (VIEW TRANSITIONS API)
    Smooth circular ripple expanding from the clicked toggle button
 ══════════════════════════════════════════════════════════════ */
+::view-transition-group(root) {
+  animation-duration: 0.38s;
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
+  contain: paint;
+  will-change: clip-path;
 }
 
 ::view-transition-old(root) {
@@ -647,29 +666,29 @@ html.light .bg-black\/85 {
   z-index: 99999;
 }
 
-/* Universal circular ripple fallback for non-supporting browsers */
+/* Mobile & universal circular ripple fallback (GPU-accelerated, zero-lag) */
 .theme-transition-ripple {
   position: fixed;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%) scale(0);
-  width: 24px;
-  height: 24px;
-  box-shadow: 0 0 50px rgba(14, 165, 233, 0.5);
-  animation: theme-ripple-expand 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  z-index: 99999;
+  transform: translate3d(-50%, -50%, 0) scale(0);
+  width: 40px;
+  height: 40px;
+  will-change: transform, opacity;
+  animation: theme-ripple-expand 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes theme-ripple-expand {
   0% {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0.95;
+    transform: translate3d(-50%, -50%, 0) scale(0);
+    opacity: 0.98;
   }
-  65% {
-    opacity: 0.95;
+  75% {
+    opacity: 0.98;
   }
   100% {
-    transform: translate(-50%, -50%) scale(220);
+    transform: translate3d(-50%, -50%, 0) scale(90);
     opacity: 0;
   }
 }
