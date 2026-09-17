@@ -85,7 +85,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
   return (
     <section
       id="about"
-      className="relative w-full min-h-[calc(100vh-64px)] flex flex-col justify-center py-6 lg:py-7 2xl:py-9 px-6 md:px-12 2xl:px-16 bg-[#02060A] overflow-hidden border-t border-white/[0.03] scroll-mt-20"
+      className="relative w-full min-h-[calc(100vh-64px)] flex flex-col justify-center py-4 lg:py-5 2xl:py-6 px-6 md:px-10 lg:px-12 2xl:px-14 bg-[#02060A] overflow-hidden border-t border-white/[0.03] scroll-mt-20"
     >
       {/* Subtle ambient background glow */}
       <div
@@ -93,14 +93,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
         style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1680px] 3xl:max-w-[1920px] mx-auto w-full space-y-4 lg:space-y-5 2xl:space-y-6">
+      <div className="max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1520px] mx-auto w-full space-y-3 lg:space-y-3.5 2xl:space-y-4">
 
         {/* ══════════════════════════════════════════════════════
             TOP ROW: Portrait (left) | Bio + Darkened Highway Quote (right)
         ══════════════════════════════════════════════════════ */}
         <div
           ref={hero.ref}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 2xl:gap-7 items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-4.5 2xl:gap-5 items-stretch"
           style={{
             opacity: hero.visible ? 1 : 0,
             transform: hero.visible ? 'translateY(0)' : 'translateY(24px)',
@@ -109,7 +109,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
         >
           {/* ── Portrait (left 3 cols) ── */}
           <div
-            className="lg:col-span-3 relative rounded-2xl overflow-hidden group flex items-center justify-center bg-[#050B13] min-h-[280px] lg:min-h-[290px] xl:min-h-[320px] 2xl:min-h-[365px]"
+            className="lg:col-span-3 relative rounded-2xl overflow-hidden group flex items-center justify-center bg-[#050B13] min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] max-h-[310px]"
             style={{
               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%)',
               backdropFilter: 'blur(20px)',
@@ -120,16 +120,16 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
             <img
               src="/assets/hero/image.png"
               alt="SK Rehan Ahamed"
-              className="w-full h-full object-cover object-[center_12%] group-hover:scale-102 transition-transform duration-700 min-h-[280px] lg:min-h-[290px] xl:min-h-[320px] 2xl:min-h-[365px]"
+              className="w-full h-full object-cover object-[center_12%] group-hover:scale-102 transition-transform duration-700 min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] max-h-[310px]"
               draggable={false}
             />
             {/* dark gradient overlay at bottom */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#02060A]/95 via-[#02060A]/20 to-transparent pointer-events-none" />
 
             {/* Italic quote overlay bottom-left */}
-            <div className="absolute bottom-4 left-4 z-10 pointer-events-none">
+            <div className="absolute bottom-3 left-3.5 2xl:bottom-4 2xl:left-4 z-10 pointer-events-none">
               <p
-                className="font-heading italic text-white/95 text-[14px] 2xl:text-[15.5px] leading-tight font-semibold"
+                className="font-heading italic text-white/95 text-[13px] 2xl:text-[14px] leading-tight font-semibold"
                 style={{ textShadow: '0 2px 14px rgba(0,0,0,0.9)' }}
               >
                 Same Passion,<br />New Roads.
@@ -138,14 +138,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
 
             {/* Corner tech reticle */}
             <div
-              className="absolute top-3 right-3 w-4 h-4 opacity-60 pointer-events-none"
+              className="absolute top-2.5 right-2.5 w-3.5 h-3.5 opacity-60 pointer-events-none"
               style={{ borderTop: '2px solid #159FFF', borderRight: '2px solid #159FFF' }}
             />
           </div>
 
           {/* ── Same Portion: Bio (left) + Darkened Highway with Quote (right) (9 cols) ── */}
           <div
-            className="lg:col-span-9 rounded-2xl relative overflow-hidden flex flex-col lg:flex-row items-stretch min-h-[280px] lg:min-h-[290px] xl:min-h-[320px] 2xl:min-h-[365px]"
+            className="lg:col-span-9 rounded-2xl relative overflow-hidden flex flex-col lg:flex-row items-stretch min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] max-h-[310px]"
             style={{
               background: 'linear-gradient(135deg, rgba(8, 16, 26, 0.75) 0%, rgba(4, 9, 16, 0.85) 100%)',
               backdropFilter: 'blur(20px)',
@@ -154,7 +154,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
             }}
           >
             {/* Mountain highway scenic road background on the right side */}
-            <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[48%] pointer-events-none overflow-hidden">
+            <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[46%] pointer-events-none overflow-hidden">
               <img
                 src="/assets/about/mountain_highway.jpg"
                 alt="Mountain Highway Road"
@@ -167,15 +167,15 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
             </div>
 
             {/* Bio portion (left ~60%) */}
-            <div className="relative z-10 lg:w-[60%] p-6 sm:p-7 2xl:p-8 flex flex-col justify-center">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-5 h-[2px] bg-[#159FFF] rounded-full" />
-                <span className="font-mono-tech text-[10px] 2xl:text-[11px] tracking-[0.25em] uppercase text-[#9BA8B5]">
+            <div className="relative z-10 lg:w-[60%] p-5 sm:p-5.5 2xl:p-6 flex flex-col justify-center">
+              <div className="flex items-center gap-2 mb-1.5">
+                <div className="w-4 h-[2px] bg-[#159FFF] rounded-full" />
+                <span className="font-mono-tech text-[9.5px] 2xl:text-[10px] tracking-[0.25em] uppercase text-[#9BA8B5]">
                   ABOUT ME
                 </span>
               </div>
 
-              <h2 className="font-heading font-black text-[25px] sm:text-[30px] 2xl:text-[34px] leading-[1.14] text-[#F4F7FA] mb-2.5">
+              <h2 className="font-heading font-black text-[22px] sm:text-[25px] 2xl:text-[28px] leading-[1.14] text-[#F4F7FA] mb-2">
                 Turning Ideas<br />
                 Into{' '}
                 <span
@@ -190,20 +190,20 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                 </span>
               </h2>
 
-              <p className="text-[#9BA8B5] text-[12.5px] sm:text-[13px] 2xl:text-[14px] leading-[1.65] 2xl:leading-[1.7] mb-2">
+              <p className="text-[#9BA8B5] text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] leading-[1.55] 2xl:leading-[1.6] mb-1.5">
                 I'm SK Rehan Ahamed, an Embedded C/C++ Developer with a strong focus on
                 automotive infotainment and instrument cluster systems. I love building real-world
                 solutions that blend software, hardware and user experience — especially in the
                 automotive domain.
               </p>
-              <p className="text-[#9BA8B5] text-[12.5px] sm:text-[13px] 2xl:text-[14px] leading-[1.65] 2xl:leading-[1.7] mb-3">
+              <p className="text-[#9BA8B5] text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] leading-[1.55] 2xl:leading-[1.6] mb-2.5">
                 From writing low-level code to creating intuitive HMI experiences, I enjoy solving
                 complex problems and learning new technologies that make vehicles smarter and
                 safer for the future.
               </p>
 
-              <div className="flex items-center gap-2 text-[#9BA8B5] text-[12px] 2xl:text-[13px]">
-                <MapPin className="w-3.5 h-3.5 2xl:w-4 2xl:h-4 text-[#159FFF]" />
+              <div className="flex items-center gap-1.5 text-[#9BA8B5] text-[11px] 2xl:text-[12px]">
+                <MapPin className="w-3.5 h-3.5 text-[#159FFF]" />
                 <span>Bangalore, India</span>
               </div>
             </div>
@@ -212,22 +212,22 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
             <div className="hidden lg:block w-[1px] h-[65%] bg-white/[0.08] my-auto self-center z-10" />
 
             {/* Quote portion over the highway image (right ~40%) */}
-            <div className="relative z-10 lg:w-[40%] p-6 sm:p-7 2xl:p-8 flex flex-col justify-between">
+            <div className="relative z-10 lg:w-[40%] p-5 sm:p-5.5 2xl:p-6 flex flex-col justify-between">
               <div>
-                <span className="font-serif text-[#159FFF] text-4xl 2xl:text-5xl leading-none font-bold block mb-2 opacity-95 select-none">
+                <span className="font-serif text-[#159FFF] text-3xl 2xl:text-4xl leading-none font-bold block mb-1.5 opacity-95 select-none">
                   “
                 </span>
                 <p
-                  className="font-heading italic text-[17px] sm:text-[19px] 2xl:text-[22px] font-bold text-[#F4F7FA] leading-[1.3] drop-shadow-lg"
+                  className="font-heading italic text-[16px] sm:text-[17.5px] 2xl:text-[19px] font-bold text-[#F4F7FA] leading-[1.28] drop-shadow-lg"
                   style={{ textShadow: '0 2px 14px rgba(0,0,0,0.85)' }}
                 >
                   Better Vehicles.<br />Brighter Journeys.”
                 </p>
               </div>
 
-              <div className="pt-4">
-                <div className="w-8 h-[2px] bg-[#159FFF] rounded-full mb-2 shadow-[0_0_8px_#159FFF]" />
-                <p className="font-mono-tech text-[9.5px] 2xl:text-[11px] tracking-[0.2em] text-[#9BA8B5] uppercase">
+              <div className="pt-3">
+                <div className="w-7 h-[2px] bg-[#159FFF] rounded-full mb-1.5 shadow-[0_0_8px_#159FFF]" />
+                <p className="font-mono-tech text-[9px] 2xl:text-[10px] tracking-[0.2em] text-[#9BA8B5] uppercase">
                   SK REHAN AHAMED
                 </p>
               </div>
@@ -240,7 +240,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
         ══════════════════════════════════════════════════════ */}
         <div
           ref={journey.ref}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 2xl:gap-7 items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-4.5 2xl:gap-5 items-stretch"
           style={{
             opacity: journey.visible ? 1 : 0,
             transform: journey.visible ? 'translateY(0)' : 'translateY(24px)',
@@ -249,13 +249,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
         >
           {/* Left: Driven by Curiosity */}
           <div className="lg:col-span-4 flex flex-col justify-center">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-5 h-[2px] bg-[#159FFF] rounded-full" />
-              <span className="font-mono-tech text-[10px] 2xl:text-[11px] tracking-[0.25em] uppercase text-[#9BA8B5]">
+            <div className="flex items-center gap-2 mb-1.5">
+              <div className="w-4 h-[2px] bg-[#159FFF] rounded-full" />
+              <span className="font-mono-tech text-[9.5px] 2xl:text-[10px] tracking-[0.25em] uppercase text-[#9BA8B5]">
                 MY JOURNEY
               </span>
             </div>
-            <h3 className="font-heading font-black text-[23px] sm:text-[27px] 2xl:text-[32px] leading-[1.15] text-[#F4F7FA] mb-2 2xl:mb-3">
+            <h3 className="font-heading font-black text-[20px] sm:text-[23px] 2xl:text-[25px] leading-[1.15] text-[#F4F7FA] mb-1.5 2xl:mb-2">
               Driven by<br />
               <span
                 style={{
@@ -268,7 +268,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                 Curiosity
               </span>
             </h3>
-            <p className="text-[#9BA8B5] text-[12px] sm:text-[12.5px] 2xl:text-[14px] leading-[1.65] 2xl:leading-[1.7] mb-3 2xl:mb-4">
+            <p className="text-[#9BA8B5] text-[11px] sm:text-[11.5px] 2xl:text-[12px] leading-[1.55] 2xl:leading-[1.6] mb-2.5 2xl:mb-3">
               My journey in tech started with a simple curiosity — how things work. Over time, that
               curiosity turned into a passion for embedded systems and the automotive world. I've
               worked on real projects for global OEMs, contributed to features used in real vehicles,
@@ -279,7 +279,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
               download="SK_Rehan_Ahamed_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 2xl:px-5 py-2 2xl:py-2.5 rounded-xl text-[12px] 2xl:text-[13.5px] font-semibold text-[#F4F7FA] transition-all w-fit cursor-pointer group hover:scale-[1.03] active:scale-[0.97]"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 2xl:px-4 2xl:py-2 rounded-xl text-[11px] 2xl:text-[12px] font-semibold text-[#F4F7FA] transition-all w-fit cursor-pointer group hover:scale-[1.03] active:scale-[0.97]"
               style={{
                 background: 'rgba(21,159,255,0.08)',
                 backdropFilter: 'blur(12px)',
@@ -289,17 +289,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
               onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 4px 24px rgba(21,159,255,0.25)')}
               onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 4px 16px rgba(21,159,255,0.1)')}
             >
-              <Download className="w-3.5 h-3.5 2xl:w-4 2xl:h-4 text-[#159FFF] group-hover:translate-y-0.5 transition-transform" />
+              <Download className="w-3.5 h-3.5 text-[#159FFF] group-hover:translate-y-0.5 transition-transform" />
               Download Resume
             </a>
           </div>
 
           {/* Right: 3 Proper Glass Trait Cards matching reference */}
-          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-3.5 2xl:gap-5 items-stretch">
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-3 2xl:gap-3.5 items-stretch">
             {journeyCards.map((c, i) => (
               <div
                 key={i}
-                className="rounded-2xl overflow-hidden p-3.5 sm:p-4 2xl:p-5 flex flex-col justify-between gap-3 2xl:gap-4 group transition-all duration-300 hover:-translate-y-1"
+                className="rounded-2xl overflow-hidden p-3 sm:p-3.5 2xl:p-3.5 flex flex-col justify-between gap-2 2xl:gap-2.5 group transition-all duration-300 hover:-translate-y-1"
                 style={{
                   background: 'linear-gradient(135deg, rgba(8, 16, 26, 0.7) 0%, rgba(4, 9, 16, 0.8) 100%)',
                   backdropFilter: 'blur(16px)',
@@ -317,7 +317,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                 }}
               >
                 {/* Visual Image Header */}
-                <div className="relative w-full h-20 sm:h-22 2xl:h-28 rounded-xl overflow-hidden bg-[#03070D]">
+                <div className="relative w-full h-16 sm:h-17 2xl:h-19 rounded-xl overflow-hidden bg-[#03070D]">
                   <img
                     src={c.image}
                     alt={c.title}
@@ -328,17 +328,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                   <div className="absolute inset-0 bg-gradient-to-t from-[#040910] via-transparent to-transparent opacity-80 pointer-events-none" />
 
                   {/* Floating glass icon badge */}
-                  <div className="absolute top-2 left-2 w-7 h-7 2xl:w-8 2xl:h-8 rounded-lg bg-[#02060A]/80 backdrop-blur-md border border-[#159FFF]/30 flex items-center justify-center shadow-md">
+                  <div className="absolute top-2 left-2 w-6 h-6 2xl:w-6.5 2xl:h-6.5 rounded-lg bg-[#02060A]/80 backdrop-blur-md border border-[#159FFF]/30 flex items-center justify-center shadow-md">
                     {c.icon}
                   </div>
                 </div>
 
                 {/* Content */}
                 <div>
-                  <p className="font-heading font-bold text-[14px] 2xl:text-[16px] text-[#F4F7FA] mb-1 group-hover:text-[#159FFF] transition-colors">
+                  <p className="font-heading font-bold text-[12.5px] 2xl:text-[13.5px] text-[#F4F7FA] mb-0.5 group-hover:text-[#159FFF] transition-colors">
                     {c.title}
                   </p>
-                  <p className="text-[#9BA8B5] text-[11.5px] 2xl:text-[13px] leading-relaxed">
+                  <p className="text-[#9BA8B5] text-[10.5px] 2xl:text-[11px] leading-relaxed">
                     {c.desc}
                   </p>
                 </div>
@@ -352,7 +352,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
         ══════════════════════════════════════════════════════ */}
         <div
           ref={tech.ref}
-          className="rounded-2xl px-5 sm:px-6 2xl:px-8 py-3 2xl:py-4 flex flex-col md:flex-row items-center justify-between gap-4"
+          className="rounded-2xl px-4 sm:px-5 2xl:px-6 py-2 2xl:py-2.5 flex flex-col md:flex-row items-center justify-between gap-3"
           style={{
             background: 'linear-gradient(135deg, rgba(8, 16, 26, 0.65) 0%, rgba(4, 9, 16, 0.75) 100%)',
             backdropFilter: 'blur(20px)',
@@ -364,15 +364,15 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
           }}
         >
           {/* Left: Section Label */}
-          <div className="flex items-center gap-2.5 flex-shrink-0">
-            <div className="w-5 h-[2px] bg-[#159FFF] rounded-full" />
-            <span className="font-mono-tech text-[10px] sm:text-[11px] 2xl:text-[12px] tracking-[0.22em] uppercase text-[#9BA8B5] font-semibold whitespace-nowrap">
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="w-4 h-[2px] bg-[#159FFF] rounded-full" />
+            <span className="font-mono-tech text-[9.5px] sm:text-[10px] 2xl:text-[10.5px] tracking-[0.22em] uppercase text-[#9BA8B5] font-semibold whitespace-nowrap">
               TECH I WORK WITH
             </span>
           </div>
 
           {/* Center: Smooth Sliding Logo Marquee */}
-          <div className="flex-1 w-full md:w-auto relative overflow-hidden py-1 px-4">
+          <div className="flex-1 w-full md:w-auto relative overflow-hidden py-0.5 px-3">
             {/* Fade masks at edges for seamless loop */}
             <div
               className="absolute left-0 top-0 bottom-0 w-8 z-10 pointer-events-none"
@@ -384,7 +384,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
             />
 
             <div
-              className="flex gap-7 2xl:gap-9 items-center"
+              className="flex gap-6 2xl:gap-7 items-center"
               style={{
                 animation: 'marquee 36s linear infinite',
                 width: 'max-content',
@@ -393,13 +393,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
               {[...TECH, ...TECH].map((t, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-center flex-shrink-0 group cursor-pointer relative py-1"
+                  className="flex items-center justify-center flex-shrink-0 group cursor-pointer relative py-0.5"
                   title={t.name}
                 >
                   <img
                     src={t.src}
                     alt={t.name}
-                    className="h-6 sm:h-7 2xl:h-8.5 w-auto max-w-[64px] 2xl:max-w-[76px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-115 transition-all duration-200"
+                    className="h-5 sm:h-5.5 2xl:h-6 w-auto max-w-[56px] 2xl:max-w-[62px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-115 transition-all duration-200"
                     draggable={false}
                   />
                   {/* Hover tooltip */}
@@ -412,7 +412,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
           </div>
 
           {/* Right: and more ... */}
-          <span className="font-mono-tech text-[10px] 2xl:text-[11px] text-[#9BA8B5]/60 italic whitespace-nowrap flex-shrink-0">
+          <span className="font-mono-tech text-[9.5px] 2xl:text-[10px] text-[#9BA8B5]/60 italic whitespace-nowrap flex-shrink-0">
             and more ...
           </span>
         </div>
