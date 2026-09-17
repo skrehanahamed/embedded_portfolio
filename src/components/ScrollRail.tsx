@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 interface ScrollRailProps {
   activeSection: string;
@@ -21,6 +22,8 @@ const SECTIONS: SectionInfo[] = [
 ];
 
 export const ScrollRail: React.FC<ScrollRailProps> = ({ activeSection, onNavigate }) => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -74,7 +77,7 @@ export const ScrollRail: React.FC<ScrollRailProps> = ({ activeSection, onNavigat
       {/* Dynamic Section Number */}
       <button
         onClick={() => onNavigate(currentSection.id)}
-        className="font-mono-tech text-[10.5px] text-[#9BA8B5] hover:text-[#159FFF] font-bold tracking-wider transition-colors cursor-pointer"
+        className={`font-mono-tech text-[10.5px] ${isLight ? 'text-slate-700 hover:text-sky-600' : 'text-[#9BA8B5] hover:text-[#159FFF]'} font-bold tracking-wider transition-colors cursor-pointer`}
         title={`Current: ${currentSection.name}`}
       >
         {currentSection.num}
@@ -99,7 +102,7 @@ export const ScrollRail: React.FC<ScrollRailProps> = ({ activeSection, onNavigat
               }}
               style={{ top: `${tickPct}%` }}
               className={`absolute -left-[1.5px] w-1 h-0.5 rounded-full transition-colors ${
-                isActive ? 'bg-[#159FFF]' : 'bg-slate-600/50 hover:bg-slate-400'
+                isActive ? 'bg-[#159FFF]' : (isLight ? 'bg-slate-400 hover:bg-slate-600' : 'bg-slate-600/50 hover:bg-slate-400')
               }`}
               title={`Go to ${sec.name}`}
             />
@@ -115,7 +118,7 @@ export const ScrollRail: React.FC<ScrollRailProps> = ({ activeSection, onNavigat
 
       {/* Vertical Text */}
       <div className="py-1" style={{ writingMode: 'vertical-rl' }}>
-        <span className="font-mono-tech text-[8.5px] tracking-[0.25em] uppercase text-[#9BA8B5] rotate-180">
+        <span className={`font-mono-tech text-[8.5px] tracking-[0.25em] uppercase ${isLight ? 'text-slate-600 font-bold' : 'text-[#9BA8B5]'} rotate-180`}>
           SCROLL TO EXPLORE
         </span>
       </div>
@@ -123,7 +126,7 @@ export const ScrollRail: React.FC<ScrollRailProps> = ({ activeSection, onNavigat
       {/* Mouse Pill Button */}
       <button
         onClick={handleNext}
-        className="w-4 h-6 rounded-full border border-[#9BA8B5]/50 hover:border-[#159FFF]/80 hover:bg-[#159FFF]/10 flex items-start justify-center pt-0.5 cursor-pointer transition-all"
+        className={`w-4 h-6 rounded-full border ${isLight ? 'border-slate-400 hover:border-sky-500 hover:bg-sky-50' : 'border-[#9BA8B5]/50 hover:border-[#159FFF]/80 hover:bg-[#159FFF]/10'} flex items-start justify-center pt-0.5 cursor-pointer transition-all`}
         title={`Scroll to ${nextSection.name}`}
       >
         <span className="w-1 h-1.5 bg-[#159FFF] rounded-full animate-bounce" />

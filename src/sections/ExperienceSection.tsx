@@ -1,12 +1,16 @@
 import React from 'react';
 import { Briefcase, Building2, Car, Code2, ArrowRight } from 'lucide-react';
 import { experienceData } from '../data/experienceData';
+import { useTheme } from '../context/ThemeContext';
 
 interface ExperienceSectionProps {
   onNavigate: (sectionId: string) => void;
 }
 
 export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate }) => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   const topStats = [
     {
       icon: <Briefcase className="w-3.5 h-3.5 text-sky-400" />,
@@ -20,20 +24,22 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
     },
     {
       icon: <Car className="w-3.5 h-3.5 text-sky-400" />,
-      value: 'Auto & Semi',
-      label: 'Domain Focus'
+      value: '3',
+      label: 'Auto Platforms'
     },
     {
       icon: <Code2 className="w-3.5 h-3.5 text-sky-400" />,
-      value: 'C/C++',
-      label: 'Core Dev'
+      value: '6+',
+      label: 'Production Feats'
     }
   ];
 
   return (
     <section
       id="experience"
-      className="relative w-full min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 lg:pb-3 px-4 sm:px-8 lg:px-12 2xl:px-16 bg-[#02060A] flex flex-col justify-between select-none scroll-mt-16"
+      className={`relative w-full min-h-[calc(100vh-4rem)] md:h-[calc(100vh-4rem)] flex flex-col justify-between px-4 sm:px-6 lg:px-10 2xl:px-14 pb-2 sm:pb-3 select-none scroll-mt-16 border-t overflow-hidden transition-colors duration-300 ${
+        isLight ? 'bg-[#F8FAFC] border-slate-200/80' : 'bg-[#020509] border-white/[0.04]'
+      }`}
     >
       {/* Ambient background glow */}
       <div
@@ -49,21 +55,35 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
         <div
           className="relative rounded-b-2xl overflow-hidden p-3.5 sm:p-4 lg:py-2.5 2xl:py-3.5 lg:px-6 shrink-0 -mt-px shadow-lg"
           style={{
-            background: 'linear-gradient(135deg, rgba(8, 16, 26, 0.95) 0%, rgba(4, 9, 16, 0.98) 100%)',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+            background: isLight
+              ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.98) 100%)'
+              : 'linear-gradient(135deg, rgba(8, 16, 26, 0.95) 0%, rgba(4, 9, 16, 0.98) 100%)',
+            borderBottom: isLight ? '1px solid rgba(226, 232, 240, 0.95)' : '1px solid rgba(255, 255, 255, 0.06)',
           }}
         >
-          {/* Right vehicle visual background - CLEARLY VISIBLE WITH VIBRANT TAILLIGHTS */}
-          <div className="absolute top-0 right-0 bottom-0 w-full md:w-[58%] lg:w-[50%] opacity-90 md:opacity-95 pointer-events-none overflow-hidden">
+          {/* Vehicle visual background - FULL SPAN with no visible seam or cut-off edge */}
+          <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
             <img
-              src="/assets/skills/car_rear.jpg"
+              src={isLight ? "/assets/skills/car_rear_light.jpg" : "/assets/skills/car_rear.jpg"}
               alt="Automotive Experience Journey"
               className="w-full h-full object-cover object-right brightness-105 contrast-110"
               draggable={false}
             />
-            {/* Soft fade only on the far left side */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#050C16] via-[#050C16]/50 to-transparent pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050C16]/40 via-transparent to-transparent pointer-events-none" />
+            {/* Seamless gradient mask - keeps vehicle clearly visible on the right while ensuring text readability on the left */}
+            <div
+              className={`absolute inset-0 pointer-events-none ${
+                isLight
+                  ? 'bg-gradient-to-r from-white/95 via-white/70 via-45% to-white/20'
+                  : 'bg-gradient-to-r from-[#050C16]/95 via-[#050C16]/65 via-45% to-[#050C16]/20'
+              }`}
+            />
+            <div
+              className={`absolute inset-0 pointer-events-none ${
+                isLight
+                  ? 'bg-gradient-to-t from-white/80 via-transparent to-white/30'
+                  : 'bg-gradient-to-t from-[#050C16]/80 via-transparent to-[#050C16]/30'
+              }`}
+            />
           </div>
 
           <div className="relative z-10 flex flex-col justify-between gap-2 max-w-2xl">
@@ -75,7 +95,16 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                 <span>EXPERIENCE</span>
               </div>
               <div className="flex items-baseline gap-2.5">
-                <h2 className="text-lg sm:text-xl lg:text-2xl font-black font-heading text-white leading-tight">
+                <h2
+                  className={`text-lg sm:text-xl lg:text-2xl font-black font-heading leading-tight ${
+                    isLight ? 'text-slate-900' : 'text-white'
+                  }`}
+                  style={{
+                    textShadow: isLight
+                      ? '0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.9)'
+                      : '0 2px 8px rgba(0, 0, 0, 0.7)',
+                  }}
+                >
                   My Professional{' '}
                   <span
                     style={{
@@ -88,11 +117,25 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                     Journey.
                   </span>
                 </h2>
-                <span className="hidden sm:inline-block text-[11px] italic text-[#9BA8B5] font-medium">
+                <span
+                  className={`inline-block text-[11px] sm:text-[12px] font-heading italic font-extrabold ${
+                    isLight ? 'text-slate-950' : 'text-white drop-shadow-sm'
+                  }`}
+                  style={{
+                    textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
+                  }}
+                >
                   &ldquo;Different Roads. Same Passion.&rdquo;
                 </span>
               </div>
-              <p className="text-[10.5px] lg:text-[11px] text-[#9BA8B5] leading-snug line-clamp-1">
+              <p
+                className={`text-[10.5px] lg:text-[11px] leading-snug line-clamp-1 ${
+                  isLight ? 'text-slate-800 font-medium' : 'text-[#9BA8B5]'
+                }`}
+                style={{
+                  textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none',
+                }}
+              >
                 A journey of continuous learning, real-world impact, and building smarter automotive & semiconductor experiences.
               </p>
             </div>
@@ -102,16 +145,26 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
               {topStats.map((stat, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-black/50 backdrop-blur-md border border-white/10 hover:border-sky-500/40 transition-colors shadow-sm"
+                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl transition-colors shadow-sm ${
+                    isLight
+                      ? 'bg-white/95 border border-slate-200/90 hover:border-sky-500/50'
+                      : 'bg-black/50 backdrop-blur-md border border-white/10 hover:border-sky-500/40'
+                  }`}
                 >
-                  <div className="w-5 h-5 rounded-md bg-sky-950/80 border border-sky-500/30 flex items-center justify-center flex-shrink-0">
+                  <div className={`w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0 ${
+                    isLight ? 'bg-sky-50 border border-sky-200' : 'bg-sky-950/80 border border-sky-500/30'
+                  }`}>
                     {stat.icon}
                   </div>
                   <div className="flex items-baseline gap-1.5 min-w-0">
-                    <span className="text-xs font-black font-heading text-white leading-none">
+                    <span className={`text-xs font-black font-heading leading-none ${
+                      isLight ? 'text-slate-900' : 'text-white'
+                    }`}>
                       {stat.value}
                     </span>
-                    <span className="text-[9px] text-[#9BA8B5] font-medium leading-none whitespace-nowrap">
+                    <span className={`text-[9px] font-medium leading-none whitespace-nowrap ${
+                      isLight ? 'text-slate-600' : 'text-[#9BA8B5]'
+                    }`}>
                       {stat.label}
                     </span>
                   </div>
@@ -122,17 +175,19 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
         </div>
 
         {/* ── VERTICAL TIMELINE: 1 BY 1 ROW-BY-ROW (COMPACT & BALANCED) ── */}
-        <div className="flex-1 min-h-0 flex flex-col justify-between gap-2 overflow-y-auto no-scrollbar pr-0.5">
+        <div className="flex-1 min-h-0 flex flex-col justify-between gap-2.5 sm:gap-3 overflow-y-auto no-scrollbar pr-0.5">
           {experienceData.map((item, idx) => (
             <div
               key={item.id}
               className="flex flex-col lg:flex-row items-stretch gap-2.5 sm:gap-3 w-full flex-1 min-h-0"
             >
-              {/* Left Timeline Year & Continuous Rail Node (Compact, tight to the left) */}
+              {/* Left Timeline Year & Continuous Rail Node (Desktop) */}
               <div className="hidden lg:flex items-center justify-end gap-2.5 w-24 xl:w-28 shrink-0 relative select-none pr-1">
                 {/* Continuous Vertical Rail Line */}
                 <div
-                  className={`absolute right-[7px] w-px bg-sky-400/35 pointer-events-none ${
+                  className={`absolute right-[7px] w-px pointer-events-none ${
+                    isLight ? 'bg-sky-500/35' : 'bg-sky-400/35'
+                  } ${
                     idx === 0
                       ? 'top-1/2 bottom-0'
                       : idx === experienceData.length - 1
@@ -143,12 +198,16 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
 
                 {/* Year and Period Text */}
                 <div className="flex flex-col text-right">
-                  <span className="text-sm sm:text-base font-black font-heading text-white tracking-wide leading-none">
+                  <span className={`text-sm sm:text-base font-black font-heading tracking-wide leading-none ${
+                    isLight ? 'text-slate-900' : 'text-white'
+                  }`}>
                     {item.period.split(' ')[0]}
                   </span>
                   <span
                     className={`text-[10px] font-mono-tech mt-1 leading-none ${
-                      item.current ? 'text-emerald-400 font-bold' : 'text-gray-400'
+                      item.current
+                        ? (isLight ? 'text-emerald-600 font-bold' : 'text-emerald-400 font-bold')
+                        : (isLight ? 'text-slate-500' : 'text-gray-400')
                     }`}
                   >
                     {item.period.split(' ').slice(1).join(' ')}
@@ -178,21 +237,29 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
               </div>
 
               {/* Center: Main Role Card */}
-              <div className="flex-1 lg:flex-[1.4] glass-panel rounded-2xl p-3 sm:p-3.5 border border-white/[0.07] hover:border-sky-500/40 transition-all flex flex-col justify-between shadow-md relative overflow-hidden min-w-0">
+              <div className={`flex-1 lg:flex-[1.4] rounded-2xl p-3 sm:p-3.5 border transition-all flex flex-col justify-between shadow-md relative overflow-hidden min-w-0 ${
+                isLight
+                  ? 'bg-white/95 border-slate-200/90 hover:border-sky-500/50 shadow-slate-900/5'
+                  : 'glass-panel border-white/[0.07] hover:border-sky-500/40'
+              }`}>
                 {/* Subtle top accent line */}
                 <div
-                  className={`absolute top-0 left-0 right-0 h-[1.5px] ${
+                  className={`absolute top-0 left-0 right-0 h-[2px] ${
                     item.current
                       ? 'bg-gradient-to-r from-emerald-500 via-sky-500 to-transparent'
-                      : 'bg-gradient-to-r from-sky-500/50 via-sky-500/20 to-transparent'
+                      : 'bg-gradient-to-r from-sky-500/60 via-sky-500/20 to-transparent'
                   }`}
                 />
 
                 <div>
                   {/* Top Bar: Company Logo + Title + Current Tag */}
-                  <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-white/[0.04]">
+                  <div className={`flex items-center justify-between gap-2 pb-2 border-b ${
+                    isLight ? 'border-slate-100' : 'border-white/[0.04]'
+                  }`}>
                     <div className="flex items-center space-x-2.5 min-w-0">
-                      <div className="w-8 h-8 rounded-lg bg-white p-0.5 flex items-center justify-center flex-shrink-0 shadow-sm border border-white/20">
+                      <div className={`w-8 h-8 rounded-lg p-0.5 flex items-center justify-center flex-shrink-0 shadow-sm border ${
+                        isLight ? 'bg-white border-slate-200' : 'bg-white border-white/20'
+                      }`}>
                         <img
                           src={item.companyLogo}
                           alt={item.company}
@@ -200,28 +267,93 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                         />
                       </div>
                       <div className="min-w-0">
-                        <div className="flex items-center gap-2">
-                          <h3 className="text-xs sm:text-[13.5px] font-bold font-heading text-white truncate leading-tight">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className={`text-xs sm:text-[13.5px] font-bold font-heading truncate leading-tight ${
+                            isLight ? 'text-slate-900' : 'text-white'
+                          }`}>
                             {item.company}
                           </h3>
+                          <span className={`text-[10px] font-heading font-bold px-2 py-0.5 rounded-md ${
+                            isLight ? 'bg-sky-50 text-sky-800 border border-sky-200 shadow-xs' : 'bg-sky-950/70 text-sky-300 border border-sky-500/30'
+                          }`}>
+                            {item.clientText}
+                          </span>
                         </div>
                         <div className="flex items-center gap-2 text-[10.5px]">
-                          <span className="font-semibold text-sky-400 leading-tight">
+                          <span className={`font-bold leading-tight ${
+                            isLight ? 'text-sky-700' : 'text-sky-400'
+                          }`}>
                             {item.role}
                           </span>
-                          <span className="text-gray-500 font-mono-tech text-[9.5px]">
+                          <span className={`font-mono-tech text-[9.5px] ${
+                            isLight ? 'text-slate-500' : 'text-gray-400'
+                          }`}>
                             &bull; {item.location}
                           </span>
                         </div>
                       </div>
                     </div>
 
-                    {item.current && (
-                      <span className="flex items-center space-x-1 px-2 py-0.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-400 text-[9.5px] font-mono-tech font-bold flex-shrink-0">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        <span>Current</span>
+                    <div className="flex items-center gap-2">
+                      <span className={`lg:hidden text-[10px] font-mono-tech font-bold ${
+                        isLight ? 'text-slate-600' : 'text-gray-400'
+                      }`}>
+                        {item.period.split(' ')[0]}
                       </span>
-                    )}
+                      {item.current && (
+                        <span className="flex items-center space-x-1 px-2 py-0.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-400 text-[9.5px] font-mono-tech font-bold flex-shrink-0">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          <span>Current</span>
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Mobile-Only Project Visual Strip (Guarantees AIDA R2 photo & name are NEVER vanished on mobile!) */}
+                  <div className="block md:hidden mt-2 mb-1.5 rounded-xl overflow-hidden relative shadow-sm">
+                    <div className="relative h-20 w-full overflow-hidden">
+                      <img
+                        src={item.visual.image}
+                        alt={item.visual.caption}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/20" />
+                      <div className="absolute inset-0 p-2 flex flex-col justify-between">
+                        <div className="flex items-center">
+                          <div className="flex items-center gap-2 bg-white/95 px-2.5 py-1 rounded-md shadow-sm">
+                            {item.clientLogos.map((logo, lIdx) => (
+                              <img
+                                key={lIdx}
+                                src={logo}
+                                alt="Client Logo"
+                                className="h-3.5 max-w-[55px] object-contain"
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <p
+                            className="text-xs font-black leading-tight photo-caption-title"
+                            style={{
+                              color: '#FFFFFF',
+                              textShadow: '0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.9)',
+                            }}
+                          >
+                            {item.visual.caption}
+                          </p>
+                          <p
+                            className="text-[9.5px] font-mono-tech truncate font-bold photo-caption-sub"
+                            style={{
+                              color: '#38BDF8',
+                              textShadow: '0 1px 4px rgba(0, 0, 0, 0.9)',
+                            }}
+                          >
+                            {item.visual.subCaption}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Bullet Responsibilities from resume */}
@@ -229,9 +361,11 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                     {item.bullets.map((bullet, bIdx) => (
                       <li
                         key={bIdx}
-                        className="flex items-start space-x-2 text-[10.5px] sm:text-[11px] text-gray-300 leading-snug"
+                        className={`flex items-start space-x-2 text-[10.5px] sm:text-[11px] leading-snug ${
+                          isLight ? 'text-slate-700' : 'text-gray-300'
+                        }`}
                       >
-                        <span className="w-1 h-1 rounded-full bg-sky-400 flex-shrink-0 mt-1.5" />
+                        <span className="w-1 h-1 rounded-full bg-sky-500 flex-shrink-0 mt-1.5" />
                         <span>{bullet}</span>
                       </li>
                     ))}
@@ -239,11 +373,17 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                 </div>
 
                 {/* Tech Chips */}
-                <div className="pt-1.5 border-t border-white/[0.04] flex flex-wrap gap-1">
+                <div className={`pt-1.5 border-t flex flex-wrap gap-1 ${
+                  isLight ? 'border-slate-100' : 'border-white/[0.04]'
+                }`}>
                   {item.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className="px-2 py-0.5 rounded-md text-[9px] font-mono-tech bg-white/[0.03] text-gray-300 border border-white/[0.05]"
+                      className={`px-2 py-0.5 rounded-md text-[9px] font-mono-tech ${
+                        isLight
+                          ? 'bg-slate-100 text-slate-800 border border-slate-200/80 font-medium'
+                          : 'bg-white/[0.03] text-gray-300 border border-white/[0.05]'
+                      }`}
                     >
                       {tag}
                     </span>
@@ -251,41 +391,56 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                 </div>
               </div>
 
-              {/* Right: Visual Showcase Card — hidden on mobile to save space */}
-              <div className="hidden md:flex flex-1 lg:max-w-xs xl:max-w-sm relative rounded-2xl overflow-hidden glass-panel border border-white/[0.08] flex-col justify-end group shadow-md min-h-[105px] lg:min-h-0 min-w-0">
+              {/* Right: Desktop & Tablet Visual Showcase Card with guaranteed minimum height so photo & title NEVER vanish */}
+              <div className={`hidden md:flex flex-1 lg:max-w-xs xl:max-w-sm relative rounded-2xl overflow-hidden flex-col justify-end group shadow-md min-h-[145px] lg:min-h-[145px] xl:min-h-[155px] min-w-0 border ${
+                isLight ? 'border-slate-300/90 shadow-slate-900/5' : 'glass-panel border-white/[0.08]'
+              }`}>
                 <img
                   src={item.visual.image}
                   alt={item.visual.caption}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
                 />
-                {/* Deep bottom gradient for ultra-crisp text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#02060A]/95 via-[#02060A]/55 to-black/20" />
+                {/* Deep multi-stop bottom gradient for 100% crisp text readability across all lighting */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/25 pointer-events-none" />
 
-                {/* Brand Overlay Content - High Visibility */}
-                <div className="relative z-10 p-2.5 sm:p-3 space-y-1.5">
+                {/* Brand Overlay Content - Clean, High Contrast & 100% Readable */}
+                <div className="relative z-10 p-3 sm:p-3.5 space-y-2 w-full">
                   <div className="flex items-center">
                     {/* Clean white badge for client logos */}
-                    <div className="flex items-center gap-2.5 bg-white/95 px-3 py-1.5 rounded-xl shadow-lg border border-white/40">
+                    <div className="flex items-center gap-2.5 bg-white/95 px-3 py-1.5 rounded-xl shadow-lg border border-white/60 backdrop-blur-md">
                       {item.clientLogos.map((logo, lIdx) => (
                         <img
                           key={lIdx}
                           src={logo}
                           alt="Client Logo"
-                          className="h-5 sm:h-5.5 max-w-[80px] object-contain"
+                          className="h-4 sm:h-5 max-w-[80px] object-contain"
                         />
                       ))}
                     </div>
                   </div>
 
-                  <div>
-                    <p className="text-xs sm:text-[12.5px] font-bold text-white tracking-wide leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                  <div className="space-y-0.5">
+                    <p
+                      className="text-xs sm:text-[13.5px] font-black tracking-wide leading-tight photo-caption-title"
+                      style={{
+                        color: '#FFFFFF',
+                        textShadow: '0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.9)',
+                      }}
+                    >
                       {item.visual.caption}
                     </p>
-                    <p className="text-[10px] text-sky-300 font-mono-tech truncate opacity-95 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                    <p
+                      className="text-[10px] sm:text-[11px] font-mono-tech truncate font-bold photo-caption-sub"
+                      style={{
+                        color: '#38BDF8',
+                        textShadow: '0 1px 4px rgba(0, 0, 0, 0.9)',
+                      }}
+                    >
                       {item.visual.subCaption}
                     </p>
                   </div>
-                  <div className="w-10 h-[2px] bg-sky-400 shadow-[0_0_8px_#38bdf8] mt-0.5" />
+                  <div className="w-10 h-[2.5px] bg-sky-400 shadow-[0_0_8px_#38bdf8] mt-0.5 rounded-full" />
                 </div>
               </div>
 
@@ -294,18 +449,31 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
         </div>
 
         {/* ── BOTTOM FOOTER BANNER ── */}
-        <div className="relative rounded-xl overflow-hidden border border-white/[0.08] px-4 py-1.5 sm:px-5 sm:py-2 flex-shrink-0">
+        <div className={`relative rounded-xl overflow-hidden px-4 py-1.5 sm:px-5 sm:py-2 flex-shrink-0 border ${
+          isLight ? 'border-slate-200/90 shadow-sm' : 'border-white/[0.08]'
+        }`}>
           <img
-            src="/assets/projects/footer_mountain_road.jpg"
+            src={isLight ? "/assets/projects/footer_mountain_road_light.jpg" : "/assets/projects/footer_mountain_road.jpg"}
             alt="Mountain Road Panorama"
-            className="absolute inset-0 w-full h-full object-cover opacity-20"
+            className={`absolute inset-0 w-full h-full object-cover ${isLight ? 'opacity-65 brightness-105 contrast-105' : 'opacity-40'}`}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#02060A] via-[#02060A]/85 to-[#02060A]" />
+          <div className={`absolute inset-0 ${
+            isLight
+              ? 'bg-gradient-to-r from-white/90 via-white/60 to-white/90'
+              : 'bg-gradient-to-r from-[#02060A]/90 via-[#02060A]/60 to-[#02060A]/90'
+          }`} />
 
-          <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
             {/* Left Quote */}
             <div className="flex items-center gap-3">
-              <span className="text-xs sm:text-[13px] italic font-medium text-white leading-tight">
+              <span
+                className={`text-xs sm:text-[13px] italic font-black leading-tight ${
+                  isLight ? 'text-slate-950' : 'text-white'
+                }`}
+                style={{
+                  textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95), 0 0 8px rgba(255, 255, 255, 0.85)' : 'none',
+                }}
+              >
                 &ldquo;Every Experience Adds a New Mile to the Journey.&rdquo;
               </span>
               <div className="hidden md:block w-8 h-[1px] bg-sky-400/60" />
@@ -314,18 +482,48 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
             {/* Center Stats */}
             <div className="hidden lg:flex items-center gap-5 text-center">
               <div>
-                <span className="text-xs font-bold text-white">6+</span>{' '}
-                <span className="text-[9.5px] font-mono-tech text-gray-400">Features</span>
+                <span
+                  className={`text-xs font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}
+                  style={{ textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  6+
+                </span>{' '}
+                <span
+                  className={`text-[9.5px] font-mono-tech ${isLight ? 'text-slate-800 font-bold' : 'text-gray-400'}`}
+                  style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  Features
+                </span>
               </div>
-              <div className="w-1 h-1 rounded-full bg-slate-700" />
+              <div className={`w-1 h-1 rounded-full ${isLight ? 'bg-slate-300' : 'bg-slate-700'}`} />
               <div>
-                <span className="text-xs font-bold text-white">10+</span>{' '}
-                <span className="text-[9.5px] font-mono-tech text-gray-400">Global Stakeholders</span>
+                <span
+                  className={`text-xs font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}
+                  style={{ textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  10+
+                </span>{' '}
+                <span
+                  className={`text-[9.5px] font-mono-tech ${isLight ? 'text-slate-800 font-bold' : 'text-gray-400'}`}
+                  style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  Global Stakeholders
+                </span>
               </div>
-              <div className="w-1 h-1 rounded-full bg-slate-700" />
+              <div className={`w-1 h-1 rounded-full ${isLight ? 'bg-slate-300' : 'bg-slate-700'}`} />
               <div>
-                <span className="text-xs font-bold text-white">3</span>{' '}
-                <span className="text-[9.5px] font-mono-tech text-gray-400">Automotive Platforms</span>
+                <span
+                  className={`text-xs font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}
+                  style={{ textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  3
+                </span>{' '}
+                <span
+                  className={`text-[9.5px] font-mono-tech ${isLight ? 'text-slate-800 font-bold' : 'text-gray-400'}`}
+                  style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  Automotive Platforms
+                </span>
               </div>
             </div>
 

@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { skillCategories, otherSkills } from '../data/skillsData';
 import { SkillLogo } from '../components/SkillLogos';
+import { useTheme } from '../context/ThemeContext';
 
 interface SkillsSectionProps {
   onNavigate: (sectionId: string) => void;
@@ -86,6 +87,8 @@ const SkillProgressBar: React.FC<{
 };
 
 export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [slideDir, setSlideDir] = useState<'right' | 'left'>('right');
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -401,13 +404,13 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
               </div>
 
               {/* TRAVEO II Photo Banner */}
-              <div className="relative rounded-lg overflow-hidden border border-white/10 h-28 mb-2 shadow-md">
+              <div className={`relative rounded-lg overflow-hidden border ${isLight ? 'border-slate-200 shadow-sm' : 'border-white/10'} h-28 mb-2 shadow-md`}>
                 <img
-                  src="/assets/skills/microchip.jpg"
+                  src={isLight ? "/assets/skills/microchip_light.jpg" : "/assets/skills/microchip.jpg"}
                   alt="Infineon TRAVEO II MCU"
                   className="w-full h-full object-cover object-center brightness-95 contrast-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020509]/90 via-transparent to-transparent pointer-events-none" />
+                <div className={`absolute inset-0 bg-gradient-to-t ${isLight ? 'from-slate-900/80' : 'from-[#020509]/90'} via-transparent to-transparent pointer-events-none`} />
                 <div className="absolute bottom-2 left-2 right-2">
                   <span className="text-[10px] sm:text-xs font-mono-tech text-gray-300 uppercase block">TARGET SILICON</span>
                   <span className="text-xs sm:text-sm font-black text-sky-400 leading-tight block">Infineon TRAVEO™ II & Renesas RH850</span>
@@ -528,12 +531,12 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative w-full min-h-[calc(100vh-4rem)] md:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 px-3 sm:px-6 lg:px-10 2xl:px-14 bg-[#020509] flex flex-col justify-between select-none scroll-mt-16 overflow-hidden"
+      className={`relative w-full min-h-[calc(100vh-4rem)] md:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 px-3 sm:px-6 lg:px-10 2xl:px-14 ${isLight ? 'bg-[#F8FAFC]' : 'bg-[#020509]'} flex flex-col justify-between select-none scroll-mt-16 overflow-hidden`}
     >
       {/* Ambient background glow */}
       <div
         className="absolute -top-32 left-1/3 w-[600px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
+        style={{ background: isLight ? 'radial-gradient(ellipse, rgba(14,165,233,0.08) 0%, transparent 70%)' : 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
       <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full h-full flex flex-col justify-between gap-1.5 sm:gap-2">
@@ -542,36 +545,44 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
             TOP HEADER (Single Tab, Borderless, Full-Span Car Background Like Experience)
         ══════════════════════════════════════════════════════ */}
         <div
-          className="relative rounded-b-2xl overflow-hidden p-3 sm:p-3.5 lg:py-2.5 2xl:py-3.5 lg:px-6 shrink-0 -mt-px shadow-lg"
+          className={`relative rounded-b-2xl overflow-hidden p-3 sm:p-3.5 lg:py-2.5 2xl:py-3.5 lg:px-6 shrink-0 -mt-px shadow-lg ${isLight ? 'border-b border-slate-200 shadow-sm' : 'border-b border-white/[0.06]'}`}
           style={{
-            background: 'linear-gradient(135deg, rgba(8, 16, 26, 0.95) 0%, rgba(4, 9, 16, 0.98) 100%)',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+            background: isLight
+              ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(241, 245, 249, 0.98) 100%)'
+              : 'linear-gradient(135deg, rgba(8, 16, 26, 0.95) 0%, rgba(4, 9, 16, 0.98) 100%)',
           }}
         >
           {/* Full-width vehicle visual background - Spans the entire upper container */}
           <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
             <img
-              src="/assets/skills/car_rear.jpg"
+              src={isLight ? "/assets/skills/car_rear_light.jpg" : "/assets/skills/car_rear.jpg"}
               alt="Automotive Skills View"
               className="w-full h-full object-cover object-center lg:object-right brightness-105 contrast-110"
               draggable={false}
             />
             {/* Soft fade gradients for readability while keeping the car dramatically visible */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#020509] via-[#020509]/75 md:via-[#020509]/45 to-transparent pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020509]/60 via-transparent to-transparent pointer-events-none" />
+            <div className={`absolute inset-0 bg-gradient-to-r ${isLight ? 'from-white/95 via-white/70 via-45% to-white/20' : 'from-[#020509]/95 via-[#020509]/65 via-45% to-[#020509]/20'} pointer-events-none`} />
+            <div className={`absolute inset-0 bg-gradient-to-t ${isLight ? 'from-white/80 via-transparent to-white/30' : 'from-[#020509]/80 via-transparent to-[#020509]/30'} pointer-events-none`} />
           </div>
 
           <div className="relative z-10 flex flex-col justify-between gap-2 max-w-full">
             {/* Upper: Title & Subtitle + Right Manifesto */}
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
               <div className="space-y-0.5 max-w-xl">
-                <div className="flex items-center space-x-2 text-[10px] sm:text-xs font-mono-tech text-sky-400 font-semibold uppercase tracking-[0.22em]">
+                <div className="flex items-center space-x-2 text-[10px] sm:text-xs font-mono-tech text-sky-500 font-bold uppercase tracking-[0.22em]">
                   <span>/ 04</span>
-                  <span className="w-5 h-[1px] bg-sky-400/60" />
+                  <span className="w-5 h-[1px] bg-sky-500/60" />
                   <span>SKILLS</span>
                 </div>
                 <div className="flex items-baseline gap-2.5">
-                  <h2 className="text-lg sm:text-xl lg:text-2xl font-black font-heading text-white leading-tight">
+                  <h2
+                    className={`text-lg sm:text-xl lg:text-2xl font-black font-heading ${isLight ? 'text-slate-950' : 'text-white'} leading-tight`}
+                    style={{
+                      textShadow: isLight
+                        ? '0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.9)'
+                        : '0 2px 8px rgba(0, 0, 0, 0.7)',
+                    }}
+                  >
                     Skills That{' '}
                     <span
                       style={{
@@ -585,26 +596,46 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                     </span>
                   </h2>
                 </div>
-                <p className="text-xs sm:text-[13px] text-[#9BA8B5] leading-snug line-clamp-1">
+                <p
+                  className={`text-xs sm:text-[13px] ${isLight ? 'text-slate-900 font-medium' : 'text-[#CAD5E2] font-normal'} leading-snug line-clamp-1`}
+                  style={{
+                    textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none',
+                  }}
+                >
                   A blend of embedded systems knowledge, automotive domain expertise and modern development tools to build better, smarter and safer vehicles for tomorrow.
                 </p>
               </div>
 
-              {/* Right Tagline from reference */}
-              <div className="hidden md:flex flex-col items-end justify-center text-right space-y-0.5 relative z-10 pr-1 flex-shrink-0">
-                <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-mono-tech tracking-widest text-gray-300 uppercase font-semibold">
+              {/* Right Tagline & Quote: Pure borderless typography visible on both mobile & desktop */}
+              <div className="flex flex-col items-start sm:items-end justify-center text-left sm:text-right space-y-0.5 relative z-10 pr-1 flex-shrink-0">
+                <div
+                  className={`flex items-center gap-1.5 text-[9.5px] sm:text-[10.5px] font-mono-tech tracking-widest ${isLight ? 'text-slate-900' : 'text-gray-200'} uppercase font-bold`}
+                  style={{
+                    textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none',
+                  }}
+                >
                   <span>LEARN</span>
                   <span>•</span>
                   <span>BUILD</span>
                   <span>•</span>
-                  <span className="text-sky-400">IMPROVE</span>
+                  <span className="text-sky-500 font-black">IMPROVE</span>
                   <span>•</span>
-                  <span className="text-white">REPEAT</span>
+                  <span className={isLight ? 'text-slate-950 font-black' : 'text-white font-black'}>REPEAT</span>
                 </div>
-                <div className="text-xs sm:text-[13px] italic text-[#CAD5E2] font-medium leading-none">
+                <div
+                  className={`text-xs sm:text-[13.5px] font-heading italic font-black leading-tight ${isLight ? 'text-slate-950' : 'text-white drop-shadow-md'}`}
+                  style={{
+                    textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
+                  }}
+                >
                   &ldquo;Better Vehicles. Brighter Journeys.&rdquo;
                 </div>
-                <span className="text-[10px] font-mono-tech text-sky-400/90 tracking-widest uppercase">
+                <span
+                  className={`text-[9.5px] font-mono-tech ${isLight ? 'text-sky-700 font-black' : 'text-sky-400 font-bold'} tracking-widest uppercase`}
+                  style={{
+                    textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.9)' : 'none',
+                  }}
+                >
                   SK REHAN AHAMED
                 </span>
               </div>
@@ -620,8 +651,12 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                     onClick={() => handleTabClick(tab.id)}
                     className={`px-3 py-1 rounded-xl text-xs sm:text-[13px] font-heading font-medium transition-all duration-300 cursor-pointer whitespace-nowrap shadow-sm ${
                       isActive
-                        ? 'bg-sky-500/25 text-white border border-sky-400/70 shadow-[0_0_12px_rgba(21,159,255,0.3)] scale-[1.02]'
-                        : 'bg-black/50 backdrop-blur-md text-gray-300 hover:text-white hover:bg-white/[0.08] border border-white/10 hover:border-sky-500/40'
+                        ? (isLight
+                            ? 'bg-sky-500 text-white shadow-md shadow-sky-500/20'
+                            : 'bg-sky-500/25 text-white border border-sky-400/70 shadow-[0_0_12px_rgba(21,159,255,0.3)] scale-[1.02]')
+                        : (isLight
+                            ? 'bg-white/80 backdrop-blur-md text-slate-700 hover:text-sky-600 hover:bg-white border border-slate-200'
+                            : 'bg-black/50 backdrop-blur-md text-gray-300 hover:text-white hover:bg-white/[0.08] border border-white/10 hover:border-sky-500/40')
                     }`}
                   >
                     {tab.label}
@@ -665,41 +700,56 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
             </div>
 
             {/* Right: Silicon Chip Macro Card (Infineon TRAVEO II) */}
-            <div className="relative rounded-xl overflow-hidden border border-white/[0.08] p-2.5 flex items-center justify-between shadow-md">
+            <div className={`relative rounded-xl overflow-hidden border ${isLight ? 'border-slate-200 bg-white shadow-sm' : 'border-white/[0.08]'} p-2.5 flex items-center justify-between shadow-md`}>
               <img
-                src="/assets/skills/microchip.jpg"
+                src={isLight ? "/assets/skills/microchip_light.jpg" : "/assets/skills/microchip.jpg"}
                 alt="Infineon TRAVEO II Silicon Architecture"
-                className="absolute inset-0 w-full h-full object-cover object-center brightness-90 contrast-110"
+                className="absolute inset-0 w-full h-full object-cover object-center brightness-100 contrast-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#030914]/90 via-[#030914]/70 to-transparent pointer-events-none" />
+              <div className={`absolute inset-0 bg-gradient-to-r ${isLight ? 'from-white/75 via-white/30 to-transparent' : 'from-[#030914]/85 via-[#030914]/50 to-transparent'} pointer-events-none`} />
 
               <div className="relative z-10 space-y-0.5 max-w-[210px]">
-                <span className="text-[10px] sm:text-xs font-mono-tech text-gray-300 tracking-wider uppercase block">
+                <span
+                  className={`text-[10px] sm:text-xs font-mono-tech ${isLight ? 'text-slate-800' : 'text-gray-300'} tracking-wider uppercase block font-bold`}
+                  style={{
+                    textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
+                  }}
+                >
                   TECHNOLOGY BUILDS VEHICLES.
                 </span>
-                <span className="text-xs sm:text-sm font-heading font-black text-sky-400 leading-tight block">
+                <span
+                  className="text-xs sm:text-sm font-heading font-black text-sky-600 leading-tight block"
+                  style={{
+                    textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
+                  }}
+                >
                   PEOPLE DRIVE CHANGE.
                 </span>
-                <div className="w-6 h-[1.5px] bg-sky-400/80 mt-0.5" />
+                <div className="w-6 h-[1.5px] bg-sky-500 mt-0.5" />
               </div>
             </div>
           </div>
         )}
 
         {/* ── BOTTOM FOOTER BANNER ── */}
-        <div className="relative rounded-xl overflow-hidden border border-white/[0.08] px-3 py-1.5 sm:px-4 sm:py-2 flex-shrink-0">
+        <div className={`relative rounded-xl overflow-hidden border ${isLight ? 'border-slate-300 bg-white/95 shadow-sm' : 'border-white/[0.12] bg-[#020509]/95'} px-3 py-2 sm:px-4 sm:py-2 flex-shrink-0`}>
           <img
-            src="/assets/projects/footer_mountain_road.jpg"
+            src={isLight ? "/assets/projects/footer_mountain_road_light.jpg" : "/assets/projects/footer_mountain_road.jpg"}
             alt="Mountain Road Panorama"
-            className="absolute inset-0 w-full h-full object-cover opacity-20"
+            className={`absolute inset-0 w-full h-full object-cover ${isLight ? 'opacity-65 brightness-105' : 'opacity-40'}`}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#020509] via-[#020509]/85 to-[#020509]" />
+          <div className={`absolute inset-0 ${isLight ? 'bg-gradient-to-r from-white/90 via-white/60 to-white/90' : 'bg-gradient-to-r from-[#020509]/90 via-[#020509]/60 to-[#020509]/90'}`} />
 
-          <div className="relative z-10 flex items-center justify-between gap-2">
+          <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
             {/* Left Quote */}
             <div className="flex items-center gap-2.5">
-              <span className="text-xs sm:text-sm italic font-medium text-white leading-tight">
-                Always Learning. <span className="text-sky-400 not-italic font-bold">Always Building.</span>
+              <span
+                className={`text-xs sm:text-sm italic ${isLight ? 'text-slate-950 font-black' : 'text-white font-bold'} leading-tight`}
+                style={{
+                  textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95), 0 0 8px rgba(255, 255, 255, 0.85)' : 'none',
+                }}
+              >
+                Always Learning. <span className="text-sky-500 not-italic font-black">Always Building.</span>
               </span>
               <div className="hidden md:block w-6 h-[1px] bg-sky-400/60" />
             </div>
@@ -707,18 +757,48 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
             {/* Center Stats */}
             <div className="hidden sm:flex items-center gap-5 text-center">
               <div>
-                <span className="text-sm sm:text-base font-bold text-white">{techCount}+</span>{' '}
-                <span className="text-xs font-mono-tech text-gray-400">Technologies</span>
+                <span
+                  className={`text-sm sm:text-base font-bold ${isLight ? 'text-slate-950' : 'text-white'}`}
+                  style={{ textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  {techCount}+
+                </span>{' '}
+                <span
+                  className={`text-xs font-mono-tech ${isLight ? 'text-slate-800 font-bold' : 'text-gray-400'}`}
+                  style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  Technologies
+                </span>
               </div>
-              <div className="w-1 h-1 rounded-full bg-slate-700" />
+              <div className={`w-1 h-1 rounded-full ${isLight ? 'bg-slate-300' : 'bg-slate-700'}`} />
               <div>
-                <span className="text-sm sm:text-base font-bold text-white">{domainCount}+</span>{' '}
-                <span className="text-xs font-mono-tech text-gray-400">Domains</span>
+                <span
+                  className={`text-sm sm:text-base font-bold ${isLight ? 'text-slate-950' : 'text-white'}`}
+                  style={{ textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  {domainCount}+
+                </span>{' '}
+                <span
+                  className={`text-xs font-mono-tech ${isLight ? 'text-slate-800 font-bold' : 'text-gray-400'}`}
+                  style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  Domains
+                </span>
               </div>
-              <div className="w-1 h-1 rounded-full bg-slate-700" />
+              <div className={`w-1 h-1 rounded-full ${isLight ? 'bg-slate-300' : 'bg-slate-700'}`} />
               <div>
-                <span className="text-sm sm:text-base font-bold text-sky-400">∞</span>{' '}
-                <span className="text-xs font-mono-tech text-gray-400">Curiosity</span>
+                <span
+                  className="text-sm sm:text-base font-bold text-sky-500"
+                  style={{ textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  ∞
+                </span>{' '}
+                <span
+                  className={`text-xs font-mono-tech ${isLight ? 'text-slate-800 font-bold' : 'text-gray-400'}`}
+                  style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
+                >
+                  Curiosity
+                </span>
               </div>
             </div>
 

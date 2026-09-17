@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import { useTheme } from './context/ThemeContext';
+import { LoadingScreen } from './components/LoadingScreen';
 import { Navbar } from './components/Navbar';
 import { ScrollRail } from './components/ScrollRail';
 import { MobilePageNav } from './components/MobilePageNav';
@@ -10,6 +12,9 @@ import { SkillsSection } from './sections/SkillsSection';
 import { ContactSection } from './sections/ContactSection';
 
 export function App() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+  const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024);
   const rafScrollRef = useRef<number>(0);
@@ -81,7 +86,12 @@ export function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#03070B] text-[#F5F7FA] selection:bg-blue-600 selection:text-white">
+    <div className={`relative min-h-screen ${
+      isLight ? 'bg-[#F8FAFC] text-slate-900' : 'bg-[#03070B] text-[#F5F7FA]'
+    } selection:bg-blue-600 selection:text-white transition-colors duration-300`}>
+      {/* Automotive Digital Cockpit Pre-flight Loading Screen */}
+      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+
       {/* Sticky Global Navigation with 3-line hamburger on mobile */}
       <Navbar activeSection={activeSection} onNavigate={handleNavigate} />
 

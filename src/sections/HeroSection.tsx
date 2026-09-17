@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Shield, Layers, Building2, Cpu, ArrowRight, Globe, Compass, FileDown } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 /* ─────────────────────────────────────────────────────────────
    COUNT-UP HOOK  (easeOutExpo, staggered delay)
@@ -219,6 +220,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
     };
   }, [inView]);
 
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   const domains = ["AUTOSAR", "HMI / IVI", "INSTRUMENT CLUSTER", "VEHICLE NETWORKS", "DIAGNOSTICS", "VALIDATION & TESTING"];
 
   const yearsCount    = useCountUp(4,  380);
@@ -244,7 +248,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
     <section
       ref={heroRef}
       id="home"
-      className="relative w-full h-screen min-h-[700px] flex flex-col overflow-hidden bg-[#02070D] select-none"
+      className={`relative w-full h-screen min-h-[700px] flex flex-col overflow-hidden select-none transition-colors duration-300 ${
+        isLight ? "bg-[#F8FAFC]" : "bg-[#02070D]"
+      }`}
       style={{ "--mx": "0", "--my": "0" } as React.CSSProperties}
     >
       {/* ── BACKGROUND: parallax image ── */}
@@ -253,19 +259,31 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
         style={{ transform: "translate3d(calc(var(--mx)*-10px),calc(var(--my)*-6px),0) scale(1.05)" }}
       >
         <img
-          src="/assets/hero/hero_home_bg.png"
+          src={isLight ? "/assets/hero/hero_home_bg_light.png" : "/assets/hero/hero_home_bg.png"}
           alt="Cinematic Automotive Background"
-          className="w-full h-full object-cover object-center"
+          className={`w-full h-full object-cover object-center ${isLight ? 'contrast-105 saturate-105' : ''}`}
           draggable={false}
         />
       </div>
 
       {/* ── VIGNETTES ── */}
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-[#02070D]/80 via-transparent to-[#02070D]/88" />
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-r from-[#02070D]/78 via-transparent to-[#02070D]/18" />
+      <div
+        className={`absolute inset-0 z-[1] pointer-events-none ${
+          isLight
+            ? "bg-gradient-to-b from-[#F8FAFC]/30 via-transparent to-transparent"
+            : "bg-gradient-to-b from-[#02070D]/80 via-transparent to-[#02070D]/88"
+        }`}
+      />
+      <div
+        className={`absolute inset-0 z-[1] pointer-events-none ${
+          isLight
+            ? "bg-gradient-to-r from-[#F8FAFC]/60 via-[#F8FAFC]/15 to-transparent max-w-xl"
+            : "bg-gradient-to-r from-[#02070D]/78 via-transparent to-[#02070D]/18"
+        }`}
+      />
 
-      {/* ── SHOOTING STARS (sky region only) ── */}
-      <ShootingStars active={inView} />
+      {/* ── SHOOTING STARS (sky region only, hidden in daylight) ── */}
+      <ShootingStars active={inView && !isLight} />
 
       {/* ── NAVBAR SPACER ── */}
       <div className="h-[72px] flex-shrink-0 z-10" />
@@ -285,17 +303,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             }}
           >
             {/* Tagline with animated cursor */}
-            <div style={fadeIn(60)} className="flex items-center gap-2 font-mono-tech text-[10.5px] tracking-[0.22em] uppercase font-semibold text-slate-400 mt-1">
+            <div style={fadeIn(60)} className="flex items-center gap-2 font-mono-tech text-[10.5px] tracking-[0.22em] uppercase font-semibold mt-1">
               <span className="text-[#159FFF] font-black">//</span>
-              <span>AUTOMOTIVE SOFTWARE ENGINEER</span>
+              <span className={isLight ? 'text-slate-700 font-bold' : 'text-slate-400'}>AUTOMOTIVE SOFTWARE ENGINEER</span>
               <span className="w-[6px] h-[13px] bg-[#159FFF] opacity-80" style={{ animation: "blink 1.1s step-end infinite" }} />
             </div>
 
             {/* Heading */}
             <div style={fadeIn(140)}>
               <h1
-                className="font-heading font-black text-[40px] sm:text-[50px] lg:text-[58px] xl:text-[64px] tracking-tight leading-[1.0] mt-3 text-white"
-                style={{ textShadow: "0 2px 40px rgba(2,7,13,0.55)" }}
+                className={`font-heading font-black text-[40px] sm:text-[50px] lg:text-[58px] xl:text-[64px] tracking-tight leading-[1.0] mt-3 ${
+                  isLight ? 'text-slate-950' : 'text-white'
+                }`}
+                style={{ textShadow: isLight ? "none" : "0 2px 40px rgba(2,7,13,0.55)" }}
               >
                 FROM CODE
                 <br />
@@ -315,12 +335,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             </div>
 
             {/* Subtitle */}
-            <p style={fadeIn(220)} className="text-slate-300/90 text-[13px] sm:text-[14px] font-normal max-w-sm mt-3 leading-relaxed">
+            <p style={fadeIn(220)} className={`${isLight ? 'text-slate-700 font-medium' : 'text-slate-300/90'} text-[13px] sm:text-[14px] max-w-sm mt-3 leading-relaxed`}>
               Building software that powers smarter, safer and more connected vehicles.
             </p>
 
             {/* Tech tags — shimmer hover */}
-            <div style={fadeIn(300)} className="flex items-center flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono-tech tracking-wider text-slate-400 uppercase mt-3.5">
+            <div style={fadeIn(300)} className={`flex items-center flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono-tech tracking-wider uppercase mt-3.5 ${isLight ? 'text-slate-700 font-bold' : 'text-slate-400'}`}>
               {["C/C++", "AUTOSAR", "EMBEDDED", "HMI", "CAN"].map((tag, i, arr) => (
                 <React.Fragment key={tag}>
                   <span className="hover:text-[#159FFF] transition-colors duration-200 cursor-default">{tag}</span>
@@ -345,9 +365,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 download="SK_Rehan_Ahamed_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/20 hover:border-[#159FFF]/55 text-white font-medium text-[13px] tracking-wide transition-all flex items-center gap-2 shadow-lg cursor-pointer group hover:scale-[1.02] active:scale-[0.98]"
+                className={`px-5 py-2.5 rounded-full ${
+                  isLight
+                    ? 'bg-white/95 hover:bg-white text-slate-900 border border-slate-300 shadow-md hover:border-sky-500'
+                    : 'bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/20 hover:border-[#159FFF]/55 text-white shadow-lg'
+                } font-medium text-[13px] tracking-wide transition-all flex items-center gap-2 cursor-pointer group hover:scale-[1.02] active:scale-[0.98]`}
               >
-                <FileDown className="w-3.5 h-3.5 text-sky-400 group-hover:text-white transition-colors" />
+                <FileDown className={`w-3.5 h-3.5 ${isLight ? 'text-sky-600' : 'text-sky-400 group-hover:text-white'} transition-colors`} />
                 <span>Download Resume</span>
               </a>
             </div>
@@ -378,7 +402,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             {/* IDEAS ENGINEERED + Wireframe HUD */}
             <div className="flex items-center gap-4 mt-1">
               <div className="flex flex-col items-end text-right">
-                <p className="font-heading font-bold text-[10px] xl:text-[11px] tracking-[0.2em] text-[#F4F7FA] uppercase leading-[1.65]">
+                <p className={`font-heading font-bold text-[10px] xl:text-[11px] tracking-[0.2em] uppercase leading-[1.65] ${
+                  isLight ? 'text-slate-900 font-black' : 'text-[#F4F7FA]'
+                }`}>
                   IDEAS<br />ENGINEERED<br />FOR A BRIGHTER<br />TOMORROW
                 </p>
                 <div className="w-8 h-[2px] bg-[#159FFF] shadow-[0_0_8px_#159FFF] rounded-full mt-1.5" />
@@ -399,7 +425,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                     alt="3D Wireframe SUV"
                     className="w-full h-full object-contain select-none pointer-events-none"
                     style={{
-                      mixBlendMode: "screen",
+                      mixBlendMode: isLight ? "multiply" : "screen",
                       filter: "drop-shadow(0 0 14px rgba(21,159,255,0.65))",
                       animation: "wirePulse 4s ease-in-out infinite",
                     }}
@@ -415,7 +441,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                   {domains.map((d, i) => (
                     <span
                       key={d}
-                      className="font-heading font-bold text-[9px] xl:text-[9.5px] tracking-[0.14em] text-[#F4F7FA]/85 hover:text-[#39B8FF] transition-colors duration-200 cursor-default"
+                      className={`font-heading font-bold text-[9px] xl:text-[9.5px] tracking-[0.14em] transition-colors duration-200 cursor-default ${
+                        isLight ? 'text-slate-800 hover:text-sky-600' : 'text-[#F4F7FA]/85 hover:text-[#39B8FF]'
+                      }`}
                       style={{
                         opacity: mounted ? 1 : 0,
                         transform: mounted ? "translateX(0)" : "translateX(10px)",
@@ -439,11 +467,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               }}
             >
               <p
-                className="font-heading font-black text-[22px] xl:text-[26px] leading-[1.1] tracking-tight text-[#F4F7FA]"
-                style={{ textShadow: "0 0 30px rgba(2,7,13,0.8)" }}
+                className={`font-heading font-black text-[22px] xl:text-[26px] leading-[1.1] tracking-tight ${
+                  isLight ? "text-slate-900" : "text-[#F4F7FA]"
+                }`}
+                style={isLight ? {} : { textShadow: "0 0 30px rgba(2,7,13,0.8)" }}
               >
                 BETTER<br />VEHICLES.<br />
-                <span style={{ color: "#9BA8B5" }}>BRIGHTER<br />JOURNEYS.</span>
+                <span style={{ color: isLight ? "#475569" : "#9BA8B5" }}>BRIGHTER<br />JOURNEYS.</span>
               </p>
               <div className="w-10 h-[2px] bg-[#159FFF] rounded-full mt-2 ml-auto shadow-[0_0_8px_rgba(21,159,255,0.6)]" />
             </div>
@@ -462,10 +492,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           <div
             className="rounded-xl px-5 sm:px-6 py-2.5 flex flex-col md:flex-row items-center justify-between gap-3"
             style={{
-              background: "rgba(5,11,19,0.72)",
+              background: isLight ? "rgba(255, 255, 255, 0.92)" : "rgba(5,11,19,0.72)",
               backdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              boxShadow: "0 8px 40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.06)",
+              border: isLight ? "1px solid rgba(203, 213, 225, 0.85)" : "1px solid rgba(255,255,255,0.07)",
+              boxShadow: isLight
+                ? "0 12px 32px -8px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255,255,255,0.9)"
+                : "0 8px 40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.06)",
             }}
           >
             <div className="flex items-center justify-between md:justify-start gap-5 sm:gap-8 lg:gap-10 w-full md:w-auto overflow-x-auto">
@@ -475,16 +507,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                   <button
                     key={i}
                     onClick={() => onNavigate(stat.section)}
-                    className="flex items-center gap-2.5 p-1 rounded-lg hover:bg-white/[0.04] transition-all group text-left cursor-pointer focus:outline-none flex-shrink-0"
+                    className={`flex items-center gap-2.5 p-1 rounded-lg transition-all group text-left cursor-pointer focus:outline-none flex-shrink-0 ${
+                      isLight ? "hover:bg-slate-100/80" : "hover:bg-white/[0.04]"
+                    }`}
                   >
                     <div className="w-8 h-8 rounded-lg bg-[#159FFF]/10 border border-[#159FFF]/25 flex items-center justify-center text-[#159FFF] group-hover:scale-110 group-hover:border-[#159FFF]/60 group-hover:shadow-[0_0_12px_rgba(21,159,255,0.4)] transition-all flex-shrink-0">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-[15px] font-extrabold font-heading text-[#F4F7FA] group-hover:text-[#159FFF] leading-tight transition-colors tabular-nums">
+                      <div className={`text-[15px] font-extrabold font-heading leading-tight transition-colors tabular-nums ${
+                        isLight ? "text-slate-900 group-hover:text-[#159FFF]" : "text-[#F4F7FA] group-hover:text-[#159FFF]"
+                      }`}>
                         {stat.value}
                       </div>
-                      <div className="text-[9.5px] font-mono-tech text-[#9BA8B5] flex items-center gap-1">
+                      <div className={`text-[9.5px] font-mono-tech flex items-center gap-1 ${
+                        isLight ? "text-slate-700 font-semibold" : "text-[#9BA8B5]"
+                      }`}>
                         <span>{stat.label}</span>
                         <ArrowRight className="w-2.5 h-2.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#159FFF]" />
                       </div>
@@ -493,9 +531,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 );
               })}
             </div>
-            <div className="hidden md:block w-px h-7 bg-white/10 flex-shrink-0" />
+            <div className={`hidden md:block w-px h-7 flex-shrink-0 ${isLight ? "bg-slate-300" : "bg-white/10"}`} />
             <div className="text-right flex-shrink-0">
-              <p className="text-[12px] font-medium text-[#9BA8B5] italic tracking-wide">
+              <p className={`text-[12px] italic tracking-wide ${isLight ? "text-slate-950 font-black" : "text-white font-bold"}`}>
                 &ldquo;Code today.<br className="hidden sm:block" /> Cleaner roads tomorrow.&rdquo;
               </p>
               <div className="w-8 h-[2px] bg-[#159FFF] rounded-full mt-1.5 ml-auto" />
@@ -505,26 +543,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
         {/* ── BOTTOM ROW ── */}
         <div
-          className="w-full flex items-center justify-between pb-2 text-[10px] font-mono-tech text-[#9BA8B5]"
+          className={`w-full flex items-center justify-between pb-2 text-[10px] font-mono-tech ${isLight ? 'text-slate-600' : 'text-[#9BA8B5]'}`}
           style={{ opacity: mounted ? 1 : 0, transition: "opacity 0.8s ease 900ms" }}
         >
           <div className="flex items-center gap-2">
-            <div className="relative flex items-center justify-center w-5 h-5 rounded-full bg-[#081421] border border-[#159FFF]/35">
+            <div className={`relative flex items-center justify-center w-5 h-5 rounded-full ${isLight ? 'bg-sky-50 border border-sky-300' : 'bg-[#081421] border border-[#159FFF]/35'}`}>
               <Compass className="w-3 h-3 text-[#159FFF] animate-[spin_12s_linear_infinite]" />
               <span className="absolute inset-0 rounded-full border border-[#159FFF]/20 animate-ping" />
             </div>
             <div>
-              <div className="text-[#F4F7FA] text-[10px] font-semibold tracking-wider uppercase leading-tight">ALWAYS LEARNING</div>
-              <div className="text-[8.5px] text-[#9BA8B5] tracking-wider uppercase leading-tight">ALWAYS BUILDING</div>
+              <div className={`${isLight ? 'text-slate-900 font-bold' : 'text-[#F4F7FA] font-semibold'} text-[10px] tracking-wider uppercase leading-tight`}>ALWAYS LEARNING</div>
+              <div className={`${isLight ? 'text-slate-600 font-medium' : 'text-[#9BA8B5]'} text-[8.5px] tracking-wider uppercase leading-tight`}>ALWAYS BUILDING</div>
             </div>
           </div>
           <div className="flex items-center gap-1.5">
             <Globe className="w-3 h-3 text-[#159FFF]" />
-            <span>Kolkata</span>
-            <span className="text-slate-700">→</span>
-            <span>Bangalore</span>
-            <span className="text-slate-700">→</span>
-            <span className="text-[#F4F7FA] font-medium">Global</span>
+            <span className={isLight ? 'text-slate-800' : ''}>Kolkata</span>
+            <span className={isLight ? 'text-slate-400' : 'text-slate-700'}>→</span>
+            <span className={isLight ? 'text-slate-800' : ''}>Bangalore</span>
+            <span className={isLight ? 'text-slate-400' : 'text-slate-700'}>→</span>
+            <span className={`${isLight ? 'text-slate-950 font-bold' : 'text-[#F4F7FA] font-medium'}`}>Global</span>
           </div>
         </div>
       </div>
