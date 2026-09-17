@@ -18,8 +18,6 @@ export function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024);
   const rafScrollRef = useRef<number>(0);
-  const isNavigatingRef = useRef<boolean>(false);
-  const navTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Responsive screen-size tracking
   useEffect(() => {
@@ -37,14 +35,9 @@ export function App() {
     const sections = ['home', 'about', 'projects', 'experience', 'skills', 'contact'];
 
     const handleScroll = () => {
-      // Don't update activeSection while programmatic smooth scrolling is in progress
-      if (isNavigatingRef.current) return;
       if (rafScrollRef.current) return;
-
       rafScrollRef.current = requestAnimationFrame(() => {
         rafScrollRef.current = 0;
-        if (isNavigatingRef.current) return;
-
         const scrollPosition = window.scrollY + 220;
 
         for (const sectionId of sections) {
@@ -65,7 +58,6 @@ export function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       if (rafScrollRef.current) cancelAnimationFrame(rafScrollRef.current);
-      if (navTimerRef.current) clearTimeout(navTimerRef.current);
     };
   }, [isMobile]);
 
@@ -78,21 +70,18 @@ export function App() {
       return;
     }
 
-    // Lock scroll observer temporarily so clicked nav link stays active and doesn't jitter
-    isNavigatingRef.current = true;
-    if (navTimerRef.current) clearTimeout(navTimerRef.current);
-    navTimerRef.current = setTimeout(() => {
-      isNavigatingRef.current = false;
-    }, 850);
-
     // Desktop: smooth scroll into the targeted section
     const element = document.getElementById(sectionId);
     if (element) {
-      const navHeight = 64;
-      const targetTop = sectionId === 'home'
-        ? 0
-        : Math.max(0, element.getBoundingClientRect().top + window.scrollY - navHeight);
-      window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      if (sectionId === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (sectionId === 'about') {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        const navHeight = 64;
+        const targetTop = Math.max(0, element.getBoundingClientRect().top + window.scrollY - navHeight);
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      }
     }
   };
 

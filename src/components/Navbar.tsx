@@ -95,7 +95,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`relative py-1 text-xs xl:text-sm font-medium tracking-wide transition-colors duration-200 focus:outline-none cursor-pointer whitespace-nowrap ${
+                  className={`relative py-1 text-xs xl:text-sm font-medium tracking-wide transition-all duration-200 focus:outline-none cursor-pointer whitespace-nowrap ${
                     isActive
                       ? (isLight ? 'text-sky-600 font-bold' : 'text-[#F4F7FA]')
                       : (isLight ? 'text-slate-700 hover:text-slate-950 font-semibold' : 'text-[#9BA8B5] hover:text-[#F4F7FA]')
@@ -103,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
                 >
                   {item.label}
                   {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#159FFF] shadow-[0_0_8px_#159FFF] rounded-full animate-nav-indicator pointer-events-none" />
+                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#159FFF] shadow-[0_0_8px_#159FFF] rounded-full"></span>
                   )}
                 </button>
               );
