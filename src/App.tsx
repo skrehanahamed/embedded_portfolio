@@ -93,8 +93,8 @@ export function App() {
       {/* Main Content Area */}
       {isMobile ? (
         /* Mobile: Dedicated 1-page at a time with smooth page transition + bottom Prev/Next navigation */
-        <main className="w-full min-h-[calc(100vh-60px)] pt-[56px] flex flex-col justify-between">
-          <div key={activeSection} className="flex-1 w-full flex flex-col justify-center animate-mobile-page">
+        <main className="w-full min-h-[calc(100vh-60px)] pt-[56px] flex flex-col justify-between overflow-x-hidden">
+          <div key={activeSection} className="flex-1 w-full flex flex-col justify-center animate-mobile-page overflow-x-hidden">
             {activeSection === 'home' && <HeroSection onNavigate={handleNavigate} />}
             {activeSection === 'about' && <AboutSection onNavigate={handleNavigate} />}
             {activeSection === 'projects' && <ProjectsSection onNavigate={handleNavigate} />}
@@ -107,8 +107,8 @@ export function App() {
           <MobilePageNav activeSection={activeSection} onNavigate={handleNavigate} />
         </main>
       ) : (
-        /* Desktop: Unified continuous scrolling view */
-        <main className="w-full flex flex-col">
+        /* Desktop: Unified continuous scrolling view (Beautiful on desktop & mobile desktop mode) */
+        <main className="w-full flex flex-col overflow-x-hidden">
           <HeroSection onNavigate={handleNavigate} />
           <AboutSection onNavigate={handleNavigate} />
           <ProjectsSection onNavigate={handleNavigate} />

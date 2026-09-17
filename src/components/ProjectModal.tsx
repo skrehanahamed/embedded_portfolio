@@ -56,16 +56,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
   const allSkills = Array.from(new Set([...project.tags, ...project.fullDetails.tools]));
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 lg:p-6 overflow-hidden animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[100] flex items-start sm:items-center justify-center p-2.5 pt-2.5 sm:p-4 lg:p-6 overflow-x-hidden overflow-y-auto animate-in fade-in duration-200">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity"
         onClick={onClose}
       />
 
-      {/* Modern Responsive Modal Dialog (Centered floating dialog on mobile & desktop) */}
+      {/* Modern Responsive Modal Dialog (Top-anchored on mobile, centered on desktop) */}
       <div
-        className="relative w-full max-w-2xl lg:max-w-3xl rounded-2xl overflow-hidden z-10 shadow-[0_25px_80px_rgba(0,0,0,0.9)] h-[88vh] sm:h-auto max-h-[88vh] sm:max-h-[90vh] flex flex-col border border-sky-500/30 my-auto"
+        className="relative w-full max-w-2xl lg:max-w-3xl rounded-2xl overflow-hidden z-10 shadow-[0_25px_80px_rgba(0,0,0,0.9)] max-h-[93vh] sm:max-h-[90vh] flex flex-col border border-sky-500/30 mt-0 sm:my-auto overflow-x-hidden"
         style={{
           background: 'linear-gradient(180deg, #09121E 0%, #050B13 50%, #03060B 100%)',
           boxShadow: 'inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 25px 80px rgba(0, 0, 0, 0.85)',
@@ -125,8 +125,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
         </div>
 
-        {/* Scrollable Content Body with smooth touch scrolling */}
-        <div className="p-3.5 sm:p-6 overflow-y-auto overscroll-contain space-y-3.5 sm:space-y-4 custom-scrollbar flex-1">
+        {/* Scrollable Content Body with smooth vertical-only touch scrolling */}
+        <div className="p-3.5 sm:p-6 overflow-y-auto overflow-x-hidden overscroll-contain space-y-3.5 sm:space-y-4 custom-scrollbar flex-1 touch-pan-y break-words">
           {/* Visual Snapshot (Compact on mobile so project info is immediately visible) */}
           <div className="relative w-full h-24 sm:h-44 lg:h-52 rounded-xl overflow-hidden bg-[#020508] border border-white/[0.08] shadow-inner shrink-0">
             <img

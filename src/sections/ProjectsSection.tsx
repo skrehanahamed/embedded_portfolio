@@ -61,7 +61,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
   return (
     <section
       id="projects"
-      className="relative w-full min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 lg:pb-3 px-4 sm:px-8 lg:px-12 2xl:px-16 bg-[#020509] flex flex-col justify-between select-none scroll-mt-16"
+      className="relative w-full max-w-full min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 lg:pb-3 px-4 sm:px-8 lg:px-12 2xl:px-16 bg-[#020509] flex flex-col justify-between select-none scroll-mt-16 overflow-x-hidden"
     >
       {/* Ambient background glow */}
       <div
@@ -69,7 +69,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
         style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full h-full flex flex-col justify-between gap-2 lg:gap-2.5">
+      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full h-full flex flex-col justify-between gap-2 lg:gap-2.5 overflow-hidden">
 
         {/* ══════════════════════════════════════════════════════
             UP PART: TOP HEADER (Borderless, Touching Upper Part)
@@ -156,7 +156,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
             MIDDLE: DYNAMIC HARDWARE-ACCELERATED PROJECT CARDS
             Smoothly fills available vertical space on M4 Mac & 4K
         ══════════════════════════════════════════════════════ */}
-        <div className="relative flex-1 min-h-0 flex flex-col justify-between py-1 lg:py-1.5">
+        <div className="relative flex-1 min-h-0 flex flex-col justify-between py-1 lg:py-1.5 overflow-hidden w-full">
           {/* Small Sleek Left Side Arrow (Borderless) */}
           {totalPages > 1 && (
             <button
@@ -173,7 +173,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
           {/* 3x2 Grid: Dynamic 2-row grid filling 100% of available height on desktop */}
           <div
             key={`${activeFilter}-${currentPage}`}
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-2.5 sm:gap-3 lg:gap-3 xl:gap-3.5 2xl:gap-4 w-full flex-1 min-h-0 ${
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-2.5 sm:gap-3 lg:gap-3 xl:gap-3.5 2xl:gap-4 w-full flex-1 min-h-0 overflow-hidden ${
               slideDir === 'right' ? 'animate-slide-right' : 'animate-slide-left'
             }`}
           >

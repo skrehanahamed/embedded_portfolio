@@ -54,34 +54,34 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
             : 'bg-transparent py-5'
         }`}
       >
-        <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between">
           {/* Left: Brand Identity */}
           <button
             onClick={() => handleNavClick('home')}
-            className="flex items-center space-x-3 text-left group focus:outline-none cursor-pointer"
+            className="flex items-center space-x-2.5 sm:space-x-3 text-left group focus:outline-none cursor-pointer shrink-0"
           >
-            <div className="text-2xl md:text-3xl font-black font-heading tracking-tight text-[#F4F7FA] group-hover:text-[#159FFF] transition-colors">
+            <div className="text-xl sm:text-2xl md:text-3xl font-black font-heading tracking-tight text-[#F4F7FA] group-hover:text-[#159FFF] transition-colors">
               SK
             </div>
             <div className="flex flex-col">
-              <span className="text-xs md:text-sm font-bold tracking-wider text-[#F4F7FA] font-heading leading-tight">
+              <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-wider text-[#F4F7FA] font-heading leading-tight">
                 REHAN AHAMED
               </span>
-              <span className="text-[8px] md:text-[9px] tracking-widest text-[#9BA8B5] font-medium uppercase font-mono-tech">
+              <span className="text-[7.5px] sm:text-[8px] md:text-[9px] tracking-widest text-[#9BA8B5] font-medium uppercase font-mono-tech">
                 EMBEDDED | AUTOMOTIVE | C++
               </span>
             </div>
           </button>
 
-          {/* Center: Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-9">
+          {/* Center: Desktop Navigation Links (Responsive spacing for 1024px / mobile desktop mode) */}
+          <div className="hidden lg:flex items-center space-x-3.5 xl:space-x-8">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`relative py-1 text-xs md:text-sm font-medium tracking-wide transition-all duration-200 focus:outline-none cursor-pointer ${
+                  className={`relative py-1 text-xs xl:text-sm font-medium tracking-wide transition-all duration-200 focus:outline-none cursor-pointer whitespace-nowrap ${
                     isActive ? 'text-[#F4F7FA]' : 'text-[#9BA8B5] hover:text-[#F4F7FA]'
                   }`}
                 >
@@ -95,8 +95,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
           </div>
 
           {/* Right: Clean Social Icons + Compact Connect Link */}
-          <div className="hidden md:flex items-center space-x-4">
-            <div className="flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-2.5 lg:space-x-3 xl:space-x-4 shrink-0">
+            <div className="flex items-center space-x-2 lg:space-x-2.5">
               <a
                 href="https://github.com/skrehanahamed"
                 target="_blank"
@@ -126,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
 
             <button
               onClick={() => handleNavClick('contact')}
-              className="px-4 py-1.5 rounded-lg border border-[#159FFF]/40 hover:border-[#159FFF] bg-[#159FFF]/10 hover:bg-[#159FFF]/20 text-xs font-semibold text-[#F4F7FA] tracking-wide transition-all duration-200 shadow-[0_0_12px_rgba(21,159,255,0.15)] ml-2 cursor-pointer"
+              className="px-3 lg:px-4 py-1.5 rounded-lg border border-[#159FFF]/40 hover:border-[#159FFF] bg-[#159FFF]/10 hover:bg-[#159FFF]/20 text-xs font-semibold text-[#F4F7FA] tracking-wide transition-all duration-200 shadow-[0_0_12px_rgba(21,159,255,0.15)] ml-1 cursor-pointer whitespace-nowrap"
             >
               Let's Connect →
             </button>
