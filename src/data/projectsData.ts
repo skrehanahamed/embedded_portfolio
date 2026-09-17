@@ -37,7 +37,7 @@ export const projectsData: Project[] = [
     companyOrContext: "Stellantis / Marelli",
     companyLogo: "/assets/logos/stellantis.png",
     tags: ["Green Hills RTOS", "Qualcomm SA8155P", "Renesas RH850", "Android BSP", "CAN/UDS", "CAPL"],
-    category: ["ALL", "OFFICIAL", "AUTOMOTIVE", "EMBEDDED"],
+    category: ["ALL", "OFFICIAL", "INFOTAINMENT", "AUTOSAR"],
     fullDetails: {
       role: "Senior Engineer",
       clientOrContext: "L&T Technology Services / Marelli / Stellantis",
@@ -65,7 +65,7 @@ export const projectsData: Project[] = [
     companyOrContext: "Suzuki Motor Corp.",
     companyLogo: "/assets/logos/suzuki.png",
     tags: ["Infineon TRAVEO T2G", "Vector CANoe", "CAPL Scripts", "Robot Framework", "ISO 14229 UDS"],
-    category: ["ALL", "OFFICIAL", "AUTOMOTIVE", "TOOLS & AUTOMATION"],
+    category: ["ALL", "OFFICIAL", "INSTRUMENT_CLUSTER"],
     fullDetails: {
       role: "Senior Engineer",
       clientOrContext: "Marelli / Suzuki Japan",
@@ -93,7 +93,7 @@ export const projectsData: Project[] = [
     companyOrContext: "ASML Semiconductor",
     companyLogo: "/assets/logos/asml.png",
     tags: ["Modern C++11/14", "Google Bazel", "CMake", "Python Automation", "EUV Cleanroom Tooling"],
-    category: ["ALL", "OFFICIAL", "EMBEDDED", "TOOLS & AUTOMATION"],
+    category: ["ALL", "OFFICIAL", "AUTOMOTIVE_LINUX"],
     fullDetails: {
       role: "Senior Engineer",
       clientOrContext: "Alten India / ASML (Offshore)",
@@ -121,7 +121,7 @@ export const projectsData: Project[] = [
     companyOrContext: "Ford / Lincoln",
     companyLogo: "/assets/logos/ford.png",
     tags: ["AUTOSAR Classic", "Infineon TRAVEO T2G", "Vector DaVinci", "ISO 26262 ASIL-B", "MISRA C"],
-    category: ["ALL", "OFFICIAL", "AUTOMOTIVE", "AUTOSAR", "EMBEDDED"],
+    category: ["ALL", "OFFICIAL", "INSTRUMENT_CLUSTER", "AUTOSAR"],
     fullDetails: {
       role: "Project Engineer",
       clientOrContext: "Wipro / Ford Motor Company & Continental Tier-1",
@@ -149,7 +149,7 @@ export const projectsData: Project[] = [
     companyOrContext: "Volvo / Continental",
     companyLogo: "/assets/logos/volvo.png",
     tags: ["Qt 6 / QML", "C++ Backend", "Park Distance Radar", "CAN Bus Telemetry", "QNX / Android"],
-    category: ["ALL", "OFFICIAL", "AUTOMOTIVE", "HMI / UI"],
+    category: ["ALL", "OFFICIAL", "INFOTAINMENT"],
     fullDetails: {
       role: "Project Engineer",
       clientOrContext: "Wipro / Continental Automotive",
@@ -178,7 +178,7 @@ export const projectsData: Project[] = [
     companyLogo: "/assets/logos/github.png",
     githubUrl: "https://github.com/skrehanahamed/virtual-body-ecu",
     tags: ["Bare-Metal C", "ARM Cortex-M3", "QEMU Simulation", "CAN Protocol 500k", "Three.js 3D Twin"],
-    category: ["ALL", "PERSONAL", "EMBEDDED", "AUTOMOTIVE"],
+    category: ["ALL", "PERSONAL", "AUTOSAR"],
     fullDetails: {
       role: "Creator & Firmware Engineer",
       clientOrContext: "Open Source Automotive Project (GitHub)",
@@ -207,7 +207,7 @@ export const projectsData: Project[] = [
     companyLogo: "/assets/logos/github.png",
     githubUrl: "https://github.com/skrehanahamed/apex_IVI_midEnd_rasberryPi5",
     tags: ["Qt 6 Quick", "C++20", "Raspberry Pi 5", "DRM/KMS EGLFS", "Yocto Linux", "PipeWire"],
-    category: ["ALL", "PERSONAL", "AUTOMOTIVE", "HMI / UI", "EMBEDDED"],
+    category: ["ALL", "PERSONAL", "INFOTAINMENT", "AUTOMOTIVE_LINUX"],
     fullDetails: {
       role: "Lead Systems & UI Architect",
       clientOrContext: "Personal Project (GitHub)",
@@ -236,7 +236,7 @@ export const projectsData: Project[] = [
     companyLogo: "/assets/logos/github.png",
     githubUrl: "https://github.com/skrehanahamed/Apex_MidEnd_Cluster",
     tags: ["Qt 6 Quick", "C++20", "Digital Cluster", "CAN Powertrain", "60 FPS HMI", "CMake"],
-    category: ["ALL", "PERSONAL", "AUTOMOTIVE", "HMI / UI", "EMBEDDED"],
+    category: ["ALL", "PERSONAL", "INSTRUMENT_CLUSTER"],
     fullDetails: {
       role: "Lead Cockpit HMI Architect",
       clientOrContext: "Personal Project (GitHub)",
@@ -265,7 +265,7 @@ export const projectsData: Project[] = [
     companyLogo: "/assets/logos/github.png",
     githubUrl: "https://github.com/skrehanahamed/ApexECU_Cluster",
     tags: ["Qt 6.5+", "C++17", "EV Cluster", "ECU Simulator", "ADAS Radar", "CMake"],
-    category: ["ALL", "PERSONAL", "AUTOMOTIVE", "HMI / UI"],
+    category: ["ALL", "PERSONAL", "INSTRUMENT_CLUSTER"],
     fullDetails: {
       role: "Creator & Systems Engineer",
       clientOrContext: "Personal Project (GitHub)",
@@ -294,7 +294,7 @@ export const projectsData: Project[] = [
     companyLogo: "/assets/logos/github.png",
     githubUrl: "https://github.com/skrehanahamed/meta-custom-rpi5",
     tags: ["Yocto Scarthgap 5.0", "Raspberry Pi 5", "Linux 6.6 LTS", "Qt 6.7 LTS", "Docker Build", "ARM64"],
-    category: ["ALL", "PERSONAL", "EMBEDDED", "AUTOMOTIVE"],
+    category: ["ALL", "PERSONAL", "AUTOMOTIVE_LINUX"],
     fullDetails: {
       role: "Embedded Linux & BSP Architect",
       clientOrContext: "Personal Project (GitHub)",
@@ -323,7 +323,7 @@ export const projectsData: Project[] = [
     companyLogo: "/assets/logos/github.png",
     githubUrl: "https://github.com/skrehanahamed/Cpp_SpeedTest_Bazel_GTest",
     tags: ["Modern C++17", "Google Bazel 8.x", "Google Test (GTest)", "Network Benchmarks", "CI/CD"],
-    category: ["ALL", "PERSONAL", "TOOLS & AUTOMATION", "EMBEDDED"],
+    category: ["ALL", "PERSONAL", "AUTOMOTIVE_LINUX"],
     fullDetails: {
       role: "Software Engineer",
       clientOrContext: "Personal Project (GitHub)",

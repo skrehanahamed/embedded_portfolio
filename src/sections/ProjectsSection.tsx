@@ -28,50 +28,15 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
     { id: 'OFFICIAL',           label: 'Official (OEM)' },
     { id: 'PERSONAL',           label: 'Personal (GitHub)' },
     { id: 'INFOTAINMENT',       label: 'Cockpit & IVI' },
-    { id: 'INSTRUMENT_CLUSTER', label: 'Cluster' },
-    { id: 'AUTOMOTIVE_LINUX',   label: 'Yocto & RTOS' },
+    { id: 'INSTRUMENT_CLUSTER', label: 'Cluster & HIL' },
+    { id: 'AUTOSAR',            label: 'AUTOSAR & Firmware' },
+    { id: 'AUTOMOTIVE_LINUX',   label: 'Yocto & Linux' },
   ];
 
   const filteredProjects = projectsData.filter((p) => {
     if (activeFilter === 'ALL') return true;
     if (activeFilter === 'OFFICIAL') return p.projectType === 'OFFICIAL';
     if (activeFilter === 'PERSONAL') return p.projectType === 'PERSONAL';
-
-    if (activeFilter === 'INFOTAINMENT') {
-      const kw = ['cockpit', 'ivi', 'hmi', 'head unit', 'infotainment'];
-      return kw.some(
-        (k) =>
-          p.title.toLowerCase().includes(k) ||
-          p.domain.toLowerCase().includes(k) ||
-          p.subtitle.toLowerCase().includes(k) ||
-          p.tags.some((t) => t.toLowerCase().includes(k)) ||
-          p.category.includes('HMI / UI')
-      );
-    }
-
-    if (activeFilter === 'INSTRUMENT_CLUSTER') {
-      const kw = ['cluster', 'gauge', 'hil', 'traveo', 'speedometer', 'powertrain'];
-      return kw.some(
-        (k) =>
-          p.title.toLowerCase().includes(k) ||
-          p.domain.toLowerCase().includes(k) ||
-          p.subtitle.toLowerCase().includes(k) ||
-          p.tags.some((t) => t.toLowerCase().includes(k))
-      );
-    }
-
-    if (activeFilter === 'AUTOMOTIVE_LINUX') {
-      const kw = ['linux', 'yocto', 'rtos', 'bsp', 'bazel', 'qemu', 'arm', 'kernel', 'bare-metal'];
-      return kw.some(
-        (k) =>
-          p.title.toLowerCase().includes(k) ||
-          p.domain.toLowerCase().includes(k) ||
-          p.subtitle.toLowerCase().includes(k) ||
-          p.tags.some((t) => t.toLowerCase().includes(k)) ||
-          p.category.includes('EMBEDDED')
-      );
-    }
-
     return p.category.includes(activeFilter);
   });
 
