@@ -24,18 +24,31 @@ export const ScrollRail: React.FC<ScrollRailProps> = ({ activeSection, onNavigat
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    let rafId = 0;
+    let lastProgress = 0;
+
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight > 0) {
-        const progress = Math.min(1, Math.max(0, scrollY / docHeight));
-        setScrollProgress(progress);
-      }
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = 0;
+        const scrollY = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight > 0) {
+          const progress = Math.min(1, Math.max(0, scrollY / docHeight));
+          if (Math.abs(progress - lastProgress) > 0.003) {
+            lastProgress = progress;
+            setScrollProgress(progress);
+          }
+        }
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const currentIndex = Math.max(0, SECTIONS.findIndex((s) => s.id === activeSection));

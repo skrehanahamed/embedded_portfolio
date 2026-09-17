@@ -56,68 +56,68 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
   const allSkills = Array.from(new Set([...project.tags, ...project.fullDetails.tools]));
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 lg:p-6 overflow-y-auto animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 lg:p-6 overflow-hidden animate-in fade-in duration-200">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/80 backdrop-blur-xl transition-opacity"
+        className="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity"
         onClick={onClose}
       />
 
-      {/* Modern Seamless Modal Dialog with Subtle Cyan Glass Border */}
+      {/* Modern Responsive Modal Dialog (Centered floating dialog on mobile & desktop) */}
       <div
-        className="relative w-full max-w-3xl rounded-2xl overflow-hidden z-10 my-auto shadow-[0_25px_80px_rgba(0,0,0,0.9)] max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-2xl lg:max-w-3xl rounded-2xl overflow-hidden z-10 shadow-[0_25px_80px_rgba(0,0,0,0.9)] h-[88vh] sm:h-auto max-h-[88vh] sm:max-h-[90vh] flex flex-col border border-sky-500/30 my-auto"
         style={{
           background: 'linear-gradient(180deg, #09121E 0%, #050B13 50%, #03060B 100%)',
-          border: '1px solid rgba(21, 159, 255, 0.28)',
           boxShadow: 'inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 25px 80px rgba(0, 0, 0, 0.85)',
         }}
       >
-        {/* Modern Header with Border Divider */}
-        <div className="px-6 py-4 flex items-center justify-between gap-4 shrink-0 border-b border-white/[0.08] bg-[#071322]/40">
-          <div className="flex items-center gap-3 min-w-0">
-            {/* Company Logo Pill with Border */}
-            <div className="px-2.5 py-1 rounded-lg bg-white/95 border border-white/20 shadow-sm shrink-0">
+        {/* Modal Header - Compact & Crisp */}
+        <div className="px-3.5 py-3 sm:px-6 sm:py-4 flex items-center justify-between gap-3 shrink-0 border-b border-white/[0.08] bg-[#071322]/90">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            {/* Company Logo Pill */}
+            <div className="px-2 py-1 rounded-lg bg-white/95 border border-white/20 shadow-sm shrink-0">
               <img
                 src={project.companyLogo}
                 alt={project.companyOrContext}
-                className="h-3.5 max-w-[62px] object-contain"
+                className="h-3 sm:h-3.5 max-w-[54px] sm:max-w-[62px] object-contain"
+                loading="lazy"
               />
             </div>
 
             <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono-tech font-bold text-sky-400">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="text-[9.5px] sm:text-[10px] font-mono-tech font-bold text-sky-400 shrink-0">
                   PROJECT {project.id}
                 </span>
                 <span className="text-white/20">•</span>
-                <span className="text-[10px] font-mono-tech text-gray-400 uppercase tracking-wider truncate">
+                <span className="text-[9.5px] sm:text-[10px] font-mono-tech text-gray-300 uppercase tracking-wider truncate">
                   {project.domain}
                 </span>
               </div>
-              <h2 className="font-heading font-bold text-base sm:text-lg text-white leading-tight tracking-tight truncate">
+              <h2 className="font-heading font-bold text-sm sm:text-base lg:text-lg text-white leading-snug tracking-tight line-clamp-1 sm:line-clamp-2">
                 {project.title}
               </h2>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.08] hover:border-purple-400/40 text-white text-xs font-mono-tech transition-all cursor-pointer"
+                className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.08] text-white text-[11px] sm:text-xs font-mono-tech transition-all cursor-pointer"
                 title="View Code on GitHub"
               >
                 <GithubLogo className="w-3.5 h-3.5 text-purple-300" />
-                <span className="hidden sm:inline">GitHub</span>
+                <span className="hidden sm:inline">Code</span>
                 <ArrowUpRight className="w-3 h-3 opacity-60" />
               </a>
             )}
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/[0.08] border border-transparent hover:border-white/10 transition-all cursor-pointer"
+              className="p-1.5 rounded-lg text-gray-300 hover:text-white bg-white/[0.06] hover:bg-white/[0.12] transition-all cursor-pointer focus:outline-none"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -125,85 +125,88 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
         </div>
 
-        {/* Scrollable Content Body */}
-        <div className="p-6 overflow-y-auto space-y-5 custom-scrollbar">
-          {/* Visual Snapshot with Subtle Frame Border */}
-          <div className="relative w-full h-44 sm:h-56 rounded-xl overflow-hidden bg-[#020508] border border-white/[0.08] shadow-inner">
+        {/* Scrollable Content Body with smooth touch scrolling */}
+        <div className="p-3.5 sm:p-6 overflow-y-auto overscroll-contain space-y-3.5 sm:space-y-4 custom-scrollbar flex-1">
+          {/* Visual Snapshot (Compact on mobile so project info is immediately visible) */}
+          <div className="relative w-full h-24 sm:h-44 lg:h-52 rounded-xl overflow-hidden bg-[#020508] border border-white/[0.08] shadow-inner shrink-0">
             <img
               src={project.image}
               alt={project.title}
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#050B13] via-transparent to-transparent pointer-events-none" />
             
-            {/* Quick Context Strip with Borders */}
-            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono-tech text-gray-300">
-              <span className="px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-white/10 text-gray-200 shadow-sm">
+            {/* Quick Context Strip with safe wrapping */}
+            <div className="absolute bottom-1.5 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 flex flex-wrap items-center gap-1.5 text-[9.5px] sm:text-[11px] font-mono-tech text-gray-300">
+              <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-black/85 backdrop-blur-md border border-white/10 text-white shadow-sm truncate max-w-full">
                 {project.fullDetails.role} • {project.fullDetails.clientOrContext}
               </span>
-              <span className="hidden sm:inline-block px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-sky-500/20 text-sky-400 shadow-sm">
+              <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-black/85 backdrop-blur-md border border-sky-500/30 text-sky-400 shadow-sm truncate">
                 {project.hardwareTarget}
               </span>
             </div>
           </div>
 
-          {/* Overview */}
-          <div className="space-y-1.5 p-4 rounded-xl bg-white/[0.015] border border-white/[0.06]">
-            <h3 className="font-heading text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+          {/* Project Overview */}
+          <div className="space-y-1.5 p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+            <h3 className="font-heading text-xs font-bold text-white uppercase tracking-widest flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shadow-[0_0_8px_#38BDF8]" />
               <span>Project Overview</span>
             </h3>
-            <p className="text-xs sm:text-[13px] text-[#A5B6C8] leading-relaxed">
+            <p className="text-xs sm:text-[13px] text-gray-200 leading-relaxed font-normal">
               {project.fullDetails.overview}
             </p>
           </div>
 
-          {/* System Architecture with Blueprint Glass Border */}
-          <div className="space-y-1.5 p-4 rounded-xl bg-sky-950/15 border border-sky-500/20">
+          {/* System Architecture */}
+          <div className="space-y-1.5 p-3.5 sm:p-4 rounded-xl bg-sky-950/20 border border-sky-500/25">
             <h3 className="font-heading text-xs font-bold text-sky-400 uppercase tracking-widest flex items-center gap-2">
               <Cpu className="w-3.5 h-3.5 text-sky-400" />
               <span>System Architecture &amp; Data Pipeline</span>
             </h3>
-            <p className="text-xs text-gray-300 font-mono-tech leading-relaxed">
+            <p className="text-xs sm:text-[12.5px] text-gray-200 font-mono-tech leading-relaxed">
               {project.fullDetails.architecture}
             </p>
           </div>
 
-          {/* Core Engineering Contributions */}
-          <div className="space-y-2 p-4 rounded-xl bg-white/[0.015] border border-white/[0.06]">
-            <h3 className="font-heading text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+          {/* Key Engineering Solutions */}
+          <div className="space-y-2 p-3.5 sm:p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+            <h3 className="font-heading text-xs font-bold text-white uppercase tracking-widest flex items-center gap-2">
               <Layers className="w-3.5 h-3.5 text-sky-400" />
               <span>Key Responsibilities &amp; Engineering Solutions</span>
             </h3>
             <div className="space-y-2 pt-1">
               {project.fullDetails.responsibilities.map((resp, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-[12.5px] text-[#9FB0C2] leading-relaxed">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400/80 mt-1.5 shrink-0" />
+                <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-[12.5px] text-gray-300 leading-relaxed">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 mt-1.5 shrink-0" />
                   <span>{resp}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Skills & Validation Tools with Logos and Refined Borders */}
-          <div className="space-y-2.5 p-4 rounded-xl bg-white/[0.015] border border-white/[0.06]">
-            <h3 className="font-heading text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+          {/* Technologies & Tools */}
+          <div className="space-y-2 p-3.5 sm:p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+            <h3 className="font-heading text-xs font-bold text-white uppercase tracking-widest flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34D399]" />
               <span>Technologies &amp; Validation Tools</span>
             </h3>
-            <div className="flex flex-wrap gap-2 pt-1">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
               {allSkills.map((skill, idx) => {
                 const logo = getSkillLogo(skill);
                 return (
                   <div
                     key={idx}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.08] hover:border-sky-400/40 hover:bg-white/[0.06] text-xs font-mono-tech text-gray-200 transition-all cursor-default shadow-sm"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs font-mono-tech text-white transition-all cursor-default"
                   >
                     {logo && (
                       <img
                         src={logo}
                         alt={skill}
-                        className="w-4 h-4 object-contain shrink-0"
+                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain shrink-0"
+                        loading="lazy"
                       />
                     )}
                     <span>{skill}</span>
@@ -213,12 +216,22 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             </div>
           </div>
 
-          {/* Impact Statement with Soft Border */}
-          <div className="p-3.5 rounded-xl bg-emerald-950/15 border border-emerald-500/20 text-xs">
-            <div className="text-[#8899AA]">
+          {/* Business Impact */}
+          <div className="p-3 sm:p-3.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 text-xs sm:text-[12.5px]">
+            <div className="text-gray-300 leading-relaxed">
               <span className="text-emerald-400 font-bold font-mono-tech uppercase tracking-wider mr-1.5">Business Impact:</span>
-              <span className="text-gray-200">{project.fullDetails.impact}</span>
+              <span className="text-white">{project.fullDetails.impact}</span>
             </div>
+          </div>
+
+          {/* Mobile Bottom Close Button for easy thumb reach */}
+          <div className="pt-2 sm:hidden">
+            <button
+              onClick={onClose}
+              className="w-full py-2.5 rounded-xl text-xs font-heading font-bold uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 active:scale-98 transition-all cursor-pointer"
+            >
+              Close Project Details
+            </button>
           </div>
         </div>
       </div>

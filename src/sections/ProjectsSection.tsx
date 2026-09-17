@@ -61,26 +61,25 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
   return (
     <section
       id="projects"
-      className="relative w-full h-auto lg:h-[calc(100vh-4rem)] lg:max-h-[calc(100vh-4rem)] pt-14 sm:pt-16 lg:pt-0 pb-2 sm:pb-2.5 lg:pb-3 px-4 sm:px-8 lg:px-12 bg-[#020509] flex flex-col justify-between overflow-hidden select-none scroll-mt-16"
+      className="relative w-full min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 lg:pb-3 px-4 sm:px-8 lg:px-12 2xl:px-16 bg-[#020509] flex flex-col justify-between select-none scroll-mt-16"
     >
       {/* Ambient background glow */}
       <div
         className="absolute -top-32 left-1/3 w-[600px] h-[450px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.08) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-between gap-2 lg:gap-2.5">
+      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full h-full flex flex-col justify-between gap-2 lg:gap-2.5">
 
         {/* ══════════════════════════════════════════════════════
             UP PART: TOP HEADER (Borderless, Touching Upper Part)
         ══════════════════════════════════════════════════════ */}
         <div
           ref={headerRef}
-          className="reveal-left relative rounded-b-2xl overflow-hidden p-3.5 sm:p-4 lg:py-3 lg:px-6 shrink-0 -mt-px"
+          className="relative rounded-b-2xl overflow-hidden p-2.5 sm:p-4 lg:py-2.5 2xl:py-3.5 lg:px-6 shrink-0 -mt-px shadow-lg"
           style={{
-            background: 'linear-gradient(135deg, rgba(8, 16, 26, 0.85) 0%, rgba(4, 9, 16, 0.9) 100%)',
-            backdropFilter: 'blur(24px)',
-            WebkitBackdropFilter: 'blur(24px)',
+            background: 'linear-gradient(135deg, rgba(8, 16, 26, 0.95) 0%, rgba(4, 9, 16, 0.98) 100%)',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
           }}
         >
           {/* Right vehicle visual background - CLEARLY VISIBLE WITH VIBRANT TAILLIGHTS */}
@@ -90,6 +89,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
               alt="Automotive Mountain Drive"
               className="w-full h-full object-cover object-right brightness-105 contrast-110"
               draggable={false}
+              loading="lazy"
+              decoding="async"
             />
             {/* Soft fade only on the far left side */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#050C16] via-[#050C16]/50 to-transparent pointer-events-none" />
@@ -106,7 +107,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
               </div>
 
               <div className="flex flex-wrap items-baseline gap-x-2.5">
-                <h2 className="text-lg sm:text-xl lg:text-2xl font-black font-heading text-white leading-tight">
+                <h2 className="text-lg sm:text-xl lg:text-2xl 2xl:text-3xl font-black font-heading text-white leading-tight">
                   Real Projects.{' '}
                   <span
                     style={{
@@ -121,7 +122,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                 </h2>
               </div>
 
-              <p className="text-[11px] lg:text-[11.5px] text-[#9BA8B5] leading-relaxed line-clamp-1 sm:line-clamp-2">
+              <p className="hidden sm:block text-[11px] lg:text-[11.5px] 2xl:text-[13px] text-[#9BA8B5] leading-relaxed line-clamp-1 sm:line-clamp-2">
                 A showcase of my work in automotive infotainment, instrument cluster systems, and embedded software. From low-level drivers to high-level HMI, these projects reflect my passion for building smarter, safer, and better driving experiences.
               </p>
             </div>
@@ -134,7 +135,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                   <button
                     key={tab.id}
                     onClick={() => handleFilterChange(tab.id)}
-                    className={`relative py-1 text-[11px] sm:text-[12px] font-mono-tech transition-colors whitespace-nowrap cursor-pointer bg-transparent border-0 outline-none ${
+                    className={`relative py-1 text-[11px] sm:text-[12px] 2xl:text-[13px] font-mono-tech transition-colors whitespace-nowrap cursor-pointer bg-transparent border-0 outline-none ${
                       isActive
                         ? 'text-white font-bold'
                         : 'text-[#8091A2] hover:text-white font-medium'
@@ -152,23 +153,16 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
         </div>
 
         {/* ══════════════════════════════════════════════════════
-            MIDDLE: 6 COMPACT BOXES WITH SLEEK GLASS BORDER
-            Exact glass border styling matching reference image!
+            MIDDLE: DYNAMIC HARDWARE-ACCELERATED PROJECT CARDS
+            Smoothly fills available vertical space on M4 Mac & 4K
         ══════════════════════════════════════════════════════ */}
-        <div className={`relative flex-1 min-h-0 flex flex-col ${currentProjects.length < 6 ? 'justify-start pt-2' : 'justify-center my-auto'}`}>
+        <div className="relative flex-1 min-h-0 flex flex-col justify-between py-1 lg:py-1.5">
           {/* Small Sleek Left Side Arrow (Borderless) */}
           {totalPages > 1 && (
             <button
               onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
-              className="hidden md:flex absolute -left-4 lg:-left-6 z-20 w-8 h-8 rounded-full items-center justify-center text-gray-200 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed shadow-xl transition-all cursor-pointer hover:scale-110 active:scale-95"
-              style={{
-                background: 'rgba(8, 16, 26, 0.9)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                border: 'none',
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.6)',
-              }}
+              className="hidden md:flex absolute -left-4 lg:-left-6 z-20 w-8 h-8 rounded-full items-center justify-center text-gray-200 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed shadow-xl transition-all cursor-pointer hover:scale-110 active:scale-95 bg-[#08101A]/95 border border-white/10"
               title="Previous Projects"
               aria-label="Previous Projects"
             >
@@ -176,10 +170,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
             </button>
           )}
 
-          {/* 3x2 Grid: Tight, uniform row and column spacing with smooth slide transition */}
+          {/* 3x2 Grid: Dynamic 2-row grid filling 100% of available height on desktop */}
           <div
             key={`${activeFilter}-${currentPage}`}
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3 w-full ${
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-2.5 sm:gap-3 lg:gap-3 xl:gap-3.5 2xl:gap-4 w-full flex-1 min-h-0 ${
               slideDir === 'right' ? 'animate-slide-right' : 'animate-slide-left'
             }`}
           >
@@ -187,75 +181,59 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
               return (
                 <div
                   key={p.id}
-                  className="group rounded-xl lg:rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5 cursor-pointer h-[194px] sm:h-[198px] lg:h-[204px]"
+                  className="group rounded-xl lg:rounded-2xl overflow-hidden flex flex-col justify-between transition-transform duration-200 hover:-translate-y-1 cursor-pointer h-auto lg:h-full min-h-0 border border-sky-500/20 hover:border-sky-400/60 shadow-[0_4px_16px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_30px_rgba(21,159,255,0.18)]"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(8, 16, 26, 0.8) 0%, rgba(4, 9, 16, 0.9) 100%)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(21, 159, 255, 0.22)',
-                    boxShadow: 'inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 6px 20px 0 rgba(0, 0, 0, 0.35)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(21, 159, 255, 0.55)';
-                    e.currentTarget.style.boxShadow = 'inset 0 1px 0 0 rgba(21, 159, 255, 0.35), 0 10px 28px 0 rgba(21, 159, 255, 0.18)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(21, 159, 255, 0.22)';
-                    e.currentTarget.style.boxShadow = 'inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 6px 20px 0 rgba(0, 0, 0, 0.35)';
+                    background: 'linear-gradient(135deg, rgba(8, 16, 26, 0.95) 0%, rgba(4, 9, 16, 0.98) 100%)',
                   }}
                   onClick={() => setSelectedProject(p)}
                 >
                   {/* Image Header: Pure Inside Cockpit/Cluster Visual */}
-                  <div className="relative w-full h-[78px] sm:h-[82px] lg:h-[84px] shrink-0 overflow-hidden bg-[#03070D]">
+                  <div className="relative w-full h-[74px] sm:h-[80px] lg:h-[40%] xl:h-[42%] min-h-[72px] lg:min-h-[85px] shrink-0 overflow-hidden bg-[#03070D]">
                     <img
                       src={p.image}
                       alt={p.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                       draggable={false}
+                      loading="lazy"
+                      decoding="async"
                     />
                     {/* Dark gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#040912] via-transparent to-[#040912]/40 pointer-events-none" />
 
                     {/* Top Left: Authentic Company PNG Logo Pill */}
                     <div className="absolute top-1.5 left-1.5 z-10">
-                      <div
-                        className="flex items-center justify-center px-2 py-0.5 rounded-md shadow-md"
-                        style={{
-                          background: 'rgba(255, 255, 255, 0.95)',
-                          backdropFilter: 'blur(8px)',
-                          WebkitBackdropFilter: 'blur(8px)',
-                        }}
-                      >
+                      <div className="flex items-center justify-center px-2 py-0.5 rounded-md shadow-md bg-white/95 border border-white/20">
                         <img
                           src={p.companyLogo}
                           alt={p.companyOrContext}
-                          className="h-3 sm:h-3.5 max-w-[58px] object-contain"
+                          className="h-3 sm:h-3.5 2xl:h-4 max-w-[58px] 2xl:max-w-[70px] object-contain"
+                          loading="lazy"
                         />
                       </div>
                     </div>
                   </div>
 
-                  {/* Card Body: Roomy, Well-Formatted, Matching Reference Image */}
-                  <div className="p-3 sm:p-3.5 flex flex-col justify-between flex-1 min-h-0 bg-gradient-to-b from-[#060D17] to-[#040810]">
-                    <div className="space-y-1 sm:space-y-1.5">
+                  {/* Card Body: Dynamically filling remaining card height */}
+                  <div className="p-2.5 sm:p-3 lg:p-3 xl:p-3.5 2xl:p-4 flex flex-col justify-between flex-1 min-h-0 bg-gradient-to-b from-[#060D17] to-[#040810]">
+                    <div className="space-y-1">
                       {/* Top: Project Title on Left, ID on Right (Same Line) */}
                       <div className="flex items-baseline justify-between gap-2">
-                        <h3 className="font-heading font-bold text-[13.5px] sm:text-[14px] text-white group-hover:text-sky-400 transition-colors leading-snug tracking-tight truncate">
+                        <h3 className="font-heading font-bold text-[13px] sm:text-[13.5px] lg:text-[14px] xl:text-[15px] 2xl:text-[16px] text-white group-hover:text-sky-400 transition-colors leading-snug tracking-tight truncate">
                           {p.title}
                         </h3>
-                        <span className="font-mono-tech text-[11px] font-bold text-sky-400 shrink-0">
+                        <span className="font-mono-tech text-[10.5px] 2xl:text-xs font-bold text-sky-400 shrink-0">
                           {p.id}
                         </span>
                       </div>
 
-                      {/* Generous Description with Room to Breathe */}
-                      <p className="text-[#92A3B5] text-[11px] sm:text-[11.5px] leading-[1.45] line-clamp-2 sm:line-clamp-3 font-normal">
+                      {/* Description: Comfortably displays on M4 and wide displays */}
+                      <p className="text-[#92A3B5] text-[10.5px] sm:text-[11px] lg:text-[11.5px] xl:text-[12px] 2xl:text-[13px] leading-[1.45] line-clamp-2 lg:line-clamp-2 xl:line-clamp-3 font-normal">
                         {p.description}
                       </p>
                     </div>
 
                     {/* Bottom: Tags on Left, Details on Right (With hairline border and safe spacing) */}
-                    <div className="flex items-center justify-between gap-3 pt-2 border-t border-white/[0.06] min-w-0">
+                    <div className="flex items-center justify-between gap-3 pt-1.5 lg:pt-2 border-t border-white/[0.06] min-w-0">
                       <div className="flex items-center min-w-0 overflow-hidden mr-2">
                         {p.tags.slice(0, 2).map((t, idx) => (
                           <span
@@ -356,27 +334,28 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
             (Enlarged and refined with prominent road visuals)
         ══════════════════════════════════════════════════════ */}
         <div
-          className="relative rounded-2xl overflow-hidden px-5 sm:px-8 py-3.5 sm:py-4 lg:py-4.5 flex items-center justify-between gap-4 shrink-0"
+          className="relative rounded-2xl overflow-hidden px-5 sm:px-8 py-3 sm:py-3.5 2xl:py-4.5 flex items-center justify-between gap-4 shrink-0 border border-sky-500/30 shadow-[0_8px_30px_rgba(0,0,0,0.6)]"
           style={{
-            border: '1px solid rgba(21, 159, 255, 0.28)',
-            boxShadow: 'inset 0 1px 0 0 rgba(255, 255, 255, 0.18), 0 10px 36px rgba(0, 0, 0, 0.55)',
+            background: 'linear-gradient(135deg, rgba(5, 12, 20, 0.85) 0%, rgba(3, 7, 13, 0.95) 100%)',
           }}
         >
-          {/* Mountain Highway Road Background with Center Road & Mountains - Enhanced visibility */}
+          {/* Mountain Highway Road Background with Center Road & Mountains */}
           <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
             <img
               src="/assets/projects/footer_mountain_road.jpg"
               alt="Mountain Highway Road at Twilight"
-              className="w-full h-full object-cover object-[center_50%] brightness-100 contrast-110"
+              className="w-full h-full object-cover object-[center_50%] brightness-100 contrast-110 opacity-70"
               draggable={false}
+              loading="lazy"
+              decoding="async"
             />
             {/* Soft dark vignette so road & mountains shine while stats & action button stay crisp */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-[#03080F]/90" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-[#03080F]/95" />
           </div>
 
           {/* Left: Quote with Cyan Dash Underneath */}
           <div className="relative z-10 text-left">
-            <p className="font-heading italic text-xs sm:text-[14px] lg:text-[15px] font-bold text-white leading-snug drop-shadow-md">
+            <p className="font-heading italic text-xs sm:text-[14px] 2xl:text-[16px] font-bold text-white leading-snug drop-shadow-md">
               &ldquo;Small features.<br className="hidden sm:inline" /> Big journeys.&rdquo;
             </p>
             <div className="w-8 h-[2px] bg-[#159FFF] mt-1.5 rounded-full shadow-[0_0_8px_#159FFF]" />
@@ -385,28 +364,28 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
           {/* Center: Clean Prominent Stats */}
           <div className="relative z-10 flex items-center space-x-6 sm:space-x-10 text-center">
             <div>
-              <span className="block text-sm sm:text-base lg:text-lg font-black font-heading text-white leading-tight">
+              <span className="block text-sm sm:text-base 2xl:text-xl font-black font-heading text-white leading-tight">
                 11+
               </span>
-              <span className="text-[8.5px] sm:text-[9.5px] font-mono-tech text-gray-300 uppercase tracking-wider">
+              <span className="text-[8.5px] sm:text-[9.5px] 2xl:text-xs font-mono-tech text-gray-300 uppercase tracking-wider">
                 Projects Delivered
               </span>
             </div>
             <div className="w-[1px] h-6 bg-white/20" />
             <div>
-              <span className="block text-sm sm:text-base lg:text-lg font-black font-heading text-white leading-tight">
+              <span className="block text-sm sm:text-base 2xl:text-xl font-black font-heading text-white leading-tight">
                 100%
               </span>
-              <span className="text-[8.5px] sm:text-[9.5px] font-mono-tech text-gray-300 uppercase tracking-wider">
+              <span className="text-[8.5px] sm:text-[9.5px] 2xl:text-xs font-mono-tech text-gray-300 uppercase tracking-wider">
                 Passion Driven
               </span>
             </div>
             <div className="w-[1px] h-6 bg-white/20" />
             <div>
-              <span className="block text-sm sm:text-base lg:text-lg font-black font-heading text-sky-400 leading-tight">
+              <span className="block text-sm sm:text-base 2xl:text-xl font-black font-heading text-sky-400 leading-tight">
                 ∞
               </span>
-              <span className="text-[8.5px] sm:text-[9.5px] font-mono-tech text-gray-300 uppercase tracking-wider">
+              <span className="text-[8.5px] sm:text-[9.5px] 2xl:text-xs font-mono-tech text-gray-300 uppercase tracking-wider">
                 Still Building
               </span>
             </div>
@@ -418,16 +397,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
               href="https://github.com/skrehanahamed?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-[13px] font-mono-tech font-bold text-white transition-all hover:scale-[1.03] active:scale-[0.97] cursor-pointer shadow-lg"
-              style={{
-                background: 'rgba(21, 159, 255, 0.25)',
-                backdropFilter: 'blur(14px)',
-                WebkitBackdropFilter: 'blur(14px)',
-                border: '1px solid rgba(21, 159, 255, 0.55)',
-                boxShadow: '0 0 20px rgba(21, 159, 255, 0.3)',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 28px rgba(21, 159, 255, 0.55)')}
-              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 0 20px rgba(21, 159, 255, 0.3)')}
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-[13px] 2xl:text-sm font-mono-tech font-bold text-white transition-all hover:scale-[1.03] active:scale-[0.97] cursor-pointer shadow-lg bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/50 hover:border-sky-400/80 hover:shadow-[0_0_24px_rgba(21,159,255,0.4)]"
             >
               <GithubLogo className="w-4 h-4 text-sky-400" />
               <span>View More on GitHub</span>

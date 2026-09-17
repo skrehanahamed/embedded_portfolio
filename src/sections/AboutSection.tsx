@@ -93,7 +93,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
         style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl mx-auto w-full space-y-4 lg:space-y-5">
+      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full space-y-4 lg:space-y-5">
 
         {/* ══════════════════════════════════════════════════════
             TOP ROW: Portrait (left) | Bio + Darkened Highway Quote (right)

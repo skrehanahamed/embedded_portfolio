@@ -325,3 +325,34 @@
   animation: tabSlideFromLeft 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: transform, opacity;
 }
+
+/* ── Ultra-wide / 4K Proportional Scaling (3840x2160 & above) ── */
+@media (min-width: 2160px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 3200px) {
+  html {
+    font-size: 21px;
+  }
+}
+
+/* ── Mobile 1-Page Fade/Slide Transition ── */
+@keyframes mobilePageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-mobile-page {
+  animation: mobilePageFadeIn 0.26s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+

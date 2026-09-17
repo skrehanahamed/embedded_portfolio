@@ -109,7 +109,7 @@ export const ContactSection: React.FC = () => {
   return (
     <section
       id="contact"
-      className="relative w-full h-auto lg:h-[calc(100vh-4rem)] lg:max-h-[calc(100vh-4rem)] pt-14 sm:pt-16 lg:pt-1 pb-4 lg:pb-2 px-4 sm:px-6 lg:px-10 bg-[#020509] flex flex-col justify-between overflow-hidden select-none scroll-mt-16"
+      className="relative w-full flex-1 flex flex-col justify-center lg:justify-between min-h-0 lg:h-[calc(100vh-4rem)] pt-2 lg:pt-1 pb-2 sm:pb-3 px-4 sm:px-6 lg:px-10 2xl:px-14 bg-[#020509] select-none scroll-mt-16"
     >
       {/* ── BACKGROUND: Experience Image (Car on alpine road with signboard already in photo) ── */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
@@ -118,13 +118,15 @@ export const ContactSection: React.FC = () => {
           alt="Contact Mountain Highway Car"
           className="w-full h-full object-cover object-center brightness-110 contrast-110 saturate-110"
           draggable={false}
+          loading="lazy"
+          decoding="async"
         />
         {/* Heavy gradient on mobile for readability over photo, lighter on desktop */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#020509] via-[#020509]/80 md:via-[#020509]/55 lg:via-[#020509]/20 to-[#020509]/60 lg:to-transparent pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#020509]/80 via-[#020509]/30 lg:via-transparent to-[#020509]/40 pointer-events-none" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-between gap-1.5 lg:gap-2 relative z-10">
+      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full flex-1 flex flex-col justify-center my-auto gap-3 lg:gap-2.5 relative z-10">
         
         {/* ══════════════════════════════════════════════════════
             1. TOP HEADER (Title, Philosophy, Highway Sign)
@@ -132,7 +134,7 @@ export const ContactSection: React.FC = () => {
         <div ref={headerRef} className="reveal flex items-start justify-between gap-4 pt-1 flex-shrink-0">
           <div className="space-y-0.5 max-w-xl">
             <div className="flex items-center space-x-2 text-[8.5px] font-mono-tech text-sky-400 font-semibold uppercase tracking-[0.22em]">
-              <span>/ 05</span>
+              <span>/ 06</span>
               <span className="w-5 h-[1px] bg-sky-400/60" />
               <span>CONTACT</span>
             </div>
@@ -149,7 +151,7 @@ export const ContactSection: React.FC = () => {
                 Something Great.
               </span>
             </h2>
-            <p className="text-[10px] lg:text-[10.5px] text-[#9BA8B5] leading-snug line-clamp-2">
+            <p className="hidden sm:block text-[10px] lg:text-[10.5px] text-[#9BA8B5] leading-snug line-clamp-2">
               I'm always open to discussing new opportunities, interesting projects, collaborations, or just having a conversation about automotive technology. Feel free to reach out — I'll get back to you as soon as possible!
             </p>
           </div>
@@ -167,26 +169,27 @@ export const ContactSection: React.FC = () => {
         </div>
 
         {/* ══════════════════════════════════════════════════════
-            2. MIDDLE CORE CONTENT (5 Contact Cards + Glass Form)
+            2. MIDDLE CORE CONTENT (Centered on Mobile & Desktop)
         ══════════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-4 flex-1 min-h-0 items-start lg:items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 w-full my-auto items-center">
           
-          {/* Left: Contact Info Cards — horizontal scroll on mobile, stack on desktop */}
-          <div ref={cardsRef} className="reveal-left lg:col-span-4 xl:col-span-4 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-2 lg:gap-1.5 h-auto lg:h-full lg:max-h-[380px] pb-1 lg:pb-0 no-scrollbar">
+          {/* Left: Contact Info Cards — 2-col responsive grid on mobile, vertical stack on desktop */}
+          <div ref={cardsRef} className="reveal-left col-span-1 lg:col-span-5 xl:col-span-4 grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-col gap-2 lg:gap-1.5 w-full">
             {contactList.map((item, idx) => {
+              const isFullWidthOnMobile = idx === 4;
               const Content = (
-                <div className="flex items-center space-x-2.5 p-2 sm:p-2.5 rounded-xl bg-black/45 backdrop-blur-md border border-white/[0.08] hover:border-sky-500/40 hover:bg-black/60 transition-all duration-200 group shadow-sm">
-                  <div className="w-8 h-8 rounded-lg bg-sky-950/80 border border-sky-500/30 flex items-center justify-center flex-shrink-0 shadow-sm group-hover:border-sky-400 transition-colors">
+                <div className="flex items-center space-x-2.5 p-2 sm:p-2.5 rounded-xl bg-black/55 backdrop-blur-md border border-white/[0.08] hover:border-sky-500/40 hover:bg-black/70 transition-all duration-200 group shadow-sm h-full">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-sky-950/80 border border-sky-500/30 flex items-center justify-center flex-shrink-0 shadow-sm group-hover:border-sky-400 transition-colors">
                     {item.icon}
                   </div>
                   <div className="min-w-0 overflow-hidden">
-                    <span className="text-[9px] font-mono-tech uppercase tracking-wider text-gray-400 block font-semibold leading-none">
+                    <span className="text-[8.5px] sm:text-[9px] font-mono-tech uppercase tracking-wider text-gray-400 block font-semibold leading-none">
                       {item.label}
                     </span>
-                    <span className="text-[11.5px] sm:text-xs font-semibold text-white group-hover:text-sky-300 transition-colors truncate block leading-snug">
+                    <span className="text-[11px] sm:text-xs font-semibold text-white group-hover:text-sky-300 transition-colors truncate block leading-snug">
                       {item.value}
                     </span>
-                    <span className="text-[9px] text-[#8696A7] truncate block leading-none">
+                    <span className="hidden sm:block text-[9px] text-[#8696A7] truncate leading-none">
                       {item.subtext}
                     </span>
                   </div>
@@ -199,19 +202,19 @@ export const ContactSection: React.FC = () => {
                   href={item.href}
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel="noopener noreferrer"
-                  className="block cursor-pointer flex-shrink-0 min-w-[220px] sm:min-w-[240px] lg:min-w-0 w-full"
+                  className={`block cursor-pointer w-full ${isFullWidthOnMobile ? 'col-span-2 sm:col-span-1' : ''}`}
                 >
                   {Content}
                 </a>
               ) : (
-                <div key={idx} className="flex-shrink-0 min-w-[220px] sm:min-w-[240px] lg:min-w-0 w-full">{Content}</div>
+                <div key={idx} className={`w-full ${isFullWidthOnMobile ? 'col-span-2 sm:col-span-1' : ''}`}>{Content}</div>
               );
             })}
           </div>
 
-          {/* Center: Glass Contact Form */}
-          <div ref={formRef} className="reveal-right col-span-1 lg:col-span-6 xl:col-span-5 h-full lg:max-h-[380px] flex flex-col justify-between" style={{'--delay': '100ms'} as React.CSSProperties}>
-            <div className="rounded-2xl p-3.5 sm:p-4 border border-white/[0.05] shadow-xl h-full flex flex-col justify-between relative overflow-hidden bg-black/20 backdrop-blur-sm">
+          {/* Center / Right: Glass Contact Form */}
+          <div ref={formRef} className="reveal-right col-span-1 lg:col-span-7 xl:col-span-5 w-full flex flex-col justify-between" style={{'--delay': '100ms'} as React.CSSProperties}>
+            <div className="rounded-2xl p-3.5 sm:p-4 border border-white/[0.08] shadow-xl h-full flex flex-col justify-between relative overflow-hidden bg-black/40 backdrop-blur-md">
               {/* Top Accent Line — shimmer */}
               <div className="absolute top-0 left-0 right-0 h-[1.5px] animate-shimmer-line" />
 
@@ -265,7 +268,7 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 {/* Row 3: Message */}
-                <div className="relative flex-1 min-h-[70px]">
+                <div className="relative flex-1 min-h-[65px] sm:min-h-[75px]">
                   <FileEdit className="w-3.5 h-3.5 text-gray-400 absolute left-2.5 top-2.5 pointer-events-none" />
                   <textarea
                     name="message"
@@ -310,8 +313,8 @@ export const ContactSection: React.FC = () => {
 
         </div>
 
-        {/* ══ FOOTER BAR (integrated — no overflow) ══ */}
-        <div className="flex-shrink-0 border-t border-white/[0.07] pt-1.5 pb-0.5 flex items-center justify-between gap-3">
+        {/* ══ FOOTER BAR (Desktop only — on mobile MobilePageNav provides navigation) ══ */}
+        <div className="hidden lg:flex flex-shrink-0 border-t border-white/[0.07] pt-1.5 pb-0.5 items-center justify-between gap-3">
           {/* Brand */}
           <div className="flex items-center space-x-1.5">
             <span className="text-sm font-black text-white tracking-wider font-heading">SK</span>

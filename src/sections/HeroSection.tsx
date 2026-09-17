@@ -28,9 +28,10 @@ function useCountUp(target: number, delay = 300) {
 /* ─────────────────────────────────────────────────────────────
    SHOOTING STARS  — canvas confined to top 45% (sky region)
 ───────────────────────────────────────────────────────────── */
-const ShootingStars: React.FC = () => {
+const ShootingStars: React.FC<{ active?: boolean }> = ({ active = true }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
+    if (!active) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -42,7 +43,7 @@ const ShootingStars: React.FC = () => {
       canvas.height = canvas.offsetHeight;
     };
     resize();
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", resize, { passive: true });
 
     type Star = {
       x: number; y: number;
@@ -55,23 +56,22 @@ const ShootingStars: React.FC = () => {
       active: boolean;
     };
 
-    const MAX = 5;
+    const MAX = 4;
     const mkStar = (): Star => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height * 0.5,   // sky top-half only
-      len: Math.random() * 90 + 50,
-      speed: Math.random() * 3.5 + 2.5,
+      x: Math.random() * (canvas.width || 800),
+      y: Math.random() * (canvas.height || 400) * 0.5,   // sky top-half only
+      len: Math.random() * 80 + 40,
+      speed: Math.random() * 3 + 2,
       angle: (Math.PI / 180) * (30 + Math.random() * 20), // 30–50° downward
       alpha: 0,
       life: 0,
-      maxLife: Math.floor(Math.random() * 55 + 45),
+      maxLife: Math.floor(Math.random() * 50 + 40),
       active: true,
     });
 
     const stars: Star[] = [];
-    // Stagger initial spawns so they don't all fire at once
     let spawnTimer = 0;
-    const SPAWN_INTERVAL = 90; // frames between new stars
+    const SPAWN_INTERVAL = 100;
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -122,7 +122,7 @@ const ShootingStars: React.FC = () => {
 
         if (s.life >= s.maxLife) {
           stars.splice(i, 1);
-          spawnTimer = SPAWN_INTERVAL - 15; // spawn next soon
+          spawnTimer = SPAWN_INTERVAL - 15;
         }
       });
 
@@ -130,7 +130,7 @@ const ShootingStars: React.FC = () => {
     };
     draw();
     return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
-  }, []);
+  }, [active]);
 
   // Only covers the sky region: top-left where clouds actually are
   return (
@@ -153,6 +153,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const [mounted, setMounted] = useState(false);
+  const [inView, setInView] = useState(true);
   const heroRef = useRef<HTMLElement>(null);
 
   /* mount trigger */
@@ -161,24 +162,62 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
     return () => clearTimeout(t);
   }, []);
 
-  /* GPU parallax via CSS vars + rAF LERP */
+  /* Pause animations when hero is off-screen */
   useEffect(() => {
-    let raf: number, tx = 0, ty = 0, cx = 0, cy = 0;
+    const el = heroRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  /* GPU parallax via CSS vars + rAF LERP (Only when inView & mouse is moving) */
+  useEffect(() => {
+    if (!inView) return;
+    // Disable on touch devices
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
+    let raf = 0;
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+    let isRunning = false;
+
+    const loop = () => {
+      const dx = tx - cx;
+      const dy = ty - cy;
+      cx += dx * 0.055;
+      cy += dy * 0.055;
+
+      heroRef.current?.style.setProperty("--mx", cx.toFixed(4));
+      heroRef.current?.style.setProperty("--my", cy.toFixed(4));
+
+      // Settle and stop loop when close enough to target
+      if (Math.abs(dx) > 0.0003 || Math.abs(dy) > 0.0003) {
+        raf = requestAnimationFrame(loop);
+      } else {
+        isRunning = false;
+      }
+    };
+
     const onMove = (e: MouseEvent) => {
       tx = (e.clientX / window.innerWidth - 0.5) * 2;
       ty = (e.clientY / window.innerHeight - 0.5) * 2;
+      if (!isRunning) {
+        isRunning = true;
+        raf = requestAnimationFrame(loop);
+      }
     };
-    const loop = () => {
-      cx += (tx - cx) * 0.055;
-      cy += (ty - cy) * 0.055;
-      heroRef.current?.style.setProperty("--mx", cx.toFixed(4));
-      heroRef.current?.style.setProperty("--my", cy.toFixed(4));
-      raf = requestAnimationFrame(loop);
-    };
+
     window.addEventListener("mousemove", onMove, { passive: true });
-    raf = requestAnimationFrame(loop);
-    return () => { window.removeEventListener("mousemove", onMove); cancelAnimationFrame(raf); };
-  }, []);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, [inView]);
 
   const domains = ["AUTOSAR", "HMI / IVI", "INSTRUMENT CLUSTER", "VEHICLE NETWORKS", "DIAGNOSTICS", "VALIDATION & TESTING"];
 
@@ -226,13 +265,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
       <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-r from-[#02070D]/78 via-transparent to-[#02070D]/18" />
 
       {/* ── SHOOTING STARS (sky region only) ── */}
-      <ShootingStars />
+      <ShootingStars active={inView} />
 
       {/* ── NAVBAR SPACER ── */}
       <div className="h-[72px] flex-shrink-0 z-10" />
 
       {/* ════════ MAIN LAYOUT ════════ */}
-      <div className="relative z-10 flex-1 flex flex-col max-w-[1400px] mx-auto w-full px-6 md:px-10 lg:px-14">
+      <div className="relative z-10 flex-1 flex flex-col max-w-[1400px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full px-6 md:px-10 lg:px-14">
 
         {/* UPPER ROW */}
         <div className="flex items-start justify-between gap-4 pt-3 flex-1">

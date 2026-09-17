@@ -528,26 +528,24 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative w-full h-auto lg:h-[calc(100vh-4rem)] lg:max-h-[calc(100vh-4rem)] pt-14 sm:pt-16 lg:pt-0 pb-2 sm:pb-2.5 px-3 sm:px-6 lg:px-10 bg-[#020509] flex flex-col justify-between overflow-y-auto lg:overflow-hidden select-none scroll-mt-16"
+      className="relative w-full min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 px-3 sm:px-6 lg:px-10 2xl:px-14 bg-[#020509] flex flex-col justify-between select-none scroll-mt-16"
     >
       {/* Ambient background glow */}
       <div
         className="absolute -top-32 left-1/3 w-[600px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.08) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-between gap-1.5 sm:gap-2">
+      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full h-full flex flex-col justify-between gap-1.5 sm:gap-2">
         
         {/* ══════════════════════════════════════════════════════
             TOP HEADER (Single Tab, Borderless, Full-Span Car Background Like Experience)
         ══════════════════════════════════════════════════════ */}
         <div
-          className="relative rounded-b-2xl overflow-hidden p-3 sm:p-3.5 lg:py-3 lg:px-6 shrink-0 -mt-px shadow-lg"
+          className="relative rounded-b-2xl overflow-hidden p-3 sm:p-3.5 lg:py-2.5 2xl:py-3.5 lg:px-6 shrink-0 -mt-px shadow-lg"
           style={{
-            background: 'linear-gradient(135deg, rgba(8, 16, 26, 0.85) 0%, rgba(4, 9, 16, 0.9) 100%)',
-            backdropFilter: 'blur(24px)',
-            WebkitBackdropFilter: 'blur(24px)',
-            border: 'none',
+            background: 'linear-gradient(135deg, rgba(8, 16, 26, 0.95) 0%, rgba(4, 9, 16, 0.98) 100%)',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
           }}
         >
           {/* Full-width vehicle visual background - Spans the entire upper container */}
