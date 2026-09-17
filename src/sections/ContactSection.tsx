@@ -109,7 +109,7 @@ export const ContactSection: React.FC = () => {
   return (
     <section
       id="contact"
-      className="relative w-full flex-1 flex flex-col justify-center lg:justify-between min-h-0 lg:h-[calc(100vh-4rem)] pt-2 lg:pt-1 pb-2 sm:pb-3 px-4 sm:px-6 lg:px-10 2xl:px-14 bg-[#020509] select-none scroll-mt-16"
+      className="relative w-full min-h-[calc(100vh-4rem)] h-auto py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-10 2xl:px-14 bg-[#020509] flex flex-col justify-between select-none scroll-mt-20 border-t border-white/[0.04]"
     >
       {/* ── BACKGROUND: Experience Image (Car on alpine road with signboard already in photo) ── */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
@@ -126,7 +126,7 @@ export const ContactSection: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#020509]/80 via-[#020509]/30 lg:via-transparent to-[#020509]/40 pointer-events-none" />
       </div>
 
-      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full flex-1 flex flex-col justify-center my-auto gap-3 lg:gap-2.5 relative z-10">
+      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full flex-1 flex flex-col justify-between gap-6 lg:gap-8 relative z-10">
         
         {/* ══════════════════════════════════════════════════════
             1. TOP HEADER (Title, Philosophy, Highway Sign)

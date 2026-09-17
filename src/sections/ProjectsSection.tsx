@@ -61,7 +61,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
   return (
     <section
       id="projects"
-      className="relative w-full max-w-full min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 lg:pb-3 px-4 sm:px-8 lg:px-12 2xl:px-16 bg-[#020509] flex flex-col justify-between select-none scroll-mt-16 overflow-x-hidden"
+      className="relative w-full max-w-full min-h-[calc(100vh-4rem)] h-auto py-8 sm:py-10 lg:py-12 px-4 sm:px-8 lg:px-12 2xl:px-16 bg-[#020509] flex flex-col justify-between select-none scroll-mt-20 border-t border-white/[0.04] overflow-x-hidden"
     >
       {/* Ambient background glow */}
       <div

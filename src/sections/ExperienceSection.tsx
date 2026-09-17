@@ -33,7 +33,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
   return (
     <section
       id="experience"
-      className="relative w-full min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 lg:pb-3 px-4 sm:px-8 lg:px-12 2xl:px-16 bg-[#02060A] flex flex-col justify-between select-none scroll-mt-16"
+      className="relative w-full min-h-[calc(100vh-4rem)] h-auto py-8 sm:py-10 lg:py-12 px-4 sm:px-8 lg:px-12 2xl:px-16 bg-[#02060A] flex flex-col justify-between select-none scroll-mt-20 border-t border-white/[0.04]"
     >
       {/* Ambient background glow */}
       <div

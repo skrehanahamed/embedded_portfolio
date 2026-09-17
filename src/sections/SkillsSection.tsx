@@ -528,7 +528,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative w-full min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] pt-1 sm:pt-2 lg:pt-0 pb-2 sm:pb-2.5 px-3 sm:px-6 lg:px-10 2xl:px-14 bg-[#020509] flex flex-col justify-between select-none scroll-mt-16"
+      className="relative w-full min-h-[calc(100vh-4rem)] h-auto py-10 sm:py-14 lg:py-14 px-3 sm:px-6 lg:px-10 2xl:px-14 bg-[#020509] flex flex-col justify-between select-none scroll-mt-20 border-t border-white/[0.04]"
     >
       {/* Ambient background glow */}
       <div
@@ -536,7 +536,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
         style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full h-full flex flex-col justify-between gap-1.5 sm:gap-2">
+      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full flex-1 flex flex-col justify-between gap-3 sm:gap-4">
         
         {/* ══════════════════════════════════════════════════════
             TOP HEADER (Single Tab, Borderless, Full-Span Car Background Like Experience)
