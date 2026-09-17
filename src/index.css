@@ -59,57 +59,13 @@
 
 /* ══════════════════════════════════════════════════════
    PROPORTIONAL SCALING FOR ALL SCREEN SIZES
-   - 4K UHD displays (3200px+): 1.75x proportional zoom (matches user's 175% browser zoom)
-   - 2K / QHD displays (2400px - 3199px): 1.33x scale for comfortable large-screen reading
-   - MacBook 14" & 1080p (1400px - 2399px): 1.0x baseline (perfect natural rendering)
-   - 720p / Laptops (height <= 820px): Adaptive height to prevent frame squishing & overlap
+   - MacBook & 2K / 1080p: Baseline 1.0x (optimal natural rendering & 1-page fit)
+   - 4K UHD (3500px+): 1.75x proportional zoom (matches user's 175% browser zoom)
 ══════════════════════════════════════════════════════ */
-@media (min-width: 3200px) {
-  /* 4K UHD displays (3840x2160) — 1.75x proportional zoom */
+@media (min-width: 3500px) {
+  /* 4K UHD displays (3840x2160) — scales up cleanly from MacBook baseline */
   #root {
     zoom: 1.75;
-  }
-  /* Zoom compensation for viewport units: ensures 1-screen sections fit perfectly within viewport height */
-  #home {
-    height: calc(100vh / 1.75) !important;
-    min-height: calc(100vh / 1.75) !important;
-  }
-  #about, #projects, #experience, #skills, #contact {
-    min-height: calc(100vh / 1.75 - 4rem) !important;
-    height: calc(100vh / 1.75 - 4rem) !important;
-  }
-}
-
-@media (min-width: 2400px) and (max-width: 3199px) {
-  /* 2K / QHD displays (2560x1440) — 1.33x proportional scale */
-  #root {
-    zoom: 1.33;
-  }
-  /* Zoom compensation for viewport units */
-  #home {
-    height: calc(100vh / 1.33) !important;
-    min-height: calc(100vh / 1.33) !important;
-  }
-  #about, #projects, #experience, #skills, #contact {
-    min-height: calc(100vh / 1.33 - 4rem) !important;
-    height: calc(100vh / 1.33 - 4rem) !important;
-  }
-}
-
-@media (max-height: 820px) and (min-width: 768px) {
-  /* Low-height viewports (720p / 1366x768 / compact laptop windows):
-     Allow sections to expand naturally to full content height with zero overlapping frames */
-  #about, #projects, #experience, #skills, #contact {
-    height: auto !important;
-    min-height: calc(100vh - 4rem) !important;
-    overflow: visible !important;
-    padding-top: 1.5rem !important;
-    padding-bottom: 2rem !important;
-  }
-  #home {
-    height: auto !important;
-    min-height: 100vh !important;
-    padding-bottom: 1.5rem !important;
   }
 }
 
