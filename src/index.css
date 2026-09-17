@@ -58,39 +58,49 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   PROPORTIONAL PERCENTAGE-BASED SCALING
-   - Baseline: MacBook Air M5 (~1512px) & 1080p (~1920px) = 1.0x (100% default)
-   - 4K UHD (3500px+): 1.75x (175%) as verified
-   - 3K / Ultrawide (2800px - 3499px): 1.45x (145%)
-   - 2K / 1440p (2100px - 2799px): 1.25x (125%)
-   - Compact Laptops / 720p (1024px - 1399px): 0.85x (85%) to match MacBook fit
-   - Mobile (< 1024px): 1.0x default (untouched)
+   TRUE FLUID RESPONSIVE SYSTEM (NO ARTIFICIAL ZOOM)
+   - MacBook Air M5 (~1512px) & 1080p (~1920px): Baseline (1-page fit, untouched)
+   - 4K UHD & Large Displays (2500px+): Native expansive layout & scaled typography
+   - Compact Displays (720p / 1280x720): Compact vertical rhythm, zero frame overlap
+   - Mobile (< 1024px): 100% untouched dedicated mobile experience
 ══════════════════════════════════════════════════════ */
-@media (min-width: 1024px) and (max-width: 1399px) {
-  /* 720p (1280x720) & 1366x768 — scaled to 85% so 1-page sections fit comfortably without overlap */
-  #root {
-    zoom: 0.85;
+
+/* ── 4K & Ultra-Wide Native Scaling (No Fake Zoom) ── */
+@media (min-width: 2500px) and (max-width: 3399px) {
+  :root {
+    font-size: 18.5px;
   }
 }
 
-@media (min-width: 2100px) and (max-width: 2799px) {
-  /* 2K / 1440p displays (2560x1440) — proportional 1.25x */
-  #root {
-    zoom: 1.25;
+@media (min-width: 3400px) {
+  /* 4K UHD displays (3840x2160) */
+  :root {
+    font-size: 24px;
+  }
+  
+  /* Expansive widescreen container scaling so 4K doesn't look narrow */
+  .max-w-7xl,
+  .max-w-\[1400px\],
+  .max-w-\[1440px\] {
+    max-width: 2400px !important;
   }
 }
 
-@media (min-width: 2800px) and (max-width: 3499px) {
-  /* 3K & ultrawide displays — proportional 1.45x */
-  #root {
-    zoom: 1.45;
+/* ── 720p & Compact Laptop Displays (Height <= 780px, Width >= 1024px) ── */
+@media (max-height: 780px) and (min-width: 1024px) {
+  :root {
+    font-size: 13.5px;
   }
-}
 
-@media (min-width: 3500px) {
-  /* 4K UHD displays (3840x2160) — 175% zoom as requested */
-  #root {
-    zoom: 1.75;
+  /* Compact Hero height so it fits within 720p window without overflow */
+  #home {
+    min-height: 560px !important;
+  }
+
+  /* Compact section vertical rhythm to prevent frame squishing */
+  #about, #projects, #experience, #skills, #contact {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.75rem !important;
   }
 }
 
