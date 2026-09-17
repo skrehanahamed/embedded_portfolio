@@ -59,43 +59,14 @@
 
 /* ══════════════════════════════════════════════════════
    PROPORTIONAL SCALING FOR ALL SCREEN SIZES
-   - 720p / Laptops: 1.0 (natural 100% height, zero section overlap)
-   - 1080p FHD: 1.15x scale (larger typography, cards, and buttons)
-   - 2K / 1440p: 1.33x scale (user verified optimal balance)
-   - 4K UHD: 1.60x scale (grand, prominent scale without clipping)
+   - MacBook & 2K / 1080p: Baseline 1.0x (optimal natural rendering)
+   - 4K UHD (3500px+): ~1.35x proportional scale for 4K displays
+   - 720p / Laptops: Natural 1.0x scale with zero frame overlap
 ══════════════════════════════════════════════════════ */
-@media (min-width: 1024px) and (max-width: 1399px) {
-  /* 720p & Compact Laptops (1280x720) — natural 1.0 scale to eliminate overlapping frames */
-  #root {
-    zoom: 1.0;
-  }
-}
-
-@media (min-width: 1400px) and (max-width: 1999px) {
-  /* 1080p displays (1920x1080) — scaled up so elements feel rich and prominent */
-  #root {
-    zoom: 1.15;
-  }
-}
-
-@media (min-width: 2000px) and (max-width: 2799px) {
-  /* 2K / 1440p displays (2560x1440) — approved 1.33x scale */
-  #root {
-    zoom: 1.33;
-  }
-}
-
-@media (min-width: 2800px) and (max-width: 3499px) {
-  /* 3K / Ultra-wide displays */
-  #root {
-    zoom: 1.45;
-  }
-}
-
 @media (min-width: 3500px) {
-  /* 4K UHD displays (3840x2160) — balanced 1.6x scale */
+  /* 4K UHD displays (3840x2160) — scales up cleanly from MacBook baseline */
   #root {
-    zoom: 1.6;
+    zoom: 1.35;
   }
 }
 
