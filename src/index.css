@@ -58,12 +58,37 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   PROPORTIONAL SCALING FOR ALL SCREEN SIZES
-   - MacBook & 2K / 1080p: Baseline 1.0x (optimal natural rendering & 1-page fit)
-   - 4K UHD (3500px+): 1.75x proportional zoom (matches user's 175% browser zoom)
+   PROPORTIONAL PERCENTAGE-BASED SCALING
+   - Baseline: MacBook Air M5 (~1512px) & 1080p (~1920px) = 1.0x (100% default)
+   - 4K UHD (3500px+): 1.75x (175%) as verified
+   - 3K / Ultrawide (2800px - 3499px): 1.45x (145%)
+   - 2K / 1440p (2100px - 2799px): 1.25x (125%)
+   - Compact Laptops / 720p (1024px - 1399px): 0.85x (85%) to match MacBook fit
+   - Mobile (< 1024px): 1.0x default (untouched)
 ══════════════════════════════════════════════════════ */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  /* 720p (1280x720) & 1366x768 — scaled to 85% so 1-page sections fit comfortably without overlap */
+  #root {
+    zoom: 0.85;
+  }
+}
+
+@media (min-width: 2100px) and (max-width: 2799px) {
+  /* 2K / 1440p displays (2560x1440) — proportional 1.25x */
+  #root {
+    zoom: 1.25;
+  }
+}
+
+@media (min-width: 2800px) and (max-width: 3499px) {
+  /* 3K & ultrawide displays — proportional 1.45x */
+  #root {
+    zoom: 1.45;
+  }
+}
+
 @media (min-width: 3500px) {
-  /* 4K UHD displays (3840x2160) — scales up cleanly from MacBook baseline */
+  /* 4K UHD displays (3840x2160) — 175% zoom as requested */
   #root {
     zoom: 1.75;
   }
