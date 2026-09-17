@@ -19,12 +19,17 @@ export const CRITICAL_SITE_ASSETS = [
   '/assets/hero/cluster_hud.png',
   '/assets/hero/wireframe_car_transparent.png',
 
-  // 3. About Section Images
+  // 3. About Section Images & Tech Logos
   '/assets/about/mountain_highway.jpg',
   '/assets/about/mountain_highway_light.jpg',
   '/assets/about/trait_semiconductor.jpg',
   '/assets/about/trait_problem_solver.jpg',
   '/assets/about/trait_future_ready.jpg',
+  '/assets/logos/autosar_light.svg',
+  '/assets/logos/vector_light.svg',
+  '/assets/logos/canoe_light.svg',
+  '/assets/logos/trace32_light.svg',
+  '/assets/logos/github_light.svg',
 
   // 4. Experience Section Visuals
   '/assets/experience/image.png',

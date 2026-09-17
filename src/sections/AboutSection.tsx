@@ -25,29 +25,29 @@ function useFadeIn(threshold = 0.08) {
 }
 
 /* ── tech logo list (from resume) ── */
-const TECH: { name: string; src: string }[] = [
-  { name: 'Embedded C',      src: '/assets/logos/c.svg'              },
-  { name: 'C++11/14',        src: '/assets/logos/cpp.svg'            },
-  { name: 'Python',          src: '/assets/logos/python.svg'         },
-  { name: 'AUTOSAR',         src: '/assets/logos/autosar.svg'        },
-  { name: 'Vector',          src: '/assets/logos/vector.svg'         },
-  { name: 'CANoe',           src: '/assets/logos/canoe.svg'          },
-  { name: 'Trace32',         src: '/assets/logos/trace32.svg'        },
-  { name: 'Qt / QML',        src: '/assets/logos/qt.svg'             },
-  { name: 'Android',         src: '/assets/logos/android.svg'        },
-  { name: 'Linux / RTOS',    src: '/assets/logos/linux.svg'          },
-  { name: 'Qualcomm',        src: '/assets/logos/qualcomm.svg'       },
-  { name: 'Bazel',           src: '/assets/logos/bazel.svg'          },
-  { name: 'CMake',           src: '/assets/logos/cmake.svg'          },
-  { name: 'Docker',          src: '/assets/logos/docker.svg'         },
-  { name: 'Git',             src: '/assets/logos/git.svg'            },
-  { name: 'GitHub',          src: '/assets/logos/github.svg'         },
-  { name: 'Jenkins',         src: '/assets/logos/jenkins.svg'        },
-  { name: 'Robot Framework', src: '/assets/logos/robotframework.svg' },
-  { name: 'Infineon',        src: '/assets/logos/infineon.svg'       },
-  { name: 'Renesas',         src: '/assets/logos/renesas.svg'        },
-  { name: 'Bash',            src: '/assets/logos/bash.svg'           },
-  { name: 'VS Code',         src: '/assets/logos/vscode.svg'         },
+const TECH: { name: string; src: string; lightSrc?: string }[] = [
+  { name: 'Embedded C',      src: '/assets/logos/c.svg'                                                },
+  { name: 'C++11/14',        src: '/assets/logos/cpp.svg'                                              },
+  { name: 'Python',          src: '/assets/logos/python.svg'                                           },
+  { name: 'AUTOSAR',         src: '/assets/logos/autosar.svg', lightSrc: '/assets/logos/autosar_light.svg' },
+  { name: 'Vector',          src: '/assets/logos/vector.svg',  lightSrc: '/assets/logos/vector_light.svg'  },
+  { name: 'CANoe',           src: '/assets/logos/canoe.svg',   lightSrc: '/assets/logos/canoe_light.svg'   },
+  { name: 'Trace32',         src: '/assets/logos/trace32.svg', lightSrc: '/assets/logos/trace32_light.svg' },
+  { name: 'Qt / QML',        src: '/assets/logos/qt.svg'                                               },
+  { name: 'Android',         src: '/assets/logos/android.svg'                                          },
+  { name: 'Linux / RTOS',    src: '/assets/logos/linux.svg'                                            },
+  { name: 'Qualcomm',        src: '/assets/logos/qualcomm.svg'                                         },
+  { name: 'Bazel',           src: '/assets/logos/bazel.svg'                                            },
+  { name: 'CMake',           src: '/assets/logos/cmake.svg'                                            },
+  { name: 'Docker',          src: '/assets/logos/docker.svg'                                           },
+  { name: 'Git',             src: '/assets/logos/git.svg'                                              },
+  { name: 'GitHub',          src: '/assets/logos/github.svg',  lightSrc: '/assets/logos/github_light.svg'  },
+  { name: 'Jenkins',         src: '/assets/logos/jenkins.svg'                                          },
+  { name: 'Robot Framework', src: '/assets/logos/robotframework.svg'                                   },
+  { name: 'Infineon',        src: '/assets/logos/infineon.svg'                                         },
+  { name: 'Renesas',         src: '/assets/logos/renesas.svg'                                          },
+  { name: 'Bash',            src: '/assets/logos/bash.svg'                                             },
+  { name: 'VS Code',         src: '/assets/logos/vscode.svg'                                           },
 ];
 
 interface AboutSectionProps {
@@ -473,7 +473,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                   title={t.name}
                 >
                   <img
-                    src={t.src}
+                    src={isLight && t.lightSrc ? t.lightSrc : t.src}
                     alt={t.name}
                     className="h-5 sm:h-5.5 2xl:h-6 w-auto max-w-[56px] 2xl:max-w-[62px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-115 transition-all duration-200"
                     draggable={false}
