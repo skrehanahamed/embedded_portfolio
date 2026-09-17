@@ -64,28 +64,28 @@
 ══════════════════════════════════════════════════════ */
 @media (min-width: 1024px) and (max-width: 1399px) {
   /* 720p & Compact Laptops (1280x720, 1366x768) — gentle scale down for breathing room */
-  html {
+  #root {
     zoom: 0.88;
   }
 }
 
 @media (min-width: 2000px) and (max-width: 2799px) {
   /* 2K / 1440p displays (2560x1440) — scales up by ~1.33x */
-  html {
+  #root {
     zoom: 1.33;
   }
 }
 
 @media (min-width: 2800px) and (max-width: 3499px) {
   /* 3K / Ultra-wide displays — scales up by ~1.55x */
-  html {
+  #root {
     zoom: 1.55;
   }
 }
 
 @media (min-width: 3500px) {
   /* 4K UHD displays (3840x2160) — scales up by ~1.95x to fill display */
-  html {
+  #root {
     zoom: 1.95;
   }
 }
