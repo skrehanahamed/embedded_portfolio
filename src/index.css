@@ -34,6 +34,9 @@
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     overflow-x: hidden;
     max-width: 100vw;
     width: 100%;
@@ -59,10 +62,18 @@
 
 /* ══════════════════════════════════════════════════════
    PROPORTIONAL SCALING FOR ALL SCREEN SIZES
+   - 1366x768 displays: 90% zoom calibration
    - MacBook (Air M5 ~1440-1512px): Baseline 1.0x (1-page fit untouched)
    - 1920x1200 displays: 80% zoom calibration
    - 4K UHD (3500px+): 1.75x proportional zoom (matches user's 175% browser zoom)
  ══════════════════════════════════════════════════════ */
+@media (min-width: 1200px) and (max-width: 1400px) {
+  /* 1366x768 displays — 90% zoom */
+  #root {
+    zoom: 0.9;
+  }
+}
+
 @media (min-width: 1800px) and (max-width: 2050px) {
   /* 1920x1200 displays — 80% zoom */
   #root {
@@ -167,12 +178,14 @@
 /* Font classes */
 .font-heading {
   font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
 }
 .font-script {
   font-family: 'Alex Brush', cursive;
 }
 .font-mono-tech {
   font-family: 'JetBrains Mono', monospace;
+  font-feature-settings: 'tnum' 1, 'zero' 1;
 }
 
 /* Active Nav Indicator Glow */

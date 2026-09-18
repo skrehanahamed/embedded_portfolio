@@ -137,8 +137,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
 
                 <div className="flex flex-wrap items-baseline gap-x-2.5">
                   <h2
-                    className={`text-lg sm:text-xl lg:text-2xl font-black font-heading leading-tight ${
-                      isLight ? 'text-slate-950' : 'text-white'
+                    className={`text-[22px] sm:text-[25px] 2xl:text-[28px] font-black font-heading leading-[1.14] ${
+                      isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
                     }`}
                     style={{
                       textShadow: isLight
@@ -154,9 +154,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                 </div>
 
                 <p
-                  className={`hidden sm:block text-xs sm:text-[13px] ${
-                    isLight ? 'text-slate-900 font-medium' : 'text-[#CAD5E2] font-normal'
-                  } leading-snug line-clamp-1`}
+                  className={`hidden sm:block text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] ${
+                    isLight ? 'text-slate-800' : 'text-[#9BA8B5]'
+                  } font-medium leading-[1.55] line-clamp-1`}
                   style={{
                     textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none',
                   }}
@@ -168,7 +168,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
               {/* Right Tagline Block */}
               <div className="hidden md:flex flex-col items-end justify-center text-right space-y-0.5 relative z-10 pr-1 flex-shrink-0">
                 <div
-                  className={`flex items-center gap-1.5 text-[9.5px] sm:text-[10.5px] font-mono-tech tracking-widest ${isLight ? 'text-slate-900' : 'text-gray-200'} uppercase font-bold`}
+                  className={`flex items-center gap-1.5 text-[9.5px] sm:text-[10.5px] font-mono-tech tracking-widest ${isLight ? 'text-slate-800' : 'text-[#9BA8B5]'} uppercase font-bold`}
                   style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
                 >
                   <span>DESIGN</span>
@@ -185,10 +185,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                     DEPLOY
                   </span>
                   <span>•</span>
-                  <span className={isLight ? 'text-slate-950 font-black' : 'text-white font-black'}>SCALE</span>
+                  <span className={isLight ? 'text-slate-900 font-black' : 'text-[#F4F7FA] font-black'}>SCALE</span>
                 </div>
                 <div
-                  className={`text-xs sm:text-[13.5px] font-heading italic font-black leading-tight ${isLight ? 'text-slate-950' : 'text-white drop-shadow-md'}`}
+                  className={`text-xs sm:text-[13.5px] font-heading italic font-black leading-tight ${isLight ? 'text-slate-900' : 'text-[#F4F7FA] drop-shadow-md'}`}
                   style={{
                     textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
                   }}
@@ -215,7 +215,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                   <button
                     key={tab.id}
                     onClick={() => handleFilterChange(tab.id)}
-                    className={`px-3 py-1.5 rounded-xl text-xs sm:text-[12.5px] 2xl:text-[13px] font-mono-tech transition-all duration-200 whitespace-nowrap cursor-pointer shrink-0 border-0 ${
+                    className={`px-3 py-1.5 rounded-xl text-xs sm:text-[12.5px] 2xl:text-[13px] font-heading font-semibold tracking-wide transition-all duration-200 whitespace-nowrap cursor-pointer shrink-0 border-0 ${
                       isActive
                         ? 'bg-sky-600 text-white font-bold shadow-md shadow-sky-600/30'
                         : isLight
@@ -329,7 +329,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                       {/* Top: Project Title on Left, ID on Right (Same Line) */}
                       <div className="flex items-baseline justify-between gap-2">
                         <h3 className={`font-heading font-bold text-[13px] sm:text-[13.5px] lg:text-[14px] xl:text-[15px] 2xl:text-[16px] leading-snug tracking-tight truncate transition-colors ${
-                          isLight ? 'text-slate-900 group-hover:text-sky-600' : 'text-white group-hover:text-sky-400'
+                          isLight ? 'text-slate-900 group-hover:text-sky-600' : 'text-[#F4F7FA] group-hover:text-sky-400'
                         }`}>
                           {p.title}
                         </h3>
@@ -339,8 +339,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                       </div>
 
                       {/* Description: Comfortably displays on M4 and wide displays */}
-                      <p className={`text-[10.5px] sm:text-[11px] lg:text-[11.5px] xl:text-[12px] 2xl:text-[13px] leading-[1.45] line-clamp-2 lg:line-clamp-2 xl:line-clamp-3 font-normal ${
-                        isLight ? 'text-slate-600' : 'text-[#92A3B5]'
+                      <p className={`text-[10.5px] sm:text-[11px] lg:text-[11.5px] xl:text-[12px] 2xl:text-[12.5px] leading-[1.55] line-clamp-2 lg:line-clamp-2 xl:line-clamp-3 font-medium ${
+                        isLight ? 'text-slate-700' : 'text-[#9BA8B5]'
                       }`}>
                         {p.description}
                       </p>
@@ -480,7 +480,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
           {/* Left: Quote with Cyan Dash Underneath */}
           <div className="relative z-10 text-left">
             <p className={`font-heading italic text-xs sm:text-[14px] 2xl:text-[15px] font-black leading-snug drop-shadow-sm ${
-              isLight ? 'text-slate-950' : 'text-white'
+              isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
             }`}>
               &ldquo;Small features.<br className="hidden sm:inline" /> Big journeys.&rdquo;
             </p>
@@ -491,12 +491,12 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
           <div className="relative z-10 flex items-center space-x-5 sm:space-x-8 text-center">
             <div>
               <span className={`block text-sm sm:text-base 2xl:text-lg font-black font-heading leading-tight ${
-                isLight ? 'text-slate-900' : 'text-white'
+                isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
               }`}>
                 11+
               </span>
               <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
-                isLight ? 'text-slate-700 font-semibold' : 'text-gray-300'
+                isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Projects Delivered
               </span>
@@ -504,12 +504,12 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
             <div className={`w-[1px] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
             <div>
               <span className={`block text-sm sm:text-base 2xl:text-lg font-black font-heading leading-tight ${
-                isLight ? 'text-slate-900' : 'text-white'
+                isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
               }`}>
                 100%
               </span>
               <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
-                isLight ? 'text-slate-700 font-semibold' : 'text-gray-300'
+                isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Passion Driven
               </span>
@@ -520,7 +520,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                 ∞
               </span>
               <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
-                isLight ? 'text-slate-700 font-semibold' : 'text-gray-300'
+                isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Still Building
               </span>
@@ -533,7 +533,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
               href="https://github.com/skrehanahamed?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[12.5px] font-mono-tech font-bold transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-md text-white bg-sky-600 hover:bg-sky-500 shadow-sky-600/30 whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[12.5px] font-heading font-bold tracking-wide transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-md text-white bg-sky-600 hover:bg-sky-500 shadow-sky-600/30 whitespace-nowrap"
             >
               <GithubLogo className="w-4 h-4 text-white" />
               <span>View More on GitHub</span>

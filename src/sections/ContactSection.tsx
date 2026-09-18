@@ -153,7 +153,9 @@ export const ContactSection: React.FC = () => {
               </span>
             </div>
             <h2
-              className={`text-lg sm:text-xl lg:text-2xl font-black font-heading ${isLight ? 'text-slate-950' : 'text-white'} leading-tight`}
+              className={`text-[22px] sm:text-[25px] 2xl:text-[28px] font-black font-heading ${
+                isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
+              } leading-[1.14]`}
               style={{
                 textShadow: isLight
                   ? '0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.9)'
@@ -166,7 +168,9 @@ export const ContactSection: React.FC = () => {
               </span>
             </h2>
             <p
-              className={`hidden sm:block text-xs sm:text-[13px] ${isLight ? 'text-slate-900 font-medium' : 'text-[#CAD5E2] font-normal'} leading-snug line-clamp-1`}
+              className={`hidden sm:block text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] ${
+                isLight ? 'text-slate-800' : 'text-[#9BA8B5]'
+              } font-medium leading-[1.55] line-clamp-1`}
               style={{
                 textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none',
               }}
@@ -178,7 +182,7 @@ export const ContactSection: React.FC = () => {
           {/* Right Tagline from screenshot */}
           <div className="flex flex-col items-start sm:items-end text-left sm:text-right space-y-0.5 pr-1 flex-shrink-0">
             <div
-              className={`text-xs sm:text-[13.5px] font-heading italic font-black ${isLight ? 'text-slate-950' : 'text-white drop-shadow-md'} leading-tight`}
+              className={`text-xs sm:text-[13.5px] font-heading italic font-black ${isLight ? 'text-slate-900' : 'text-[#F4F7FA] drop-shadow-md'} leading-tight`}
               style={{
                 textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
               }}
@@ -212,13 +216,13 @@ export const ContactSection: React.FC = () => {
                     {item.icon}
                   </div>
                   <div className="min-w-0 overflow-hidden">
-                    <span className={`text-[8.5px] sm:text-[9px] font-mono-tech uppercase tracking-wider ${isLight ? 'text-slate-500' : 'text-gray-400'} block font-semibold leading-none`}>
+                    <span className={`text-[8.5px] sm:text-[9px] font-mono-tech uppercase tracking-wider ${isLight ? 'text-slate-600' : 'text-[#9BA8B5]'} block font-semibold leading-none`}>
                       {item.label}
                     </span>
-                    <span className={`text-[11px] sm:text-xs font-semibold ${isLight ? 'text-slate-900 group-hover:text-sky-600' : 'text-white group-hover:text-sky-300'} transition-colors truncate block leading-snug`}>
+                    <span className={`text-[11px] sm:text-xs font-semibold ${isLight ? 'text-slate-900 group-hover:text-sky-600' : 'text-[#F4F7FA] group-hover:text-sky-300'} transition-colors truncate block leading-snug`}>
                       {item.value}
                     </span>
-                    <span className={`hidden sm:block text-[9px] ${isLight ? 'text-slate-400' : 'text-[#8696A7]'} truncate leading-none`}>
+                    <span className={`hidden sm:block text-[9.5px] ${isLight ? 'text-slate-500 font-medium' : 'text-[#8696A7] font-medium'} truncate leading-none`}>
                       {item.subtext}
                     </span>
                   </div>
@@ -249,7 +253,7 @@ export const ContactSection: React.FC = () => {
 
               <div className={`flex items-center space-x-2 pb-2 border-b ${isLight ? 'border-slate-100' : 'border-white/[0.05]'} flex-shrink-0`}>
                 <Send className="w-3.5 h-3.5 text-sky-400" />
-                <h3 className={`font-heading font-bold text-xs sm:text-sm ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                <h3 className={`font-heading font-bold text-xs sm:text-sm ${isLight ? 'text-slate-900' : 'text-[#F4F7FA]'}`}>
                   Send a Message
                 </h3>
               </div>

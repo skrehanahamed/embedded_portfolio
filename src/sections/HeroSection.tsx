@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Shield, Layers, Building2, Cpu, ArrowRight, Globe, Compass, FileDown } from "lucide-react";
+import { Briefcase, Layers, Building2, CarFront, ArrowRight, Globe, Compass, FileDown } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
 /* ─────────────────────────────────────────────────────────────
@@ -230,10 +230,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const companiesCount= useCountUp(3,  700);
 
   const stats = [
-    { icon: Shield,   value: `${yearsCount}+`,   label: "Years Experience", section: "experience" },
-    { icon: Layers,   value: `${projectsCount}+`, label: "Projects Worked",  section: "projects"   },
-    { icon: Building2,value: `${companiesCount}`, label: "Companies",        section: "experience" },
-    { icon: Cpu,      value: "Auto & Semi",        label: "Domain Focus",    section: "skills"     },
+    { icon: Briefcase, value: `${yearsCount}+`,   label: "Years Experience", section: "experience" },
+    { icon: Layers,    value: `${projectsCount}+`, label: "Projects Worked",  section: "projects"   },
+    { icon: Building2, value: `${companiesCount}`, label: "Companies",        section: "experience" },
+    { icon: CarFront,  value: "Auto & Semi",        label: "Domain Focus",    section: "skills"     },
   ];
 
   /* stagger helper */
@@ -313,7 +313,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             <div style={fadeIn(140)}>
               <h1
                 className={`font-heading font-black text-[40px] sm:text-[50px] lg:text-[58px] xl:text-[64px] tracking-tight leading-[1.0] mt-3 ${
-                  isLight ? 'text-slate-950' : 'text-white'
+                  isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
                 }`}
                 style={{ textShadow: isLight ? "none" : "0 2px 40px rgba(2,7,13,0.55)" }}
               >
@@ -332,12 +332,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             </div>
 
             {/* Subtitle */}
-            <p style={fadeIn(220)} className={`${isLight ? 'text-slate-700 font-medium' : 'text-slate-300/90'} text-[13px] sm:text-[14px] max-w-sm mt-3 leading-relaxed`}>
+            <p style={fadeIn(220)} className={`${isLight ? 'text-slate-800' : 'text-[#9BA8B5]'} font-medium text-[13px] sm:text-[14px] max-w-sm mt-3 leading-relaxed`}>
               Building software that powers smarter, safer and more connected vehicles.
             </p>
 
             {/* Tech tags — shimmer hover */}
-            <div style={fadeIn(300)} className={`flex items-center flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono-tech tracking-wider uppercase mt-3.5 ${isLight ? 'text-slate-700 font-bold' : 'text-slate-400'}`}>
+            <div style={fadeIn(300)} className={`flex items-center flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono-tech tracking-wider uppercase mt-3.5 ${isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'}`}>
               {["C/C++", "AUTOSAR", "EMBEDDED", "HMI", "CAN"].map((tag, i, arr) => (
                 <React.Fragment key={tag}>
                   <span className="hover:text-[#159FFF] transition-colors duration-200 cursor-default">{tag}</span>
@@ -530,7 +530,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             </div>
             <div className={`hidden md:block w-px h-7 flex-shrink-0 ${isLight ? "bg-slate-300" : "bg-white/10"}`} />
             <div className="text-right flex-shrink-0">
-              <p className={`text-[12px] italic tracking-wide ${isLight ? "text-slate-950 font-black" : "text-white font-bold"}`}>
+              <p className={`text-[12px] font-heading italic tracking-wide ${isLight ? "text-slate-900 font-bold" : "text-[#F4F7FA] font-bold"}`}>
                 &ldquo;Code today.<br className="hidden sm:block" /> Cleaner roads tomorrow.&rdquo;
               </p>
               <div className="w-8 h-[2px] bg-[#159FFF] rounded-full mt-1.5 ml-auto" />
