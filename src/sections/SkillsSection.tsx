@@ -67,7 +67,7 @@ const SkillProgressBar: React.FC<{
 
   return (
     <div className="space-y-0.5 group/skill">
-      <div className="flex items-center justify-between text-[11.5px] sm:text-xs leading-none">
+      <div className="flex items-center justify-between text-[0.71875rem] sm:text-xs leading-none">
         <div className="flex items-center space-x-1.5 min-w-0">
           <div className="w-4 h-4 flex items-center justify-center flex-shrink-0">
             <SkillLogo name={name} isLight={isLight} className="w-3.5 h-3.5 object-contain transition-transform duration-300 group-hover/skill:scale-110" />
@@ -76,7 +76,7 @@ const SkillProgressBar: React.FC<{
             {name}
           </span>
         </div>
-        <span className={`font-mono-tech font-bold text-[11px] sm:text-xs pl-1.5 tabular-nums ${
+        <span className={`font-mono-tech font-bold text-[0.6875rem] sm:text-xs pl-1.5 tabular-nums ${
           isLight ? 'text-sky-600 font-bold' : 'text-sky-400'
         }`}>
           {displayLevel}%
@@ -206,7 +206,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
         >
           {/* Card 1: Programming Languages */}
           <div className="glass-panel rounded-xl p-3 border border-sky-500/40 flex flex-col justify-between relative overflow-hidden shadow-lg">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-[0.125rem] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
             <div>
               <div className={`flex items-center justify-between pb-2 border-b mb-2 ${isLight ? 'border-slate-200/80' : 'border-white/[0.06]'}`}>
                 <div className="flex items-center space-x-2">
@@ -250,7 +250,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
 
           {/* Card 2: Frameworks & Libraries */}
           <div className="glass-panel rounded-xl p-3 border border-sky-500/40 flex flex-col justify-between relative overflow-hidden shadow-lg">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-[0.125rem] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
             <div>
               <div className={`flex items-center justify-between pb-2 border-b mb-2 ${isLight ? 'border-slate-200/80' : 'border-white/[0.06]'}`}>
                 <div className="flex items-center space-x-2">
@@ -294,7 +294,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
 
           {/* Card 3: Language Practices & Standards */}
           <div className="glass-panel rounded-xl p-3 border border-sky-500/40 flex flex-col justify-between relative overflow-hidden shadow-lg">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-[0.125rem] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
             <div>
               <div className={`flex items-center justify-between pb-2 border-b mb-2 ${isLight ? 'border-slate-200/80' : 'border-white/[0.06]'}`}>
                 <div className="flex items-center space-x-2">
@@ -318,7 +318,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                 <div className={`p-2 rounded-lg border space-y-0.5 ${
                   isLight ? 'bg-slate-100/90 border-slate-200/90' : 'bg-white/[0.03] border-white/[0.06]'
                 }`}>
-                  <span className={`font-bold text-xs sm:text-[13px] block ${isLight ? 'text-sky-700' : 'text-sky-300'}`}>Modern C++ (14/17/20)</span>
+                  <span className={`font-bold text-xs sm:text-[0.8125rem] block ${isLight ? 'text-sky-700' : 'text-sky-300'}`}>Modern C++ (14/17/20)</span>
                   <p className={`text-xs leading-relaxed ${isLight ? 'text-slate-700 font-medium' : 'text-gray-300'}`}>
                     Deterministic memory management, RAII, move semantics, smart pointers, and concurrency for safety-critical targets.
                   </p>
@@ -326,7 +326,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                 <div className={`p-2 rounded-lg border space-y-0.5 ${
                   isLight ? 'bg-slate-100/90 border-slate-200/90' : 'bg-white/[0.03] border-white/[0.06]'
                 }`}>
-                  <span className={`font-bold text-xs sm:text-[13px] block ${isLight ? 'text-sky-700' : 'text-sky-300'}`}>MISRA C / C++ Compliance</span>
+                  <span className={`font-bold text-xs sm:text-[0.8125rem] block ${isLight ? 'text-sky-700' : 'text-sky-300'}`}>MISRA C / C++ Compliance</span>
                   <p className={`text-xs leading-relaxed ${isLight ? 'text-slate-700 font-medium' : 'text-gray-300'}`}>
                     Strict adherence to MISRA guidelines, avoiding undefined behaviors, pointer arithmetic safety, and static analysis verification.
                   </p>
@@ -334,7 +334,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                 <div className={`p-2 rounded-lg border space-y-0.5 ${
                   isLight ? 'bg-slate-100/90 border-slate-200/90' : 'bg-white/[0.03] border-white/[0.06]'
                 }`}>
-                  <span className={`font-bold text-xs sm:text-[13px] block ${isLight ? 'text-sky-700' : 'text-sky-300'}`}>Automated Unit Testing</span>
+                  <span className={`font-bold text-xs sm:text-[0.8125rem] block ${isLight ? 'text-sky-700' : 'text-sky-300'}`}>Automated Unit Testing</span>
                   <p className={`text-xs leading-relaxed ${isLight ? 'text-slate-700 font-medium' : 'text-gray-300'}`}>
                     Test-driven development using Google Test (GTest) for desktop logic and Ceedling (Unity/CMock) for target MCUs.
                   </p>
@@ -362,7 +362,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
         >
           {/* Card 1: Core Engineering Methodologies */}
           <div className="glass-panel rounded-xl p-3 border border-sky-500/40 flex flex-col justify-between relative overflow-hidden shadow-lg">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-[0.125rem] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
             <div>
               <div className={`flex items-center justify-between pb-2 border-b mb-2 ${isLight ? 'border-slate-200/80' : 'border-white/[0.06]'}`}>
                 <div className="flex items-center space-x-2">
@@ -394,7 +394,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                   }`}>
                     <div className="flex items-center gap-1.5">
                       <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${isLight ? 'text-sky-600' : 'text-sky-400'}`} />
-                      <span className={`font-bold text-xs sm:text-[13px] ${isLight ? 'text-slate-900' : 'text-white'}`}>{item.name}</span>
+                      <span className={`font-bold text-xs sm:text-[0.8125rem] ${isLight ? 'text-slate-900' : 'text-white'}`}>{item.name}</span>
                     </div>
                     <p className={`text-xs leading-relaxed pl-5 ${isLight ? 'text-slate-700 font-medium' : 'text-gray-300'}`}>{item.desc}</p>
                   </div>
@@ -411,7 +411,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
 
           {/* Card 2: Quality, Process & ASPICE */}
           <div className="glass-panel rounded-xl p-3 border border-sky-500/40 flex flex-col justify-between relative overflow-hidden shadow-lg">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-[0.125rem] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
             <div>
               <div className={`flex items-center justify-between pb-2 border-b mb-2 ${isLight ? 'border-slate-200/80' : 'border-white/[0.06]'}`}>
                 <div className="flex items-center space-x-2">
@@ -443,7 +443,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                   }`}>
                     <div className="flex items-center gap-1.5">
                       <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${isLight ? 'text-sky-600' : 'text-sky-400'}`} />
-                      <span className={`font-bold text-xs sm:text-[13px] ${isLight ? 'text-slate-900' : 'text-white'}`}>{item.name}</span>
+                      <span className={`font-bold text-xs sm:text-[0.8125rem] ${isLight ? 'text-slate-900' : 'text-white'}`}>{item.name}</span>
                     </div>
                     <p className={`text-xs leading-relaxed pl-5 ${isLight ? 'text-slate-700 font-medium' : 'text-gray-300'}`}>{item.desc}</p>
                   </div>
@@ -460,7 +460,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
 
           {/* Card 3: Semiconductor Hardware & Silicon View */}
           <div className="glass-panel rounded-xl p-3 border border-sky-500/40 flex flex-col justify-between relative overflow-hidden shadow-lg">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-[0.125rem] bg-gradient-to-r from-sky-500 via-sky-400 to-transparent" />
             <div>
               <div className={`flex items-center justify-between pb-2 border-b mb-2 ${isLight ? 'border-slate-200/80' : 'border-white/[0.06]'}`}>
                 <div className="flex items-center space-x-2">
@@ -490,7 +490,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                 />
                 <div className={`absolute inset-0 bg-gradient-to-t ${isLight ? 'from-slate-900/80' : 'from-[#020509]/90'} via-transparent to-transparent pointer-events-none`} />
                 <div className="absolute bottom-2 left-2 right-2">
-                  <span className="text-[10px] sm:text-xs font-mono-tech text-gray-300 uppercase block">TARGET SILICON</span>
+                  <span className="text-[0.625rem] sm:text-xs font-mono-tech text-gray-300 uppercase block">TARGET SILICON</span>
                   <span className="text-xs sm:text-sm font-black text-sky-400 leading-tight block">Infineon TRAVEO™ II & Renesas RH850</span>
                 </div>
               </div>
@@ -565,7 +565,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
             }`}
           >
             {/* Top Accent Line */}
-            <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-sky-500/60 via-sky-500/20 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-[0.09375rem] bg-gradient-to-r from-sky-500/60 via-sky-500/20 to-transparent" />
 
             <div>
               {/* Category Header */}
@@ -621,11 +621,11 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
     >
       {/* Ambient background glow */}
       <div
-        className="absolute -top-32 left-1/3 w-[600px] h-[400px] rounded-full pointer-events-none"
+        className="absolute -top-32 left-1/3 w-[37.5rem] h-[25rem] rounded-full pointer-events-none"
         style={{ background: isLight ? 'radial-gradient(ellipse, rgba(14,165,233,0.08) 0%, transparent 70%)' : 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full h-full flex flex-col justify-between gap-2 lg:gap-2.5">
+      <div className="max-w-7xl xl:max-w-[90rem] 2xl:max-w-[106.25rem] 3xl:max-w-[125rem] mx-auto w-full h-full flex flex-col justify-between gap-2 lg:gap-2.5">
         
         {/* ══════════════════════════════════════════════════════
             TOP HEADER (Single Tab, Borderless, Full-Span Car Background Like Experience)
@@ -658,7 +658,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex flex-col justify-start space-y-0.5 max-w-2xl lg:max-w-3xl">
                 <div
-                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-mono-tech font-bold uppercase tracking-[0.22em] shadow-xs mb-0.5 w-fit"
+                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[0.5625rem] font-mono-tech font-bold uppercase tracking-[0.22em] shadow-xs mb-0.5 w-fit"
                   style={{
                     background: isLight ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.06)',
                     backdropFilter: 'blur(12px)',
@@ -676,7 +676,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                 </div>
                 <div className="flex flex-wrap items-baseline gap-x-2.5">
                   <h2
-                    className={`text-[22px] sm:text-[25px] 2xl:text-[28px] font-black font-heading leading-[1.14] ${
+                    className={`text-[1.375rem] sm:text-[1.5625rem] 2xl:text-[1.75rem] font-black font-heading leading-[1.14] ${
                       isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
                     }`}
                     style={{
@@ -693,7 +693,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                 </div>
 
                 <p
-                  className={`hidden sm:block text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] ${
+                  className={`hidden sm:block text-[0.71875rem] sm:text-[0.75rem] 2xl:text-[0.78125rem] ${
                     isLight ? 'text-slate-800' : 'text-[#9BA8B5]'
                   } font-medium leading-[1.55] line-clamp-1`}
                   style={{
@@ -707,7 +707,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
               {/* Right Tagline Block */}
               <div className="hidden md:flex flex-col items-end justify-center text-right space-y-0.5 relative z-10 pr-1 flex-shrink-0">
                 <div
-                  className={`flex items-center gap-1.5 text-[9.5px] sm:text-[10.5px] font-mono-tech tracking-widest ${isLight ? 'text-slate-800' : 'text-[#9BA8B5]'} uppercase font-bold`}
+                  className={`flex items-center gap-1.5 text-[0.59375rem] sm:text-[0.65625rem] font-mono-tech tracking-widest ${isLight ? 'text-slate-800' : 'text-[#9BA8B5]'} uppercase font-bold`}
                   style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
                 >
                   <span>LEARN</span>
@@ -727,7 +727,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                   <span className={isLight ? 'text-slate-900 font-black' : 'text-[#F4F7FA] font-black'}>REPEAT</span>
                 </div>
                 <div
-                  className={`text-xs sm:text-[13.5px] font-heading italic font-black leading-tight ${isLight ? 'text-slate-900' : 'text-[#F4F7FA] drop-shadow-md'}`}
+                  className={`text-xs sm:text-[0.84375rem] font-heading italic font-black leading-tight ${isLight ? 'text-slate-900' : 'text-[#F4F7FA] drop-shadow-md'}`}
                   style={{
                     textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
                   }}
@@ -735,7 +735,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                   &ldquo;Better Vehicles. Brighter Journeys.&rdquo;
                 </div>
                 <span
-                  className="text-[9.5px] font-mono-tech font-black tracking-widest uppercase"
+                  className="text-[0.59375rem] font-mono-tech font-black tracking-widest uppercase"
                   style={{
                     color: isLight ? '#0284C7' : '#38BDF8',
                     textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.6)' : 'none',
@@ -754,7 +754,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
                   <button
                     key={tab.id}
                     onClick={() => handleTabClick(tab.id)}
-                    className={`px-3 py-1.5 rounded-xl text-xs sm:text-[12.5px] 2xl:text-[13px] font-heading font-semibold tracking-wide transition-all duration-200 whitespace-nowrap cursor-pointer shrink-0 border-0 ${
+                    className={`px-3 py-1.5 rounded-xl text-xs sm:text-[0.78125rem] 2xl:text-[0.8125rem] font-heading font-semibold tracking-wide transition-all duration-200 whitespace-nowrap cursor-pointer shrink-0 border-0 ${
                       isActive
                         ? 'bg-sky-600 text-white font-bold shadow-md shadow-sky-600/30'
                         : isLight
@@ -810,12 +810,12 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
 
           {/* Left: Quote with Cyan Dash Underneath */}
           <div className="relative z-10 text-left">
-            <p className={`font-heading italic text-xs sm:text-[14px] 2xl:text-[15px] font-black leading-snug drop-shadow-sm ${
+            <p className={`font-heading italic text-xs sm:text-[0.875rem] 2xl:text-[0.9375rem] font-black leading-snug drop-shadow-sm ${
               isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
             }`}>
               &ldquo;Precision code.<br className="hidden sm:inline" /> Driven to innovate.&rdquo;
             </p>
-            <div className="w-8 h-[2px] bg-[#159FFF] mt-1 rounded-full shadow-[0_0_8px_#159FFF]" />
+            <div className="w-8 h-[0.125rem] bg-[#159FFF] mt-1 rounded-full shadow-[0_0_8px_#159FFF]" />
           </div>
 
           {/* Center: Clean Prominent Stats */}
@@ -826,31 +826,31 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
               }`}>
                 {techCount}+
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[0.53125rem] sm:text-[0.59375rem] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Technologies
               </span>
             </div>
-            <div className={`w-[1px] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
+            <div className={`w-[0.0625rem] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
             <div>
               <span className={`block text-sm sm:text-base 2xl:text-lg font-black font-heading leading-tight ${
                 isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
               }`}>
                 {domainCount}+
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[0.53125rem] sm:text-[0.59375rem] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Core Domains
               </span>
             </div>
-            <div className={`w-[1px] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
+            <div className={`w-[0.0625rem] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
             <div>
               <span className="block text-sm sm:text-base 2xl:text-lg font-black font-heading text-sky-500 leading-tight">
                 ∞
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[0.53125rem] sm:text-[0.59375rem] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Curiosity
@@ -862,7 +862,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigate }) => {
           <div className="relative z-10 flex-shrink-0">
             <button
               onClick={() => onNavigate('projects')}
-              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[12.5px] font-heading font-bold tracking-wide transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-md text-white bg-sky-600 hover:bg-sky-500 shadow-sky-600/30 whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[0.78125rem] font-heading font-bold tracking-wide transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-md text-white bg-sky-600 hover:bg-sky-500 shadow-sky-600/30 whitespace-nowrap"
             >
               <span>Explore My Projects</span>
               <ArrowRight className="w-3.5 h-3.5 text-white" />

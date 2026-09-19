@@ -128,7 +128,7 @@ export const ContactSection: React.FC = () => {
         <div className={`absolute inset-0 bg-gradient-to-t ${isLight ? 'from-[#F8FAFC]/25 via-transparent to-transparent' : 'from-[#020509]/75 via-transparent to-[#020509]/30'} pointer-events-none`} />
       </div>
 
-      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full flex-1 flex flex-col justify-center my-auto gap-3 lg:gap-2.5 relative z-10">
+      <div className="max-w-7xl xl:max-w-[90rem] 2xl:max-w-[106.25rem] 3xl:max-w-[125rem] mx-auto w-full flex-1 flex flex-col justify-center my-auto gap-3 lg:gap-2.5 relative z-10">
         
         {/* ══════════════════════════════════════════════════════
             1. TOP HEADER (Open, Clean, Borderless Layout)
@@ -136,7 +136,7 @@ export const ContactSection: React.FC = () => {
         <div ref={headerRef} className="reveal flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 pt-1 flex-shrink-0">
           <div className="space-y-0.5 max-w-xl">
             <div
-              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-mono-tech font-bold uppercase tracking-[0.22em] shadow-xs mb-0.5 w-fit"
+              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[0.5625rem] font-mono-tech font-bold uppercase tracking-[0.22em] shadow-xs mb-0.5 w-fit"
               style={{
                 background: isLight ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.06)',
                 backdropFilter: 'blur(12px)',
@@ -153,7 +153,7 @@ export const ContactSection: React.FC = () => {
               </span>
             </div>
             <h2
-              className={`text-[22px] sm:text-[25px] 2xl:text-[28px] font-black font-heading ${
+              className={`text-[1.375rem] sm:text-[1.5625rem] 2xl:text-[1.75rem] font-black font-heading ${
                 isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
               } leading-[1.14]`}
               style={{
@@ -168,7 +168,7 @@ export const ContactSection: React.FC = () => {
               </span>
             </h2>
             <p
-              className={`hidden sm:block text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] ${
+              className={`hidden sm:block text-[0.71875rem] sm:text-[0.75rem] 2xl:text-[0.78125rem] ${
                 isLight ? 'text-slate-800' : 'text-[#9BA8B5]'
               } font-medium leading-[1.55] line-clamp-1`}
               style={{
@@ -182,7 +182,7 @@ export const ContactSection: React.FC = () => {
           {/* Right Tagline from screenshot */}
           <div className="flex flex-col items-start sm:items-end text-left sm:text-right space-y-0.5 pr-1 flex-shrink-0">
             <div
-              className={`text-xs sm:text-[13.5px] font-heading italic font-black ${isLight ? 'text-slate-900' : 'text-[#F4F7FA] drop-shadow-md'} leading-tight`}
+              className={`text-xs sm:text-[0.84375rem] font-heading italic font-black ${isLight ? 'text-slate-900' : 'text-[#F4F7FA] drop-shadow-md'} leading-tight`}
               style={{
                 textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
               }}
@@ -190,7 +190,7 @@ export const ContactSection: React.FC = () => {
               &ldquo;Better Vehicles. Brighter Journeys.&rdquo;
             </div>
             <span
-              className="text-[9.5px] font-mono-tech font-black tracking-widest uppercase"
+              className="text-[0.59375rem] font-mono-tech font-black tracking-widest uppercase"
               style={{
                 color: isLight ? '#0284C7' : '#38BDF8',
                 textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.6)' : 'none',
@@ -216,13 +216,13 @@ export const ContactSection: React.FC = () => {
                     {item.icon}
                   </div>
                   <div className="min-w-0 overflow-hidden">
-                    <span className={`text-[8.5px] sm:text-[9px] font-mono-tech uppercase tracking-wider ${isLight ? 'text-slate-600' : 'text-[#9BA8B5]'} block font-semibold leading-none`}>
+                    <span className={`text-[0.53125rem] sm:text-[0.5625rem] font-mono-tech uppercase tracking-wider ${isLight ? 'text-slate-600' : 'text-[#9BA8B5]'} block font-semibold leading-none`}>
                       {item.label}
                     </span>
-                    <span className={`text-[11px] sm:text-xs font-semibold ${isLight ? 'text-slate-900 group-hover:text-sky-600' : 'text-[#F4F7FA] group-hover:text-sky-300'} transition-colors truncate block leading-snug`}>
+                    <span className={`text-[0.6875rem] sm:text-xs font-semibold ${isLight ? 'text-slate-900 group-hover:text-sky-600' : 'text-[#F4F7FA] group-hover:text-sky-300'} transition-colors truncate block leading-snug`}>
                       {item.value}
                     </span>
-                    <span className={`hidden sm:block text-[9.5px] ${isLight ? 'text-slate-500 font-medium' : 'text-[#8696A7] font-medium'} truncate leading-none`}>
+                    <span className={`hidden sm:block text-[0.59375rem] ${isLight ? 'text-slate-500 font-medium' : 'text-[#8696A7] font-medium'} truncate leading-none`}>
                       {item.subtext}
                     </span>
                   </div>
@@ -249,7 +249,7 @@ export const ContactSection: React.FC = () => {
           <div ref={formRef} className="reveal-right col-span-1 lg:col-span-7 xl:col-span-5 w-full flex flex-col justify-between" style={{'--delay': '100ms'} as React.CSSProperties}>
             <div className={`rounded-2xl p-3.5 sm:p-4 border ${isLight ? 'border-slate-200/80 bg-white/90 shadow-lg' : 'border-white/[0.08] bg-black/40 shadow-xl'} backdrop-blur-md h-full flex flex-col justify-between relative overflow-hidden`}>
               {/* Top Accent Line — shimmer */}
-              <div className="absolute top-0 left-0 right-0 h-[1.5px] animate-shimmer-line" />
+              <div className="absolute top-0 left-0 right-0 h-[0.09375rem] animate-shimmer-line" />
 
               <div className={`flex items-center space-x-2 pb-2 border-b ${isLight ? 'border-slate-100' : 'border-white/[0.05]'} flex-shrink-0`}>
                 <Send className="w-3.5 h-3.5 text-sky-400" />
@@ -301,7 +301,7 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 {/* Row 3: Message */}
-                <div className="relative flex-1 min-h-[65px] sm:min-h-[75px]">
+                <div className="relative flex-1 min-h-[4.0625rem] sm:min-h-[4.6875rem]">
                   <FileEdit className={`w-3.5 h-3.5 ${isLight ? 'text-slate-400' : 'text-gray-400'} absolute left-2.5 top-2.5 pointer-events-none`} />
                   <textarea
                     name="message"
@@ -328,12 +328,12 @@ export const ContactSection: React.FC = () => {
                 </button>
 
                 {isSuccess && (
-                  <p className="text-[10px] text-emerald-500 text-center font-medium leading-none">
+                  <p className="text-[0.625rem] text-emerald-500 text-center font-medium leading-none">
                     Thank you! Message received. I'll get back to you shortly.
                   </p>
                 )}
 
-                <div className={`flex items-center justify-center space-x-1.5 text-[9.5px] ${isLight ? 'text-slate-500' : 'text-gray-400'} pt-0.5`}>
+                <div className={`flex items-center justify-center space-x-1.5 text-[0.59375rem] ${isLight ? 'text-slate-500' : 'text-gray-400'} pt-0.5`}>
                   <Lock className={`w-3 h-3 ${isLight ? 'text-slate-400' : 'text-gray-400'}`} />
                   <span>I'll never share your information with anyone.</span>
                 </div>
@@ -350,9 +350,9 @@ export const ContactSection: React.FC = () => {
         <div className={`flex flex-shrink-0 border-t ${isLight ? 'border-slate-200/80' : 'border-white/[0.07]'} pt-2 pb-1 flex-col sm:flex-row items-center justify-between gap-2.5`}>
           {/* Brand */}
           <div className="flex items-center space-x-2">
-            <span className={`text-xs sm:text-[13px] font-black ${isLight ? 'text-slate-900' : 'text-white'} tracking-wider font-heading`}>SK REHAN AHAMED</span>
+            <span className={`text-xs sm:text-[0.8125rem] font-black ${isLight ? 'text-slate-900' : 'text-white'} tracking-wider font-heading`}>SK REHAN AHAMED</span>
             <span className={`${isLight ? 'text-slate-300' : 'text-gray-700'} text-xs`}>·</span>
-            <span className={`text-[10.5px] sm:text-xs ${isLight ? 'text-slate-600 font-medium' : 'text-gray-400'} font-mono-tech`}>Embedded Developer · Automotive Enthusiast</span>
+            <span className={`text-[0.65625rem] sm:text-xs ${isLight ? 'text-slate-600 font-medium' : 'text-gray-400'} font-mono-tech`}>Embedded Developer · Automotive Enthusiast</span>
           </div>
 
           {/* Center social icons */}
@@ -373,7 +373,7 @@ export const ContactSection: React.FC = () => {
 
           {/* Right: copyright + back to top */}
           <div className="flex items-center space-x-3">
-            <span className={`text-[10px] sm:text-[11px] ${isLight ? 'text-slate-600 font-medium' : 'text-gray-400'} font-mono-tech`}>
+            <span className={`text-[0.625rem] sm:text-[0.6875rem] ${isLight ? 'text-slate-600 font-medium' : 'text-gray-400'} font-mono-tech`}>
               &copy; 2026 SK Rehan Ahamed. All rights reserved.
             </span>
             <button

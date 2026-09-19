@@ -60,34 +60,6 @@
   }
 }
 
-/* ══════════════════════════════════════════════════════
-   PROPORTIONAL SCALING FOR ALL SCREEN SIZES
-   - 1366x768 displays: 90% zoom calibration
-   - MacBook (Air M5 ~1440-1512px): Baseline 1.0x (1-page fit untouched)
-   - 1920x1200 displays: 80% zoom calibration
-   - 4K UHD (3500px+): 1.75x proportional zoom (matches user's 175% browser zoom)
- ══════════════════════════════════════════════════════ */
-@media (min-width: 1200px) and (max-width: 1400px) {
-  /* 1366x768 displays — 90% zoom */
-  #root {
-    zoom: 0.9;
-  }
-}
-
-@media (min-width: 1800px) and (max-width: 2050px) {
-  /* 1920x1200 displays — 80% zoom */
-  #root {
-    zoom: 0.8;
-  }
-}
-
-@media (min-width: 3500px) {
-  /* 4K UHD displays (3840x2160) — scales up cleanly from MacBook baseline */
-  #root {
-    zoom: 1.75;
-  }
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -366,19 +338,6 @@
 .animate-slide-left {
   animation: tabSlideFromLeft 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: transform, opacity;
-}
-
-/* ── Ultra-wide / 4K Proportional Scaling (3840x2160 & above) ── */
-@media (min-width: 2160px) {
-  html {
-    font-size: 18px;
-  }
-}
-
-@media (min-width: 3200px) {
-  html {
-    font-size: 21px;
-  }
 }
 
 /* ── Mobile 1-Page Fade/Slide Transition ── */
@@ -737,3 +696,68 @@ html.theme-transitioning *::after {
 
 
 
+
+/* One fluid sizing system: 16px at laptop scale, up to 40px at 4K.
+   Height caps the scale on ultrawide displays; browser zoom still works. */
+:root { --nav-height: 4.5rem; --page-bottom: 1rem; }
+html { scroll-snap-type: y mandatory; }
+html, body, #root { overflow-x: clip; }
+.portfolio-pages > section[id] {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-margin-top: 0;
+  min-height: 100svh;
+  height: auto;
+  padding-top: var(--nav-height);
+  padding-bottom: var(--page-bottom);
+  flex-shrink: 0;
+}
+.portfolio-pages > #home > .flex-shrink-0 { display: none; }
+.site-nav { min-height: var(--nav-height); display: flex; align-items: center; }
+.site-nav > div { width: 100%; }
+.mobile-page-nav {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 40;
+  margin-top: 0;
+  padding-bottom: max(.625rem, env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--bg-primary) 94%, transparent);
+  backdrop-filter: blur(16px);
+}
+:focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 4px; }
+@media (min-width: 1024px) {
+  html { font-size: clamp(16px, min(1.11111vw, 1.92svh), 40px); }
+  .portfolio-pages > section[id] { height: 100svh; }
+  .portfolio-pages > section[id] > div.mx-auto,
+  .site-nav > div { max-width: 106.25rem; }
+}
+@media (max-width: 1023px) {
+  :root { --page-bottom: 5.5rem; }
+  .portfolio-pages > section[id] > div.h-full { height: auto; }
+  .portfolio-pages > section[id] { overflow: clip; }
+  .portfolio-pages > #home { min-height: max(100svh, 44rem); }
+}
+/* Preserve access to dense content at high browser zoom and in landscape. */
+@media (min-width: 1024px) and (max-height: 740px) {
+  .portfolio-pages > section[id] { height: auto; min-height: 100svh; }
+  .portfolio-pages > section[id] > div.h-full { height: auto; }
+  #projects .grid { grid-auto-rows: auto; }
+  #projects .grid > div { min-height: 16rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; scroll-snap-type: y proximity; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 479px) {
+  .mobile-current-section { display: none; }
+  .site-nav > div { padding-inline: .75rem; }
+  #home h1 { font-size: clamp(2rem, 10vw, 2.5rem); }
+  #home .font-mono-tech { overflow-wrap: anywhere; }
+  #contact a { min-width: 0; overflow-wrap: anywhere; }
+}

@@ -14,15 +14,17 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
   useEffect(() => {
     let isMounted = true;
+    completedRef.current = false;
+    const timers: ReturnType<typeof setTimeout>[] = [];
     const startTime = Date.now();
 
     const finish = () => {
-      if (completedRef.current) return;
+      if (!isMounted || completedRef.current) return;
       completedRef.current = true;
       setIsFadingOut(true);
-      setTimeout(() => {
+      timers.push(setTimeout(() => {
         if (isMounted) onComplete();
-      }, 400);
+      }, 400));
     };
 
     // Preload full site textures and warm browser GPU memory & Cache API
@@ -31,10 +33,10 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         // Ensure at least 850ms to enjoy the logo animation, then complete
         const elapsed = Date.now() - startTime;
         const remaining = Math.max(0, 850 - elapsed);
-        setTimeout(finish, remaining);
+        if (isMounted) timers.push(setTimeout(finish, remaining));
       })
       .catch(() => {
-        setTimeout(finish, 900);
+        if (isMounted) timers.push(setTimeout(finish, 900));
       });
 
     // Safety timeout: Maximum 1500ms so slow networks never hang
@@ -43,6 +45,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     return () => {
       isMounted = false;
       clearTimeout(maxTimer);
+      timers.forEach(clearTimeout);
     };
   }, [onComplete]);
 

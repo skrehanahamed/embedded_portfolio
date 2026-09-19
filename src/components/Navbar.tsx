@@ -81,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3.5 sm:py-4 ${
+        className={`site-nav fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3.5 sm:py-4 ${
           isScrolled
             ? (isLight
                 ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200/80 shadow-md shadow-slate-900/5'
@@ -91,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
                 : 'bg-transparent')
         }`}
       >
-        <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between">
+        <div className="max-w-7xl xl:max-w-[90rem] 2xl:max-w-[106.25rem] 3xl:max-w-[125rem] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between">
           {/* Left: Brand Identity */}
           <button
             onClick={() => handleNavClick('home')}
@@ -103,12 +103,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
               SK
             </div>
             <div className="flex flex-col">
-              <span className={`text-[11px] sm:text-xs md:text-sm font-bold tracking-wider ${
+              <span className={`text-[0.6875rem] sm:text-xs md:text-sm font-bold tracking-wider ${
                 isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
               } font-heading leading-tight`}>
                 REHAN AHAMED
               </span>
-              <span className={`text-[7.5px] sm:text-[8px] md:text-[9px] tracking-widest ${
+              <span className={`text-[0.46875rem] sm:text-[0.5rem] md:text-[0.5625rem] tracking-widest ${
                 isLight ? 'text-slate-600' : 'text-[#9BA8B5]'
               } font-medium uppercase font-mono-tech`}>
                 EMBEDDED | AUTOMOTIVE | C++
@@ -129,6 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
                   ref={(el) => {
                     navItemRefs.current[item.id] = el;
                   }}
+                  aria-current={isActive ? "page" : undefined}
                   onClick={() => handleNavClick(item.id)}
                   className={`relative py-1 text-xs xl:text-sm font-medium tracking-wide transition-colors duration-200 focus:outline-none cursor-pointer whitespace-nowrap ${
                     isActive
@@ -143,7 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
 
             {/* Smooth Gliding Active Indicator Bar */}
             <span
-              className="absolute -bottom-1 h-[2.5px] bg-[#159FFF] shadow-[0_0_10px_#159FFF] rounded-full pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]"
+              className="absolute -bottom-1 h-[0.15625rem] bg-[#159FFF] shadow-[0_0_10px_#159FFF] rounded-full pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]"
               style={{
                 transform: `translateX(${indicatorStyle.left}px)`,
                 width: `${indicatorStyle.width}px`,
@@ -153,7 +154,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
           </div>
 
           {/* Right: Clean Social Icons + Compact Connect Link */}
-          <div className="hidden md:flex items-center space-x-2.5 lg:space-x-3 xl:space-x-4 shrink-0">
+          <div className="hidden lg:flex items-center space-x-2.5 lg:space-x-3 xl:space-x-4 shrink-0">
             <div className="flex items-center space-x-2 lg:space-x-2.5">
               <a
                 href="https://github.com/skrehanahamed"
@@ -200,7 +201,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
           {/* Mobile Menu Toggle (3-line hamburger with borderless current section text + theme toggle) */}
           <div className="lg:hidden flex items-center space-x-2 sm:space-x-3">
             <ThemeToggle />
-            <span className={`${isLight ? 'text-slate-900' : 'text-white'} font-heading font-black text-xs uppercase tracking-widest select-none`}>
+            <span className={`${isLight ? 'text-slate-900' : 'text-white'} mobile-current-section font-heading font-black text-xs uppercase tracking-widest select-none`}>
               {activeSection}
             </span>
             <button
@@ -230,7 +231,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
                 <span className={`text-xs font-bold tracking-wider ${isLight ? 'text-slate-900' : 'text-white'} font-heading leading-tight`}>
                   REHAN AHAMED
                 </span>
-                <span className={`text-[8px] tracking-widest ${isLight ? 'text-slate-500' : 'text-[#9BA8B5]'} font-medium uppercase font-mono-tech`}>
+                <span className={`text-[0.5rem] tracking-widest ${isLight ? 'text-slate-500' : 'text-[#9BA8B5]'} font-medium uppercase font-mono-tech`}>
                   EMBEDDED | AUTOMOTIVE | C++
                 </span>
               </div>
@@ -250,7 +251,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
 
           {/* Navigation Items List: Centered, responsive colors, perfectly spaced */}
           <div className="flex flex-col space-y-1.5 py-6 my-auto">
-            <div className={`text-[10px] font-mono-tech uppercase tracking-[0.25em] ${isLight ? 'text-slate-400' : 'text-white/50'} mb-2 pl-3`}>
+            <div className={`text-[0.625rem] font-mono-tech uppercase tracking-[0.25em] ${isLight ? 'text-slate-400' : 'text-white/50'} mb-2 pl-3`}>
               SECTIONS
             </div>
             {navItems.map((item, idx) => {
@@ -258,6 +259,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
               return (
                 <button
                   key={item.id}
+                  aria-current={isActive ? "page" : undefined}
                   onClick={() => handleNavClick(item.id)}
                   className={`flex items-center justify-between text-left py-3.5 px-3.5 rounded-xl transition-all cursor-pointer ${
                     isActive

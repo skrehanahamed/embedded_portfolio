@@ -77,7 +77,7 @@ export const ScrollRail: React.FC<ScrollRailProps> = ({ activeSection, onNavigat
       {/* Dynamic Section Number */}
       <button
         onClick={() => onNavigate(currentSection.id)}
-        className={`font-mono-tech text-[10.5px] ${isLight ? 'text-slate-700 hover:text-sky-600' : 'text-[#9BA8B5] hover:text-[#159FFF]'} font-bold tracking-wider transition-colors cursor-pointer`}
+        className={`font-mono-tech text-[0.65625rem] ${isLight ? 'text-slate-700 hover:text-sky-600' : 'text-[#9BA8B5] hover:text-[#159FFF]'} font-bold tracking-wider transition-colors cursor-pointer`}
         title={`Current: ${currentSection.name}`}
       >
         {currentSection.num}
@@ -101,7 +101,7 @@ export const ScrollRail: React.FC<ScrollRailProps> = ({ activeSection, onNavigat
                 onNavigate(sec.id);
               }}
               style={{ top: `${tickPct}%` }}
-              className={`absolute -left-[1.5px] w-1 h-0.5 rounded-full transition-colors ${
+              className={`absolute -left-[0.09375rem] w-1 h-0.5 rounded-full transition-colors ${
                 isActive ? 'bg-[#159FFF]' : (isLight ? 'bg-slate-400 hover:bg-slate-600' : 'bg-slate-600/50 hover:bg-slate-400')
               }`}
               title={`Go to ${sec.name}`}
@@ -111,14 +111,14 @@ export const ScrollRail: React.FC<ScrollRailProps> = ({ activeSection, onNavigat
 
         {/* Glowing Dial Dot */}
         <div
-          className="absolute -left-[3.5px] w-2 h-2 rounded-full bg-[#159FFF] border border-white/60 shadow-[0_0_12px_#159FFF] transition-all duration-150 ease-out"
+          className="absolute -left-[0.21875rem] w-2 h-2 rounded-full bg-[#159FFF] border border-white/60 shadow-[0_0_12px_#159FFF] transition-all duration-150 ease-out"
           style={{ top: `${dotTopPercent}%` }}
         />
       </div>
 
       {/* Vertical Text */}
       <div className="py-1" style={{ writingMode: 'vertical-rl' }}>
-        <span className={`font-mono-tech text-[8.5px] tracking-[0.25em] uppercase ${isLight ? 'text-slate-600 font-bold' : 'text-[#9BA8B5]'} rotate-180`}>
+        <span className={`font-mono-tech text-[0.53125rem] tracking-[0.25em] uppercase ${isLight ? 'text-slate-600 font-bold' : 'text-[#9BA8B5]'} rotate-180`}>
           SCROLL TO EXPLORE
         </span>
       </div>

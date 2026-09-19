@@ -66,11 +66,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
     >
       {/* Background Soft Glow */}
       <div
-        className="absolute -top-32 left-1/3 w-[600px] h-[450px] rounded-full pointer-events-none"
+        className="absolute -top-32 left-1/3 w-[37.5rem] h-[28.125rem] rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full h-full flex flex-col justify-between gap-1.5 lg:gap-2">
+      <div className="max-w-7xl xl:max-w-[90rem] 2xl:max-w-[106.25rem] 3xl:max-w-[125rem] mx-auto w-full h-full flex flex-col justify-between gap-1.5 lg:gap-2">
         
         {/* ══════════════════════════════════════════════════════
             UP PART: TOP HEADER (Borderless, Touching Upper Part)
@@ -118,7 +118,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex flex-col justify-start space-y-0.5 max-w-2xl lg:max-w-3xl">
                 <div
-                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-mono-tech font-bold uppercase tracking-[0.22em] shadow-xs mb-0.5 w-fit"
+                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[0.5625rem] font-mono-tech font-bold uppercase tracking-[0.22em] shadow-xs mb-0.5 w-fit"
                   style={{
                     background: isLight ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.06)',
                     backdropFilter: 'blur(12px)',
@@ -137,7 +137,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
 
                 <div className="flex flex-wrap items-baseline gap-x-2.5">
                   <h2
-                    className={`text-[22px] sm:text-[25px] 2xl:text-[28px] font-black font-heading leading-[1.14] ${
+                    className={`text-[1.375rem] sm:text-[1.5625rem] 2xl:text-[1.75rem] font-black font-heading leading-[1.14] ${
                       isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
                     }`}
                     style={{
@@ -154,7 +154,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                 </div>
 
                 <p
-                  className={`hidden sm:block text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] ${
+                  className={`hidden sm:block text-[0.71875rem] sm:text-[0.75rem] 2xl:text-[0.78125rem] ${
                     isLight ? 'text-slate-800' : 'text-[#9BA8B5]'
                   } font-medium leading-[1.55] line-clamp-1`}
                   style={{
@@ -168,7 +168,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
               {/* Right Tagline Block */}
               <div className="hidden md:flex flex-col items-end justify-center text-right space-y-0.5 relative z-10 pr-1 flex-shrink-0">
                 <div
-                  className={`flex items-center gap-1.5 text-[9.5px] sm:text-[10.5px] font-mono-tech tracking-widest ${isLight ? 'text-slate-800' : 'text-[#9BA8B5]'} uppercase font-bold`}
+                  className={`flex items-center gap-1.5 text-[0.59375rem] sm:text-[0.65625rem] font-mono-tech tracking-widest ${isLight ? 'text-slate-800' : 'text-[#9BA8B5]'} uppercase font-bold`}
                   style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
                 >
                   <span>DESIGN</span>
@@ -188,7 +188,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                   <span className={isLight ? 'text-slate-900 font-black' : 'text-[#F4F7FA] font-black'}>SCALE</span>
                 </div>
                 <div
-                  className={`text-xs sm:text-[13.5px] font-heading italic font-black leading-tight ${isLight ? 'text-slate-900' : 'text-[#F4F7FA] drop-shadow-md'}`}
+                  className={`text-xs sm:text-[0.84375rem] font-heading italic font-black leading-tight ${isLight ? 'text-slate-900' : 'text-[#F4F7FA] drop-shadow-md'}`}
                   style={{
                     textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
                   }}
@@ -196,7 +196,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                   &ldquo;Small Features. Big Journeys.&rdquo;
                 </div>
                 <span
-                  className="text-[9.5px] font-mono-tech font-black tracking-widest uppercase"
+                  className="text-[0.59375rem] font-mono-tech font-black tracking-widest uppercase"
                   style={{
                     color: isLight ? '#0284C7' : '#38BDF8',
                     textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.6)' : 'none',
@@ -215,7 +215,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                   <button
                     key={tab.id}
                     onClick={() => handleFilterChange(tab.id)}
-                    className={`px-3 py-1.5 rounded-xl text-xs sm:text-[12.5px] 2xl:text-[13px] font-heading font-semibold tracking-wide transition-all duration-200 whitespace-nowrap cursor-pointer shrink-0 border-0 ${
+                    className={`px-3 py-1.5 rounded-xl text-xs sm:text-[0.78125rem] 2xl:text-[0.8125rem] font-heading font-semibold tracking-wide transition-all duration-200 whitespace-nowrap cursor-pointer shrink-0 border-0 ${
                       isActive
                         ? 'bg-sky-600 text-white font-bold shadow-md shadow-sky-600/30'
                         : isLight
@@ -288,7 +288,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                   onClick={() => setSelectedProject(p)}
                 >
                   {/* Image Header: Pure Inside Cockpit/Cluster Visual */}
-                  <div className={`relative w-full h-[74px] sm:h-[80px] lg:h-[40%] xl:h-[42%] min-h-[72px] lg:min-h-[85px] shrink-0 overflow-hidden ${
+                  <div className={`relative w-full h-[4.625rem] sm:h-[5rem] lg:h-[40%] xl:h-[42%] min-h-[4.5rem] lg:min-h-[5.3125rem] shrink-0 overflow-hidden ${
                     isLight ? 'bg-slate-100' : 'bg-[#03070D]'
                   }`}>
                     <img
@@ -312,7 +312,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                         <img
                           src={p.companyLogo}
                           alt={p.companyOrContext}
-                          className="h-3 sm:h-3.5 2xl:h-4 max-w-[55px] 2xl:max-w-[65px] object-contain"
+                          className="h-3 sm:h-3.5 2xl:h-4 max-w-[3.4375rem] 2xl:max-w-[4.0625rem] object-contain"
                           loading="lazy"
                         />
                       </div>
@@ -328,18 +328,18 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                     <div className="space-y-1">
                       {/* Top: Project Title on Left, ID on Right (Same Line) */}
                       <div className="flex items-baseline justify-between gap-2">
-                        <h3 className={`font-heading font-bold text-[13px] sm:text-[13.5px] lg:text-[14px] xl:text-[15px] 2xl:text-[16px] leading-snug tracking-tight truncate transition-colors ${
+                        <h3 className={`font-heading font-bold text-[0.8125rem] sm:text-[0.84375rem] lg:text-[0.875rem] xl:text-[0.9375rem] 2xl:text-[1rem] leading-snug tracking-tight truncate transition-colors ${
                           isLight ? 'text-slate-900 group-hover:text-sky-600' : 'text-[#F4F7FA] group-hover:text-sky-400'
                         }`}>
                           {p.title}
                         </h3>
-                        <span className="font-mono-tech text-[10.5px] 2xl:text-xs font-bold text-sky-400 shrink-0">
+                        <span className="font-mono-tech text-[0.65625rem] 2xl:text-xs font-bold text-sky-400 shrink-0">
                           {p.id}
                         </span>
                       </div>
 
                       {/* Description: Comfortably displays on M4 and wide displays */}
-                      <p className={`text-[10.5px] sm:text-[11px] lg:text-[11.5px] xl:text-[12px] 2xl:text-[12.5px] leading-[1.55] line-clamp-2 lg:line-clamp-2 xl:line-clamp-3 font-medium ${
+                      <p className={`text-[0.65625rem] sm:text-[0.6875rem] lg:text-[0.71875rem] xl:text-[0.75rem] 2xl:text-[0.78125rem] leading-[1.55] line-clamp-2 lg:line-clamp-2 xl:line-clamp-3 font-medium ${
                         isLight ? 'text-slate-700' : 'text-[#9BA8B5]'
                       }`}>
                         {p.description}
@@ -354,7 +354,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                         {p.tags.slice(0, 2).map((t, idx) => (
                           <span
                             key={idx}
-                            className={`text-[9.5px] font-mono-tech whitespace-nowrap flex items-center shrink-0 ${
+                            className={`text-[0.59375rem] font-mono-tech whitespace-nowrap flex items-center shrink-0 ${
                               isLight ? 'text-slate-500' : 'text-[#7C8E9F]'
                             }`}
                           >
@@ -363,7 +363,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                           </span>
                         ))}
                         {p.tags.length > 2 && (
-                          <span className="text-sky-500 font-mono-tech text-[9px] font-bold ml-1.5 shrink-0">
+                          <span className="text-sky-500 font-mono-tech text-[0.5625rem] font-bold ml-1.5 shrink-0">
                             +{p.tags.length - 2}
                           </span>
                         )}
@@ -376,7 +376,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className={`inline-flex items-center gap-1 font-mono-tech text-[9.5px] transition-colors ${
+                            className={`inline-flex items-center gap-1 font-mono-tech text-[0.59375rem] transition-colors ${
                               isLight ? 'text-purple-600 hover:text-purple-800' : 'text-purple-300 hover:text-white'
                             }`}
                             title="View Source Code on GitHub"
@@ -391,7 +391,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
                             e.stopPropagation();
                             setSelectedProject(p);
                           }}
-                          className="inline-flex items-center gap-1 text-sky-400 hover:text-sky-300 font-mono-tech text-[10px] font-bold transition-colors shrink-0"
+                          className="inline-flex items-center gap-1 text-sky-400 hover:text-sky-300 font-mono-tech text-[0.625rem] font-bold transition-colors shrink-0"
                         >
                           <span>Specs</span>
                           <ArrowRight className="w-3 h-3" />
@@ -479,12 +479,12 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
 
           {/* Left: Quote with Cyan Dash Underneath */}
           <div className="relative z-10 text-left">
-            <p className={`font-heading italic text-xs sm:text-[14px] 2xl:text-[15px] font-black leading-snug drop-shadow-sm ${
+            <p className={`font-heading italic text-xs sm:text-[0.875rem] 2xl:text-[0.9375rem] font-black leading-snug drop-shadow-sm ${
               isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
             }`}>
               &ldquo;Small features.<br className="hidden sm:inline" /> Big journeys.&rdquo;
             </p>
-            <div className="w-8 h-[2px] bg-[#159FFF] mt-1.5 rounded-full shadow-[0_0_8px_#159FFF]" />
+            <div className="w-8 h-[0.125rem] bg-[#159FFF] mt-1.5 rounded-full shadow-[0_0_8px_#159FFF]" />
           </div>
 
           {/* Center: Clean Prominent Stats */}
@@ -495,31 +495,31 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
               }`}>
                 11+
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[0.53125rem] sm:text-[0.59375rem] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Projects Delivered
               </span>
             </div>
-            <div className={`w-[1px] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
+            <div className={`w-[0.0625rem] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
             <div>
               <span className={`block text-sm sm:text-base 2xl:text-lg font-black font-heading leading-tight ${
                 isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
               }`}>
                 100%
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[0.53125rem] sm:text-[0.59375rem] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Passion Driven
               </span>
             </div>
-            <div className={`w-[1px] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
+            <div className={`w-[0.0625rem] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
             <div>
               <span className="block text-sm sm:text-base 2xl:text-lg font-black font-heading text-sky-500 leading-tight">
                 ∞
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[0.53125rem] sm:text-[0.59375rem] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Still Building
@@ -533,7 +533,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onNavigate: _o
               href="https://github.com/skrehanahamed?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[12.5px] font-heading font-bold tracking-wide transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-md text-white bg-sky-600 hover:bg-sky-500 shadow-sky-600/30 whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[0.78125rem] font-heading font-bold tracking-wide transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-md text-white bg-sky-600 hover:bg-sky-500 shadow-sky-600/30 whitespace-nowrap"
             >
               <GithubLogo className="w-4 h-4 text-white" />
               <span>View More on GitHub</span>

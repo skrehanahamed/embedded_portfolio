@@ -44,7 +44,7 @@ export const MobilePageNav: React.FC<MobilePageNavProps> = ({ activeSection, onN
   };
 
   return (
-    <div className={`lg:hidden w-full px-4 py-2.5 mt-2 transition-colors ${
+    <div className={`mobile-page-nav lg:hidden w-full px-4 py-2.5 mt-2 transition-colors ${
       isLight ? 'bg-white/80 border-t border-slate-200/80 backdrop-blur-md' : 'bg-transparent'
     }`}>
       <div className="flex items-center justify-between gap-3 max-w-md mx-auto">

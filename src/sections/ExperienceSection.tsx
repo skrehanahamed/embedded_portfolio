@@ -43,11 +43,11 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
     >
       {/* Ambient background glow */}
       <div
-        className="absolute -top-32 left-1/3 w-[600px] h-[450px] rounded-full pointer-events-none"
+        className="absolute -top-32 left-1/3 w-[37.5rem] h-[28.125rem] rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1700px] 3xl:max-w-[2000px] mx-auto w-full h-full flex flex-col justify-between gap-1.5 lg:gap-2">
+      <div className="max-w-7xl xl:max-w-[90rem] 2xl:max-w-[106.25rem] 3xl:max-w-[125rem] mx-auto w-full h-full flex flex-col justify-between gap-1.5 lg:gap-2">
         
         {/* ══════════════════════════════════════════════════════
             TOP HEADER (Single Tab, Borderless, Like Projects Part)
@@ -92,7 +92,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex flex-col justify-start space-y-0.5 max-w-2xl lg:max-w-3xl">
                 <div
-                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-mono-tech font-bold uppercase tracking-[0.22em] shadow-xs mb-0.5 w-fit"
+                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[0.5625rem] font-mono-tech font-bold uppercase tracking-[0.22em] shadow-xs mb-0.5 w-fit"
                   style={{
                     background: isLight ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.06)',
                     backdropFilter: 'blur(12px)',
@@ -111,7 +111,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
 
                 <div className="flex flex-wrap items-baseline gap-x-2.5">
                   <h2
-                    className={`text-[22px] sm:text-[25px] 2xl:text-[28px] font-black font-heading leading-[1.14] ${
+                    className={`text-[1.375rem] sm:text-[1.5625rem] 2xl:text-[1.75rem] font-black font-heading leading-[1.14] ${
                       isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
                     }`}
                     style={{
@@ -128,7 +128,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                 </div>
 
                 <p
-                  className={`hidden sm:block text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] ${
+                  className={`hidden sm:block text-[0.71875rem] sm:text-[0.75rem] 2xl:text-[0.78125rem] ${
                     isLight ? 'text-slate-800' : 'text-[#9BA8B5]'
                   } font-medium leading-[1.55] line-clamp-1`}
                   style={{
@@ -142,7 +142,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
               {/* Right Tagline Block */}
               <div className="hidden md:flex flex-col items-end justify-center text-right space-y-0.5 relative z-10 pr-1 flex-shrink-0">
                 <div
-                  className={`flex items-center gap-1.5 text-[9.5px] sm:text-[10.5px] font-mono-tech tracking-widest ${isLight ? 'text-slate-800' : 'text-[#9BA8B5]'} uppercase font-bold`}
+                  className={`flex items-center gap-1.5 text-[0.59375rem] sm:text-[0.65625rem] font-mono-tech tracking-widest ${isLight ? 'text-slate-800' : 'text-[#9BA8B5]'} uppercase font-bold`}
                   style={{ textShadow: isLight ? '0 1px 2px rgba(255, 255, 255, 0.95)' : 'none' }}
                 >
                   <span>DRIVE</span>
@@ -162,7 +162,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                   <span className={isLight ? 'text-slate-900 font-black' : 'text-[#F4F7FA] font-black'}>LEAD</span>
                 </div>
                 <div
-                  className={`text-xs sm:text-[13.5px] font-heading italic font-black leading-tight ${isLight ? 'text-slate-900' : 'text-[#F4F7FA] drop-shadow-md'}`}
+                  className={`text-xs sm:text-[0.84375rem] font-heading italic font-black leading-tight ${isLight ? 'text-slate-900' : 'text-[#F4F7FA] drop-shadow-md'}`}
                   style={{
                     textShadow: isLight ? '0 1px 3px rgba(255, 255, 255, 0.95)' : 'none',
                   }}
@@ -170,7 +170,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                   &ldquo;Different Roads. Same Passion.&rdquo;
                 </div>
                 <span
-                  className="text-[9.5px] font-mono-tech font-black tracking-widest uppercase"
+                  className="text-[0.59375rem] font-mono-tech font-black tracking-widest uppercase"
                   style={{
                     color: isLight ? '#0284C7' : '#38BDF8',
                     textShadow: isLight ? '0 1px 2px rgba(0, 0, 0, 0.6)' : 'none',
@@ -186,7 +186,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
               {topStats.map((stat, idx) => (
                 <div
                   key={idx}
-                  className={`px-3 py-1.5 rounded-xl text-xs sm:text-[12.5px] 2xl:text-[13px] font-heading font-semibold tracking-wide transition-all duration-200 whitespace-nowrap shrink-0 border-0 flex items-center gap-2 ${
+                  className={`px-3 py-1.5 rounded-xl text-xs sm:text-[0.78125rem] 2xl:text-[0.8125rem] font-heading font-semibold tracking-wide transition-all duration-200 whitespace-nowrap shrink-0 border-0 flex items-center gap-2 ${
                     isLight
                       ? 'bg-white/90 text-slate-800 font-bold shadow-sm'
                       : 'bg-white/[0.06] text-gray-200 font-semibold'
@@ -203,7 +203,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                     }`}>
                       {stat.value}
                     </span>
-                    <span className={`text-[10px] sm:text-[11px] font-medium leading-none ${
+                    <span className={`text-[0.625rem] sm:text-[0.6875rem] font-medium leading-none ${
                       isLight ? 'text-slate-600' : 'text-[#9BA8B5]'
                     }`}>
                       {stat.label}
@@ -220,13 +220,13 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
           {experienceData.map((item, idx) => (
             <div
               key={item.id}
-              className="flex flex-col lg:flex-row items-stretch gap-2 sm:gap-2.5 w-full flex-1 min-h-[148px] sm:min-h-[155px]"
+              className="flex flex-col lg:flex-row items-stretch gap-2 sm:gap-2.5 w-full flex-1 min-h-[9.25rem] sm:min-h-[9.6875rem]"
             >
               {/* Left Timeline Year & Continuous Rail Node (Desktop) */}
               <div className="hidden lg:flex items-center justify-end gap-2.5 w-24 xl:w-28 shrink-0 relative select-none pr-1">
                 {/* Continuous Vertical Rail Line */}
                 <div
-                  className={`absolute right-[7px] w-px pointer-events-none ${
+                  className={`absolute right-[0.4375rem] w-px pointer-events-none ${
                     isLight ? 'bg-sky-500/35' : 'bg-sky-400/35'
                   } ${
                     idx === 0
@@ -245,7 +245,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                     {item.period.split(' ')[0]}
                   </span>
                   <span
-                    className={`text-[10px] font-mono-tech mt-1 leading-none ${
+                    className={`text-[0.625rem] font-mono-tech mt-1 leading-none ${
                       item.current
                         ? (isLight ? 'text-emerald-600 font-bold' : 'text-emerald-400 font-bold')
                         : (isLight ? 'text-slate-500' : 'text-gray-400')
@@ -268,7 +268,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                   </div>
                   {/* Subtle pointer line toward card */}
                   <div
-                    className={`w-2 h-[1px] ${
+                    className={`w-2 h-[0.0625rem] ${
                       item.current
                         ? 'bg-gradient-to-r from-emerald-400 to-transparent'
                         : 'bg-gradient-to-r from-sky-400 to-transparent'
@@ -285,7 +285,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
               }`}>
                 {/* Subtle top accent line */}
                 <div
-                  className={`absolute top-0 left-0 right-0 h-[2px] ${
+                  className={`absolute top-0 left-0 right-0 h-[0.125rem] ${
                     item.current
                       ? 'bg-gradient-to-r from-emerald-500 via-sky-500 to-transparent'
                       : 'bg-gradient-to-r from-sky-500/60 via-sky-500/20 to-transparent'
@@ -307,19 +307,19 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className={`text-xs sm:text-[13.5px] font-bold font-heading truncate leading-tight ${
+                          <h3 className={`text-xs sm:text-[0.84375rem] font-bold font-heading truncate leading-tight ${
                             isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
                           }`}>
                             {item.company}
                           </h3>
                         </div>
-                        <div className="flex items-center gap-2 text-[10.5px]">
+                        <div className="flex items-center gap-2 text-[0.65625rem]">
                           <span className={`font-heading font-bold leading-tight ${
                             isLight ? 'text-sky-700' : 'text-sky-400'
                           }`}>
                             {item.role}
                           </span>
-                          <span className={`font-mono-tech text-[9.5px] ${
+                          <span className={`font-mono-tech text-[0.59375rem] ${
                             isLight ? 'text-slate-500' : 'text-gray-400'
                           }`}>
                             &bull; {item.location}
@@ -329,14 +329,14 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                     </div>
 
                     <div className="flex items-center gap-2 flex-shrink-0">
-                      <span className={`lg:hidden text-[10px] font-mono-tech font-bold uppercase tracking-wider ${
+                      <span className={`lg:hidden text-[0.625rem] font-mono-tech font-bold uppercase tracking-wider ${
                         isLight ? 'text-slate-600' : 'text-[#9BA8B5]'
                       }`}>
                         {item.period}
                       </span>
                       {item.current && (
                         <span
-                          className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono-tech font-bold flex-shrink-0 shadow-2xs"
+                          className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[0.625rem] font-mono-tech font-bold flex-shrink-0 shadow-2xs"
                           style={{
                             backgroundColor: isLight ? '#DCFCE7' : 'rgba(6, 78, 59, 0.55)',
                             color: isLight ? '#15803D' : '#34D399',
@@ -367,7 +367,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                                 key={lIdx}
                                 src={logo}
                                 alt="Client Logo"
-                                className="h-3.5 max-w-[55px] object-contain"
+                                className="h-3.5 max-w-[3.4375rem] object-contain"
                               />
                             ))}
                           </div>
@@ -383,7 +383,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                             {item.visual.caption}
                           </p>
                           <p
-                            className="text-[9.5px] font-mono-tech truncate font-bold photo-caption-sub"
+                            className="text-[0.59375rem] font-mono-tech truncate font-bold photo-caption-sub"
                             style={{
                               color: '#38BDF8',
                               textShadow: '0 1px 4px rgba(0, 0, 0, 0.9)',
@@ -401,7 +401,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                     {item.bullets.map((bullet, bIdx) => (
                       <li
                         key={bIdx}
-                        className={`flex items-start space-x-2 text-[10px] sm:text-[10.5px] 2xl:text-[11px] leading-[1.4] sm:leading-[1.45] font-medium ${
+                        className={`flex items-start space-x-2 text-[0.625rem] sm:text-[0.65625rem] 2xl:text-[0.6875rem] leading-[1.4] sm:leading-[1.45] font-medium ${
                           isLight ? 'text-slate-700' : 'text-[#9BA8B5]'
                         }`}
                       >
@@ -417,7 +417,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                   {item.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className={`px-1.5 sm:px-2 py-0.5 rounded-md text-[8.5px] sm:text-[9px] font-mono-tech leading-tight whitespace-nowrap ${
+                      className={`px-1.5 sm:px-2 py-0.5 rounded-md text-[0.53125rem] sm:text-[0.5625rem] font-mono-tech leading-tight whitespace-nowrap ${
                         isLight
                           ? 'bg-slate-100 text-slate-800 border border-slate-200/80 font-medium'
                           : 'bg-white/[0.04] text-[#CAD5E2] border border-white/[0.06] font-medium'
@@ -430,7 +430,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
               </div>
 
               {/* Right: Desktop & Tablet Visual Showcase Card with guaranteed minimum height so photo & title NEVER vanish */}
-              <div className={`hidden md:flex flex-1 lg:max-w-xs xl:max-w-sm relative rounded-2xl overflow-hidden flex-col justify-end group shadow-md min-h-[145px] lg:min-h-[145px] xl:min-h-[155px] min-w-0 border ${
+              <div className={`hidden md:flex flex-1 lg:max-w-xs xl:max-w-sm relative rounded-2xl overflow-hidden flex-col justify-end group shadow-md min-h-[9.0625rem] lg:min-h-[9.0625rem] xl:min-h-[9.6875rem] min-w-0 border ${
                 isLight ? 'border-slate-300/90 shadow-slate-900/5' : 'glass-panel border-white/[0.08]'
               }`}>
                 <img
@@ -452,7 +452,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                           key={lIdx}
                           src={logo}
                           alt="Client Logo"
-                          className="h-4 sm:h-5 max-w-[80px] object-contain"
+                          className="h-4 sm:h-5 max-w-[5rem] object-contain"
                         />
                       ))}
                     </div>
@@ -460,7 +460,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
 
                   <div className="space-y-0.5">
                     <p
-                      className="text-xs sm:text-[13.5px] font-black tracking-wide leading-tight photo-caption-title"
+                      className="text-xs sm:text-[0.84375rem] font-black tracking-wide leading-tight photo-caption-title"
                       style={{
                         color: '#FFFFFF',
                         textShadow: '0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.9)',
@@ -469,7 +469,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                       {item.visual.caption}
                     </p>
                     <p
-                      className="text-[10px] sm:text-[11px] font-mono-tech truncate font-bold photo-caption-sub"
+                      className="text-[0.625rem] sm:text-[0.6875rem] font-mono-tech truncate font-bold photo-caption-sub"
                       style={{
                         color: '#38BDF8',
                         textShadow: '0 1px 4px rgba(0, 0, 0, 0.9)',
@@ -478,7 +478,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
                       {item.visual.subCaption}
                     </p>
                   </div>
-                  <div className="w-10 h-[2.5px] bg-sky-400 shadow-[0_0_8px_#38bdf8] mt-0.5 rounded-full" />
+                  <div className="w-10 h-[0.15625rem] bg-sky-400 shadow-[0_0_8px_#38bdf8] mt-0.5 rounded-full" />
                 </div>
               </div>
 
@@ -523,12 +523,12 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
 
           {/* Left: Quote with Cyan Dash Underneath */}
           <div className="relative z-10 text-left">
-            <p className={`font-heading italic text-xs sm:text-[14px] 2xl:text-[15px] font-black leading-snug drop-shadow-sm ${
+            <p className={`font-heading italic text-xs sm:text-[0.875rem] 2xl:text-[0.9375rem] font-black leading-snug drop-shadow-sm ${
               isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
             }`}>
               &ldquo;Different roads.<br className="hidden sm:inline" /> Same passion.&rdquo;
             </p>
-            <div className="w-8 h-[2px] bg-[#159FFF] mt-1 rounded-full shadow-[0_0_8px_#159FFF]" />
+            <div className="w-8 h-[0.125rem] bg-[#159FFF] mt-1 rounded-full shadow-[0_0_8px_#159FFF]" />
           </div>
 
           {/* Center: Clean Prominent Stats */}
@@ -539,31 +539,31 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
               }`}>
                 4+
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[0.53125rem] sm:text-[0.59375rem] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Years Experience
               </span>
             </div>
-            <div className={`w-[1px] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
+            <div className={`w-[0.0625rem] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
             <div>
               <span className={`block text-sm sm:text-base 2xl:text-lg font-black font-heading leading-tight ${
                 isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
               }`}>
                 10+
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[0.53125rem] sm:text-[0.59375rem] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Global Stakeholders
               </span>
             </div>
-            <div className={`w-[1px] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
+            <div className={`w-[0.0625rem] h-5 sm:h-6 ${isLight ? 'bg-slate-300' : 'bg-white/20'}`} />
             <div>
               <span className="block text-sm sm:text-base 2xl:text-lg font-black font-heading text-sky-500 leading-tight">
                 3
               </span>
-              <span className={`text-[8.5px] sm:text-[9.5px] font-mono-tech uppercase tracking-wider ${
+              <span className={`text-[0.53125rem] sm:text-[0.59375rem] font-mono-tech uppercase tracking-wider ${
                 isLight ? 'text-slate-700 font-semibold' : 'text-[#9BA8B5] font-semibold'
               }`}>
                 Automotive Platforms
@@ -575,7 +575,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onNavigate
           <div className="relative z-10 flex-shrink-0">
             <button
               onClick={() => onNavigate('contact')}
-              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[12.5px] font-heading font-bold tracking-wide transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-md text-white bg-sky-600 hover:bg-sky-500 shadow-sky-600/30 whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[0.78125rem] font-heading font-bold tracking-wide transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-md text-white bg-sky-600 hover:bg-sky-500 shadow-sky-600/30 whitespace-nowrap"
             >
               <span>Let's Build What's Next</span>
               <ArrowRight className="w-3.5 h-3.5 text-white" />

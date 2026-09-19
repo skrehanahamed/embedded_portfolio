@@ -100,26 +100,26 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               <img
                 src={project.companyLogo}
                 alt={project.companyOrContext}
-                className="h-3 sm:h-3.5 max-w-[54px] sm:max-w-[62px] object-contain"
+                className="h-3 sm:h-3.5 max-w-[3.375rem] sm:max-w-[3.875rem] object-contain"
                 loading="lazy"
               />
             </div>
 
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-                <span className={`text-[9.5px] sm:text-[10px] font-mono-tech font-bold ${
+                <span className={`text-[0.59375rem] sm:text-[0.625rem] font-mono-tech font-bold ${
                   isLight ? 'text-sky-600' : 'text-sky-400'
                 } shrink-0`}>
                   PROJECT {project.id}
                 </span>
                 <span className={isLight ? 'text-slate-300' : 'text-white/20'}>•</span>
-                <span className={`text-[9.5px] sm:text-[10.5px] font-heading font-bold uppercase tracking-wider ${
+                <span className={`text-[0.59375rem] sm:text-[0.65625rem] font-heading font-bold uppercase tracking-wider ${
                   isLight ? 'text-slate-800' : 'text-slate-200'
                 }`}>
                   {project.companyOrContext}
                 </span>
                 <span className={isLight ? 'text-slate-300' : 'text-white/20'}>•</span>
-                <span className={`text-[9.5px] sm:text-[10px] font-mono-tech uppercase tracking-wider truncate ${
+                <span className={`text-[0.59375rem] sm:text-[0.625rem] font-mono-tech uppercase tracking-wider truncate ${
                   isLight ? 'text-slate-600 font-semibold' : 'text-gray-300'
                 }`}>
                   {project.domain}
@@ -139,7 +139,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 rounded-lg border text-[11px] sm:text-xs font-mono-tech transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 rounded-lg border text-[0.6875rem] sm:text-xs font-mono-tech transition-all cursor-pointer ${
                   isLight
                     ? 'bg-slate-100 hover:bg-slate-200/80 border-slate-200 text-slate-800'
                     : 'bg-white/[0.05] hover:bg-white/[0.1] border-white/[0.08] text-white'
@@ -197,16 +197,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <img
                   src={project.companyLogo}
                   alt={project.companyOrContext}
-                  className="h-3 sm:h-3.5 max-w-[50px] object-contain shrink-0"
+                  className="h-3 sm:h-3.5 max-w-[3.125rem] object-contain shrink-0"
                 />
-                <span className="text-[10.5px] sm:text-[11.5px] font-heading tracking-tight leading-none">
+                <span className="text-[0.65625rem] sm:text-[0.71875rem] font-heading tracking-tight leading-none">
                   {project.companyOrContext}
                 </span>
               </div>
             </div>
             
             {/* Quick Context Strip in Front of Photo with High Contrast in Light & Dark Mode */}
-            <div className="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 flex flex-wrap items-center gap-1.5 text-[10px] sm:text-[11.5px] font-mono-tech z-10">
+            <div className="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 flex flex-wrap items-center gap-1.5 text-[0.625rem] sm:text-[0.71875rem] font-mono-tech z-10">
               <span className={`px-2.5 py-1 rounded-lg shadow-md backdrop-blur-md truncate max-w-full font-bold ${
                 isLight
                   ? 'bg-white/95 border border-slate-300 text-slate-950'
@@ -234,7 +234,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               <span className="w-1.5 h-1.5 rounded-full bg-sky-500 shadow-[0_0_8px_#0ea5e9]" />
               <span>Project Overview</span>
             </h3>
-            <p className={`text-xs sm:text-[13px] leading-relaxed font-normal ${
+            <p className={`text-xs sm:text-[0.8125rem] leading-relaxed font-normal ${
               isLight ? 'text-slate-700' : 'text-gray-200'
             }`}>
               {project.fullDetails.overview}
@@ -251,7 +251,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               <Cpu className={`w-3.5 h-3.5 ${isLight ? 'text-sky-600' : 'text-sky-400'}`} />
               <span>System Architecture &amp; Data Pipeline</span>
             </h3>
-            <p className={`text-xs sm:text-[12.5px] font-mono-tech leading-relaxed ${
+            <p className={`text-xs sm:text-[0.78125rem] font-mono-tech leading-relaxed ${
               isLight ? 'text-slate-800' : 'text-gray-200'
             }`}>
               {project.fullDetails.architecture}
@@ -270,7 +270,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             </h3>
             <div className="space-y-2 pt-1">
               {project.fullDetails.responsibilities.map((resp, idx) => (
-                <div key={idx} className={`flex items-start gap-2.5 text-xs sm:text-[12.5px] leading-relaxed ${
+                <div key={idx} className={`flex items-start gap-2.5 text-xs sm:text-[0.78125rem] leading-relaxed ${
                   isLight ? 'text-slate-700' : 'text-gray-300'
                 }`}>
                   <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-1.5 shrink-0" />
@@ -318,7 +318,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
 
           {/* Business Impact */}
-          <div className={`p-3 sm:p-3.5 rounded-xl border text-xs sm:text-[12.5px] ${
+          <div className={`p-3 sm:p-3.5 rounded-xl border text-xs sm:text-[0.78125rem] ${
             isLight ? 'bg-emerald-50/75 border-emerald-200' : 'bg-emerald-950/20 border-emerald-500/30'
           }`}>
             <div className="leading-relaxed">

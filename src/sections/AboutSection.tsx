@@ -89,17 +89,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
   return (
     <section
       id="about"
-      className={`relative w-full min-h-[calc(100vh-64px)] flex flex-col justify-center py-4 lg:py-5 2xl:py-6 px-6 md:px-10 lg:px-12 2xl:px-14 overflow-hidden scroll-mt-20 transition-colors duration-300 ${
+      className={`relative w-full min-h-[calc(100vh-64px)] lg:h-[calc(100vh-4rem)] flex flex-col justify-center py-4 lg:py-5 2xl:py-6 px-6 md:px-10 lg:px-12 2xl:px-14 overflow-hidden scroll-mt-16 transition-colors duration-300 ${
         isLight ? 'bg-[#F8FAFC]' : 'bg-[#02060A]'
       }`}
     >
       {/* Subtle ambient background glow */}
       <div
-        className="absolute -top-32 left-1/3 w-[600px] h-[500px] rounded-full pointer-events-none"
+        className="absolute -top-32 left-1/3 w-[37.5rem] h-[31.25rem] rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, rgba(21,159,255,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1520px] mx-auto w-full space-y-3 lg:space-y-3.5 2xl:space-y-4">
+      <div className="max-w-7xl xl:max-w-[86.25rem] 2xl:max-w-[95rem] mx-auto w-full space-y-3 lg:space-y-3.5 2xl:space-y-4">
 
         {/* ══════════════════════════════════════════════════════
             TOP ROW: Portrait (left) | Bio + Mountain Highway Quote (right)
@@ -115,7 +115,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
         >
           {/* ── Portrait (left 3 cols) ── */}
           <div
-            className={`lg:col-span-3 relative rounded-2xl overflow-hidden group flex items-center justify-center min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] lg:max-h-[310px] ${
+            className={`lg:col-span-3 relative rounded-2xl overflow-hidden group flex items-center justify-center min-h-[15rem] sm:min-h-[16.25rem] lg:min-h-[16.875rem] 2xl:min-h-[18.4375rem] lg:max-h-[19.375rem] ${
               isLight ? 'bg-white' : 'bg-[#050B13]'
             }`}
             style={{
@@ -130,7 +130,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
             <img
               src="/assets/hero/image.png"
               alt="SK Rehan Ahamed"
-              className="w-full h-full object-cover object-[center_12%] group-hover:scale-102 transition-transform duration-700 min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] lg:max-h-[310px]"
+              className="w-full h-full object-cover object-[center_12%] group-hover:scale-102 transition-transform duration-700 min-h-[15rem] sm:min-h-[16.25rem] lg:min-h-[16.875rem] 2xl:min-h-[18.4375rem] lg:max-h-[19.375rem]"
               draggable={false}
             />
             {/* gradient overlay at bottom for quote readability */}
@@ -145,7 +145,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
             {/* Italic quote overlay bottom-left */}
             <div className="absolute bottom-3 left-3.5 2xl:bottom-4 2xl:left-4 z-10 pointer-events-none">
               <p
-                className="font-heading italic text-white/95 text-[13px] 2xl:text-[14px] leading-tight font-semibold"
+                className="font-heading italic text-white/95 text-[0.8125rem] 2xl:text-[0.875rem] leading-tight font-semibold"
                 style={{ textShadow: '0 2px 14px rgba(0,0,0,0.9)' }}
               >
                 Same Passion,<br />New Roads.
@@ -155,7 +155,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
 
           {/* ── Same Portion: Bio (left) + Mountain Highway with Quote (right) (9 cols) ── */}
           <div
-            className="lg:col-span-9 rounded-2xl relative overflow-hidden flex flex-col lg:flex-row items-stretch min-h-[240px] sm:min-h-[260px] lg:min-h-[270px] 2xl:min-h-[295px] lg:max-h-[310px]"
+            className="lg:col-span-9 rounded-2xl relative overflow-hidden flex flex-col lg:flex-row items-stretch min-h-[15rem] sm:min-h-[16.25rem] lg:min-h-[16.875rem] 2xl:min-h-[18.4375rem] lg:max-h-[19.375rem]"
             style={{
               background: isLight
                 ? 'rgba(255, 255, 255, 0.94)'
@@ -199,14 +199,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                   }}
                 >
                   <span
-                    className="font-mono-tech text-[9px] 2xl:text-[9.5px] tracking-[0.22em] uppercase font-bold"
+                    className="font-mono-tech text-[0.5625rem] 2xl:text-[0.59375rem] tracking-[0.22em] uppercase font-bold"
                     style={{ color: isLight ? '#0284C7' : '#38BDF8' }}
                   >
                     ABOUT
                   </span>
                 </div>
 
-                <h2 className={`font-heading font-black text-[22px] sm:text-[25px] 2xl:text-[28px] leading-[1.14] mb-2 ${
+                <h2 className={`font-heading font-black text-[1.375rem] sm:text-[1.5625rem] 2xl:text-[1.75rem] leading-[1.14] mb-2 ${
                   isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
                 }`}>
                   Turning Ideas<br />
@@ -216,7 +216,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                   </span>
                 </h2>
 
-                <p className={`text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] leading-[1.55] 2xl:leading-[1.6] mb-1.5 font-medium ${
+                <p className={`text-[0.71875rem] sm:text-[0.75rem] 2xl:text-[0.78125rem] leading-[1.55] 2xl:leading-[1.6] mb-1.5 font-medium ${
                   isLight ? 'text-slate-800' : 'text-slate-200 lg:text-[#9BA8B5]'
                 }`}>
                   I'm SK Rehan Ahamed, an Embedded C/C++ Developer with a strong focus on
@@ -224,7 +224,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                   production-grade, reliable embedded software that makes connected mobility smarter and
                   safer for the future.
                 </p>
-                <p className={`text-[11.5px] sm:text-[12px] 2xl:text-[12.5px] leading-[1.55] 2xl:leading-[1.6] mb-2.5 font-medium ${
+                <p className={`text-[0.71875rem] sm:text-[0.75rem] 2xl:text-[0.78125rem] leading-[1.55] 2xl:leading-[1.6] mb-2.5 font-medium ${
                   isLight ? 'text-slate-800' : 'text-slate-200 lg:text-[#9BA8B5]'
                 }`}>
                   From writing low-level code to creating intuitive HMI experiences, I enjoy solving
@@ -232,7 +232,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                   safer for the future.
                 </p>
 
-                <div className={`flex items-center gap-1.5 text-[11px] 2xl:text-[12px] font-medium ${
+                <div className={`flex items-center gap-1.5 text-[0.6875rem] 2xl:text-[0.75rem] font-medium ${
                   isLight ? 'text-slate-800' : 'text-slate-300 lg:text-[#9BA8B5]'
                 }`}>
                   <MapPin className="w-3.5 h-3.5 text-[#159FFF]" />
@@ -242,7 +242,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
             </div>
 
             {/* Subtle vertical separator line */}
-            <div className={`hidden lg:block w-[1px] h-[65%] my-auto self-center z-10 ${
+            <div className={`hidden lg:block w-[0.0625rem] h-[65%] my-auto self-center z-10 ${
               isLight ? 'bg-slate-200' : 'bg-white/[0.08]'
             }`} />
 
@@ -258,7 +258,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                     “
                   </span>
                   <p
-                    className={`font-heading italic text-[16px] sm:text-[17.5px] 2xl:text-[19px] font-black leading-[1.28] ${
+                    className={`font-heading italic text-[1rem] sm:text-[1.09375rem] 2xl:text-[1.1875rem] font-black leading-[1.28] ${
                       isLight ? 'text-slate-950' : 'text-[#F4F7FA] drop-shadow-lg'
                     }`}
                     style={{
@@ -272,9 +272,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                 </div>
 
                 <div className="pt-3">
-                  <div className="w-7 h-[2px] bg-[#159FFF] rounded-full mb-1.5 shadow-[0_0_8px_#159FFF]" />
+                  <div className="w-7 h-[0.125rem] bg-[#159FFF] rounded-full mb-1.5 shadow-[0_0_8px_#159FFF]" />
                   <p
-                    className={`font-mono-tech text-[9px] 2xl:text-[10px] tracking-[0.2em] uppercase font-bold ${
+                    className={`font-mono-tech text-[0.5625rem] 2xl:text-[0.625rem] tracking-[0.2em] uppercase font-bold ${
                       isLight ? 'text-slate-900' : 'text-[#CAD5E2]'
                     }`}
                   >
@@ -301,12 +301,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
           {/* Left: Driven by Curiosity */}
           <div className="lg:col-span-4 flex flex-col justify-center">
             <div className="flex items-center gap-2 mb-1.5">
-              <div className="w-4 h-[2px] bg-[#159FFF] rounded-full" />
-              <span className="font-mono-tech text-[9.5px] 2xl:text-[10px] tracking-[0.25em] uppercase text-[#9BA8B5]">
+              <div className="w-4 h-[0.125rem] bg-[#159FFF] rounded-full" />
+              <span className="font-mono-tech text-[0.59375rem] 2xl:text-[0.625rem] tracking-[0.25em] uppercase text-[#9BA8B5]">
                 MY JOURNEY
               </span>
             </div>
-            <h3 className={`font-heading font-black text-[20px] sm:text-[23px] 2xl:text-[25px] leading-[1.15] mb-1.5 2xl:mb-2 ${
+            <h3 className={`font-heading font-black text-[1.25rem] sm:text-[1.4375rem] 2xl:text-[1.5625rem] leading-[1.15] mb-1.5 2xl:mb-2 ${
               isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
             }`}>
               Driven by<br />
@@ -314,7 +314,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                 Curiosity
               </span>
             </h3>
-            <p className={`text-[11px] sm:text-[11.5px] 2xl:text-[12px] leading-[1.55] 2xl:leading-[1.6] mb-2.5 2xl:mb-3 ${
+            <p className={`text-[0.6875rem] sm:text-[0.71875rem] 2xl:text-[0.75rem] leading-[1.55] 2xl:leading-[1.6] mb-2.5 2xl:mb-3 ${
               isLight ? 'text-slate-600' : 'text-[#9BA8B5]'
             }`}>
               My journey in tech started with a simple curiosity — how things work. Over time, that
@@ -327,7 +327,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
               download="SK_Rehan_Ahamed_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-3.5 py-1.5 2xl:px-4 2xl:py-2 rounded-xl text-[11px] 2xl:text-[12px] font-semibold transition-all w-fit cursor-pointer group hover:scale-[1.03] active:scale-[0.97] ${
+              className={`inline-flex items-center gap-2 px-3.5 py-1.5 2xl:px-4 2xl:py-2 rounded-xl text-[0.6875rem] 2xl:text-[0.75rem] font-semibold transition-all w-fit cursor-pointer group hover:scale-[1.03] active:scale-[0.97] ${
                 isLight ? 'text-slate-800' : 'text-[#F4F7FA]'
               }`}
               style={{
@@ -395,12 +395,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
 
                 {/* Content */}
                 <div>
-                  <p className={`font-heading font-bold text-[12.5px] 2xl:text-[13.5px] mb-0.5 group-hover:text-[#159FFF] transition-colors ${
+                  <p className={`font-heading font-bold text-[0.78125rem] 2xl:text-[0.84375rem] mb-0.5 group-hover:text-[#159FFF] transition-colors ${
                     isLight ? 'text-slate-900' : 'text-[#F4F7FA]'
                   }`}>
                     {c.title}
                   </p>
-                  <p className={`text-[10.5px] 2xl:text-[11px] leading-relaxed ${
+                  <p className={`text-[0.65625rem] 2xl:text-[0.6875rem] leading-relaxed ${
                     isLight ? 'text-slate-700 font-medium' : 'text-[#9BA8B5]'
                   }`}>
                     {c.desc}
@@ -431,8 +431,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
         >
           {/* Left: Section Label */}
           <div className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-4 h-[2px] bg-[#159FFF] rounded-full" />
-            <span className={`font-mono-tech text-[9.5px] sm:text-[10px] 2xl:text-[10.5px] tracking-[0.22em] uppercase font-semibold whitespace-nowrap ${
+            <div className="w-4 h-[0.125rem] bg-[#159FFF] rounded-full" />
+            <span className={`font-mono-tech text-[0.59375rem] sm:text-[0.625rem] 2xl:text-[0.65625rem] tracking-[0.22em] uppercase font-semibold whitespace-nowrap ${
               isLight ? 'text-slate-600' : 'text-[#9BA8B5]'
             }`}>
               TECH I WORK WITH
@@ -475,11 +475,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
                   <img
                     src={isLight && t.lightSrc ? t.lightSrc : t.src}
                     alt={t.name}
-                    className="h-5 sm:h-5.5 2xl:h-6 w-auto max-w-[56px] 2xl:max-w-[62px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-115 transition-all duration-200"
+                    className="h-5 sm:h-5.5 2xl:h-6 w-auto max-w-[3.5rem] 2xl:max-w-[3.875rem] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-115 transition-all duration-200"
                     draggable={false}
                   />
                   {/* Hover tooltip */}
-                  <span className="absolute -top-6 left-1/2 -translate-x-1/2 pointer-events-none px-2 py-0.5 rounded bg-[#081421] text-[9px] font-mono-tech text-[#159FFF] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-30 shadow-lg">
+                  <span className="absolute -top-6 left-1/2 -translate-x-1/2 pointer-events-none px-2 py-0.5 rounded bg-[#081421] text-[0.5625rem] font-mono-tech text-[#159FFF] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-30 shadow-lg">
                     {t.name}
                   </span>
                 </div>
@@ -488,7 +488,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate: _onNavig
           </div>
 
           {/* Right: and more ... */}
-          <span className="font-mono-tech text-[9.5px] 2xl:text-[10px] text-[#9BA8B5]/60 italic whitespace-nowrap flex-shrink-0">
+          <span className="font-mono-tech text-[0.59375rem] 2xl:text-[0.625rem] text-[#9BA8B5]/60 italic whitespace-nowrap flex-shrink-0">
             and more ...
           </span>
         </div>
